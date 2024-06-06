@@ -1,9 +1,7 @@
-﻿using GestaoInvestimentosCore.DTO.Ativo;
-using GestaoInvestimentosCore.DTO.Transacao;
+﻿using GestaoInvestimentosCore.DTO.Transacao;
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
-using GestaoInvestimentosInfrastructure.Repositories;
 
 namespace GestaoInvestimentosInfrastructure.Services
 {

@@ -1,8 +1,6 @@
-﻿using GestaoInvestimentosCore.DTO.Ativo;
-using GestaoInvestimentosCore.DTO.Usuario;
+﻿using GestaoInvestimentosCore.DTO.Usuario;
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Services;
-using GestaoInvestimentosInfrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoInvestimentosWebApi.Controllers

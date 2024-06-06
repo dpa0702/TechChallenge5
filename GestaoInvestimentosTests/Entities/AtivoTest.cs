@@ -1,13 +1,8 @@
 ﻿using Bogus;
 using GestaoInvestimentosCore.DTO.Ativo;
 using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosTests.Entities.Mock;
-using Microsoft.EntityFrameworkCore.Migrations.Operations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoInvestimentosTests.Entities
 {
@@ -26,7 +21,7 @@ namespace GestaoInvestimentosTests.Entities
         {
             // Arrange
             var ativoDtoMock = new MockAtivoDTO();
-            ativoDtoMock.TipoAtivo = string.Empty;
+            ativoDtoMock.TipoAtivo = TipoAtivo.Titulo;
 
             // Act
             var ativoDto = new CreateAtivoDTO { TipoAtivo = ativoDtoMock.TipoAtivo, Nome = ativoDtoMock.Nome, Codigo = ativoDtoMock.Codigo };
@@ -72,7 +67,7 @@ namespace GestaoInvestimentosTests.Entities
         {
             // Arrange
             var ativoDtoMock = new MockAtivoDTO();
-            ativoDtoMock.TipoAtivo = string.Empty;
+            ativoDtoMock.TipoAtivo = TipoAtivo.Criptomoeda;
 
             // Act
             var ativoDto = new UpdateAtivoDTO { Id = ativoDtoMock.Id, TipoAtivo = ativoDtoMock.TipoAtivo, Nome = ativoDtoMock.Nome, Codigo = ativoDtoMock.Codigo };

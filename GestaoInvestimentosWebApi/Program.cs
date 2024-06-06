@@ -1,9 +1,4 @@
-using GestaoInvestimentosCore.Interfaces.Repository;
-using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosInfrastructure.Data;
-using GestaoInvestimentosInfrastructure.Repositories;
-using GestaoInvestimentosInfrastructure.Services;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoInvestimentosWebApi
@@ -37,9 +32,6 @@ namespace GestaoInvestimentosWebApi
                     .EnableSensitiveDataLogging(false);
                 }, ServiceLifetime.Scoped);
             }
-
-            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddServices().AddRepositories();
 

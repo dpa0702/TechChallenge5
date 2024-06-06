@@ -1,14 +1,7 @@
-﻿using GestaoInvestimentosCore.DTO.Ativo;
-using GestaoInvestimentosCore.DTO.Usuario;
+﻿using GestaoInvestimentosCore.DTO.Usuario;
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
-using GestaoInvestimentosInfrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoInvestimentosInfrastructure.Services
 {
