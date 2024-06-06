@@ -36,9 +36,8 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(100)");
 
-                    b.Property<string>("TipoAtivo")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
+                    b.Property<int>("TipoAtivo")
+                        .HasColumnType("INT");
 
                     b.HasKey("Id");
 
@@ -50,21 +49,21 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                             Id = 1,
                             Codigo = "ATV01",
                             Nome = "Nome Ativo 1",
-                            TipoAtivo = "Acao"
+                            TipoAtivo = 1
                         },
                         new
                         {
                             Id = 2,
                             Codigo = "ATV02",
                             Nome = "Nome Ativo 2",
-                            TipoAtivo = "Titulo"
+                            TipoAtivo = 2
                         },
                         new
                         {
                             Id = 3,
                             Codigo = "ATV03",
                             Nome = "Nome Ativo 3",
-                            TipoAtivo = "Criptomoeda"
+                            TipoAtivo = 3
                         });
                 });
 
@@ -134,9 +133,8 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(50)");
 
-                    b.Property<string>("TipoTransacao")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(100)");
+                    b.Property<int>("TipoTransacao")
+                        .HasColumnType("INT");
 
                     b.HasKey("Id");
 
@@ -151,41 +149,41 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 1,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-05 22:18:32.4447519",
+                            DataTransacao = "2024-06-06 12:08:17.3592655",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
-                            TipoTransacao = "TipoTransacao 1"
+                            TipoTransacao = 1
                         },
                         new
                         {
                             Id = 2,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-05 22:18:32.4447543",
+                            DataTransacao = "2024-06-06 12:08:17.3592667",
                             PortfolioId = 1,
                             Preco = "300",
                             Quantidade = "20",
-                            TipoTransacao = "TipoTransacao 2"
+                            TipoTransacao = 2
                         },
                         new
                         {
                             Id = 3,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-05 22:18:32.4447547",
+                            DataTransacao = "2024-06-06 12:08:17.3592668",
                             PortfolioId = 2,
                             Preco = "600",
                             Quantidade = "50",
-                            TipoTransacao = "TipoTransacao 3"
+                            TipoTransacao = 1
                         },
                         new
                         {
                             Id = 4,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-05 22:18:32.4447551",
+                            DataTransacao = "2024-06-06 12:08:17.3592669",
                             PortfolioId = 2,
                             Preco = "900",
                             Quantidade = "90",
-                            TipoTransacao = "TipoTransacao 4"
+                            TipoTransacao = 2
                         });
                 });
 

@@ -55,10 +55,10 @@ namespace GestaoInvestimentosInfrastructure.Data
                 );
 
             modelBuilder.Entity<Transacao>().HasData(
-                new Transacao(1, 1, 1, "TipoTransacao 1", 10, 150, DateTime.Now),
-                new Transacao(2, 1, 2, "TipoTransacao 2", 20, 300, DateTime.Now),
-                new Transacao(3, 2, 1, "TipoTransacao 3", 50, 600, DateTime.Now),
-                new Transacao(4, 2, 2, "TipoTransacao 4", 90, 900, DateTime.Now)
+                new Transacao(1, 1, 1, TipoTransacao.Compra, 10, 150, DateTime.Now),
+                new Transacao(2, 1, 2, TipoTransacao.Venda, 20, 300, DateTime.Now),
+                new Transacao(3, 2, 1, TipoTransacao.Compra, 50, 600, DateTime.Now),
+                new Transacao(4, 2, 2, TipoTransacao.Venda, 90, 900, DateTime.Now)
                 );
         }
     }
