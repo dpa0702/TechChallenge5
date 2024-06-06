@@ -1,0 +1,26 @@
+﻿using GestaoInvestimentosCore.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GestaoInvestimentosInfrastructure.Configuration
+{
+    public class PortfolioConfiguration : IEntityTypeConfiguration<Portfolio>
+    {
+        public void Configure(EntityTypeBuilder<Portfolio> builder)
+        {
+            builder.ToTable("Portfolio");
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.Id).HasColumnType("INT").ValueGeneratedNever().UseIdentityColumn();
+            builder.Property(p => p.Nome).HasColumnType("VARCHAR(100)").IsRequired();
+            builder.Property(p => p.Descricao).HasColumnType("VARCHAR(50)").IsRequired();
+
+            builder.Property(p => p.UsuarioId).HasColumnType("INT").IsRequired();
+            builder.HasOne(u => u.Usuario).WithMany(p => p.Portfolios).HasForeignKey(u => u.UsuarioId);
+        }
+    }
+}
