@@ -1,7 +1,6 @@
 ﻿using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosInfrastructure.Data;
-using GestaoInvestimentosInfrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace GestaoInvestimentosInfrastructure.Repositories

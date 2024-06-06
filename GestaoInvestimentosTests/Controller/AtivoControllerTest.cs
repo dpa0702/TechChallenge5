@@ -4,13 +4,7 @@ using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosWebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoInvestimentosTests.Controller
 {

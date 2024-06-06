@@ -2,14 +2,9 @@
 using AutoFixture;
 using GestaoInvestimentosInfrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GestaoInvestimentosInfrastructure.Repositories;
 using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Enums;
 
 namespace GestaoInvestimentosTests.Repository
 {
@@ -43,7 +38,7 @@ namespace GestaoInvestimentosTests.Repository
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?))
                 .With(x => x.Id, idToFakeInsertAndSearch)
-                .With(x => x.TipoAtivo, "TipoAtivoA").Create();
+                .With(x => x.TipoAtivo, TipoAtivo.Titulo).Create();
 
             _context.Ativos.Add(ativo);
             _context.SaveChanges();
@@ -53,7 +48,7 @@ namespace GestaoInvestimentosTests.Repository
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("TipoAtivoA", result.TipoAtivo);
+            Assert.AreEqual(TipoAtivo.Titulo, result.TipoAtivo);
         }
 
         [TestMethod]

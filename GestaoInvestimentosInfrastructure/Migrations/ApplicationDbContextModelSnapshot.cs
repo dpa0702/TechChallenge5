@@ -50,21 +50,21 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                             Id = 1,
                             Codigo = "ATV01",
                             Nome = "Nome Ativo 1",
-                            TipoAtivo = "Ativo Tipo 1"
+                            TipoAtivo = "Acao"
                         },
                         new
                         {
                             Id = 2,
                             Codigo = "ATV02",
                             Nome = "Nome Ativo 2",
-                            TipoAtivo = "Ativo Tipo 2"
+                            TipoAtivo = "Titulo"
                         },
                         new
                         {
                             Id = 3,
                             Codigo = "ATV03",
                             Nome = "Nome Ativo 3",
-                            TipoAtivo = "Ativo Tipo 3"
+                            TipoAtivo = "Criptomoeda"
                         });
                 });
 
@@ -151,7 +151,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 1,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-05 15:19:50.2822307",
+                            DataTransacao = "2024-06-05 22:18:32.4447519",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -161,7 +161,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 2,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-05 15:19:50.2822324",
+                            DataTransacao = "2024-06-05 22:18:32.4447543",
                             PortfolioId = 1,
                             Preco = "300",
                             Quantidade = "20",
@@ -171,7 +171,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 3,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-05 15:19:50.2822326",
+                            DataTransacao = "2024-06-05 22:18:32.4447547",
                             PortfolioId = 2,
                             Preco = "600",
                             Quantidade = "50",
@@ -181,7 +181,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 4,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-05 15:19:50.2822328",
+                            DataTransacao = "2024-06-05 22:18:32.4447551",
                             PortfolioId = 2,
                             Preco = "900",
                             Quantidade = "90",

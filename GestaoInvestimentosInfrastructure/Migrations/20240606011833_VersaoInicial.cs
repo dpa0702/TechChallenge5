@@ -98,9 +98,9 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "Codigo", "Nome", "TipoAtivo" },
                 values: new object[,]
                 {
-                    { 1, "ATV01", "Nome Ativo 1", "Ativo Tipo 1" },
-                    { 2, "ATV02", "Nome Ativo 2", "Ativo Tipo 2" },
-                    { 3, "ATV03", "Nome Ativo 3", "Ativo Tipo 3" }
+                    { 1, "ATV01", "Nome Ativo 1", "Acao" },
+                    { 2, "ATV02", "Nome Ativo 2", "Titulo" },
+                    { 3, "ATV03", "Nome Ativo 3", "Criptomoeda" }
                 });
 
             migrationBuilder.InsertData(
@@ -126,10 +126,10 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "AtivoId", "DataTransacao", "PortfolioId", "Preco", "Quantidade", "TipoTransacao" },
                 values: new object[,]
                 {
-                    { 1, 1, "2024-06-05 15:19:50.2822307", 1, "150", "10", "TipoTransacao 1" },
-                    { 2, 2, "2024-06-05 15:19:50.2822324", 1, "300", "20", "TipoTransacao 2" },
-                    { 3, 1, "2024-06-05 15:19:50.2822326", 2, "600", "50", "TipoTransacao 3" },
-                    { 4, 2, "2024-06-05 15:19:50.2822328", 2, "900", "90", "TipoTransacao 4" }
+                    { 1, 1, "2024-06-05 22:18:32.4447519", 1, "150", "10", "TipoTransacao 1" },
+                    { 2, 2, "2024-06-05 22:18:32.4447543", 1, "300", "20", "TipoTransacao 2" },
+                    { 3, 1, "2024-06-05 22:18:32.4447547", 2, "600", "50", "TipoTransacao 3" },
+                    { 4, 2, "2024-06-05 22:18:32.4447551", 2, "900", "90", "TipoTransacao 4" }
                 });
 
             migrationBuilder.CreateIndex(

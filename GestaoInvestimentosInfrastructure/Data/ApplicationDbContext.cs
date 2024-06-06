@@ -1,7 +1,7 @@
 ﻿using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Reflection.Emit;
 
 namespace GestaoInvestimentosInfrastructure.Data
 {
@@ -44,9 +44,9 @@ namespace GestaoInvestimentosInfrastructure.Data
                 );
 
             modelBuilder.Entity<Ativo>().HasData(
-                new Ativo(1, "Ativo Tipo 1", "Nome Ativo 1", "ATV01"),
-                new Ativo(2, "Ativo Tipo 2", "Nome Ativo 2", "ATV02"),
-                new Ativo(3, "Ativo Tipo 3", "Nome Ativo 3", "ATV03")
+                new Ativo(1, TipoAtivo.Acao, "Nome Ativo 1", "ATV01"),
+                new Ativo(2, TipoAtivo.Titulo, "Nome Ativo 2", "ATV02"),
+                new Ativo(3, TipoAtivo.Criptomoeda, "Nome Ativo 3", "ATV03")
                 );
 
             modelBuilder.Entity<Portfolio>().HasData(
