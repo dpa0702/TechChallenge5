@@ -1,4 +1,5 @@
 ﻿using GestaoInvestimentosCore.DTO.Transacao;
+using GestaoInvestimentosCore.Enums;
 
 namespace GestaoInvestimentosCore.Entities
 {
@@ -7,7 +8,7 @@ namespace GestaoInvestimentosCore.Entities
         public int Id { get; set; }
         public int PortfolioId { get; set; }
         public int AtivoId { get; set; }
-        public string TipoTransacao { get; set; }
+        public TipoTransacao TipoTransacao { get; set; }
         public int Quantidade { get; set; }
         public decimal Preco { get; set; }
         public DateTime DataTransacao { get; set; }
@@ -21,7 +22,7 @@ namespace GestaoInvestimentosCore.Entities
             Ativo = new Ativo();
         }
 
-        public Transacao(int id, int portfolioId, int ativoId, string tipoTransacao, int quantidade, decimal preco, DateTime dataTransacao)
+        public Transacao(int id, int portfolioId, int ativoId, TipoTransacao tipoTransacao, int quantidade, decimal preco, DateTime dataTransacao)
         {
             Id = id;
             PortfolioId = portfolioId;
@@ -62,9 +63,7 @@ namespace GestaoInvestimentosCore.Entities
 
         public void ValidateEntity()
         {
-            AssertionValidations.AssertArgumentNullOrEmpty(TipoTransacao, "O tipoTransacao não pode ser nulo nem vazio!");
 
-            AssertionValidations.AssertArgumentLenght(TipoTransacao, 100, "O tipoTransacao deve ter no máximo 100 caracteres!");
         }
     }
 }

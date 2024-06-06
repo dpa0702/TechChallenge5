@@ -18,7 +18,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "INT", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TipoAtivo = table.Column<string>(type: "VARCHAR(100)", nullable: false),
+                    TipoAtivo = table.Column<int>(type: "INT", nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(100)", nullable: false),
                     Codigo = table.Column<string>(type: "VARCHAR(50)", nullable: false)
                 },
@@ -71,7 +71,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PortfolioId = table.Column<int>(type: "INT", nullable: false),
                     AtivoId = table.Column<int>(type: "INT", nullable: false),
-                    TipoTransacao = table.Column<string>(type: "VARCHAR(100)", nullable: false),
+                    TipoTransacao = table.Column<int>(type: "INT", nullable: false),
                     Quantidade = table.Column<string>(type: "VARCHAR(50)", nullable: false),
                     Preco = table.Column<string>(type: "VARCHAR(100)", nullable: false),
                     DataTransacao = table.Column<string>(type: "VARCHAR(100)", nullable: false)
@@ -98,9 +98,9 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "Codigo", "Nome", "TipoAtivo" },
                 values: new object[,]
                 {
-                    { 1, "ATV01", "Nome Ativo 1", "Acao" },
-                    { 2, "ATV02", "Nome Ativo 2", "Titulo" },
-                    { 3, "ATV03", "Nome Ativo 3", "Criptomoeda" }
+                    { 1, "ATV01", "Nome Ativo 1", 1 },
+                    { 2, "ATV02", "Nome Ativo 2", 2 },
+                    { 3, "ATV03", "Nome Ativo 3", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -126,10 +126,10 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "AtivoId", "DataTransacao", "PortfolioId", "Preco", "Quantidade", "TipoTransacao" },
                 values: new object[,]
                 {
-                    { 1, 1, "2024-06-05 22:18:32.4447519", 1, "150", "10", "TipoTransacao 1" },
-                    { 2, 2, "2024-06-05 22:18:32.4447543", 1, "300", "20", "TipoTransacao 2" },
-                    { 3, 1, "2024-06-05 22:18:32.4447547", 2, "600", "50", "TipoTransacao 3" },
-                    { 4, 2, "2024-06-05 22:18:32.4447551", 2, "900", "90", "TipoTransacao 4" }
+                    { 1, 1, "2024-06-06 12:08:17.3592655", 1, "150", "10", 1 },
+                    { 2, 2, "2024-06-06 12:08:17.3592667", 1, "300", "20", 2 },
+                    { 3, 1, "2024-06-06 12:08:17.3592668", 2, "600", "50", 1 },
+                    { 4, 2, "2024-06-06 12:08:17.3592669", 2, "900", "90", 2 }
                 });
 
             migrationBuilder.CreateIndex(
