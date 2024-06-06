@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title> Acesso ao Sistema </mat-card-title>
+  <mat-card-subtitle>
+    Selecione uma opção:
+  </mat-card-subtitle>
+  <mat-card-content>
+
+    <app-messages [texto]="resposta"></app-messages>
+
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+      <p><button
+          mat-raised-button
+          color="primary"
+          type="button"
+          [routerLink]="['/ativos/consulta-de-ativos']"
+          (click)="onClickButton()"
+        >
+          CONSULTAR ATIVOS
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          [routerLink]="['/portfolios/consulta-de-portfolios']"
+          (click)="onClickButton()"
+        >
+          CONSULTAR PORTFOLIOS
+        </button>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          [routerLink]="['/transacoes/consulta-de-transacoes']"
+          (click)="onClickButton()"
+        >
+          CONSULTAR TRANSAÇÕES
+        </button>
+        
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          [routerLink]="['/usuarios/consulta-de-usuarios']"
+          (click)="onClickButton()"
+        >
+          CONSULTAR USUÁRIOS
+        </button>
+      </p>
+    </form>
+  </mat-card-content>
+</mat-card>

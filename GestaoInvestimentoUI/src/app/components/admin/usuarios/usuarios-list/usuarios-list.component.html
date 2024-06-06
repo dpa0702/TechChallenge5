@@ -1,0 +1,115 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Consulta de Usuários</mat-card-title>
+      <mat-card-subtitle>Pesquisa de Usuários por xpto. <em>Preencha um ou mais campos.</em></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+     
+      <!-- mensagem -->
+      <app-messages [texto]="mensagem"/>
+      <br/>
+  
+      <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
+        <div class="grid-container">
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="ID da Transação"
+              formControlName="id"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="Nome"
+              formControlName="nome"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="E-mail"
+              formControlName="email"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="Senha"
+              formControlName="senha"
+            />
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            class="grid-item button"
+            color="primary"
+            type="submit"
+            [disabled]="!listForm.valid"
+          >
+            CONSULTAR
+          </button>
+        </div>
+      </form>
+  
+      <div>
+  
+        <mat-table [dataSource]="dataTable" class="tabela-contas">
+          <!-- coluna 'data' -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>ID</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.id }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Nome</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.nome }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>E-mail</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.email }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="senha">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Senha</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.senha }}
+            </mat-cell>
+          </ng-container>
+
+          
+  
+          <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: colunas"></mat-row>
+        </mat-table>
+  
+        <p>
+          Quantidade de registros obtidos: {{dataTable.data.length}}
+        </p>
+  
+      </div>
+    </mat-card-content>
+  </mat-card>
+  

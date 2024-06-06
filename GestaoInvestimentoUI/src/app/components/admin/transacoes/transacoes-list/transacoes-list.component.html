@@ -1,0 +1,167 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Consulta de Transações</mat-card-title>
+      <mat-card-subtitle>Pesquisa de Transações por xpto. <em>Preencha um ou mais campos.</em></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+     
+      <!-- mensagem -->
+      <app-messages [texto]="mensagem"/>
+      <br/>
+  
+      <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
+        <div class="grid-container">
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="ID da Transação"
+              formControlName="id"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="portfolioId"
+              formControlName="portfolioId"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="ativoId"
+              formControlName="ativoId"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="tipoTransacao"
+              formControlName="tipoTransacao"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="quantidade"
+              formControlName="quantidade"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="preco"
+              formControlName="preco"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="grid-item">
+            <input
+              type="text"
+              matInput
+              placeholder="dataTransacao"
+              formControlName="dataTransacao"
+            />
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            class="grid-item button"
+            color="primary"
+            type="submit"
+            [disabled]="!listForm.valid"
+          >
+            CONSULTAR
+          </button>
+        </div>
+      </form>
+  
+      <div>
+  
+        <mat-table [dataSource]="dataTable" class="tabela-contas">
+          <!-- coluna 'data' -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>ID</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.id }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="portfolioId">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Portfolio Id</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.portfolioId }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ativoId">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Ativo Id</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.ativoId }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="tipoTransacao">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Tipo Transação</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.tipoTransacao }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="quantidade">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Quantidade</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.quantidade }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="preco">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Preço</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.preco }}
+            </mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="dataTransacao">
+            <mat-header-cell *matHeaderCellDef
+              ><strong>Data Transação</strong></mat-header-cell
+            >
+            <mat-cell *matCellDef="let item">
+              {{ item.dataTransacao }}
+            </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: colunas"></mat-row>
+        </mat-table>
+  
+        <p>
+          Quantidade de registros obtidos: {{dataTable.data.length}}
+        </p>
+  
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
