@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 import { AtivoModel } from 'src/app/models/ativos.model';
 import { getAtivo } from 'src/app/services/ativos-service';
 
@@ -10,11 +11,11 @@ import { getAtivo } from 'src/app/services/ativos-service';
   templateUrl: './ativos-list.component.html',
   styleUrls: ['./ativos-list.component.css']
 })
-export class AtivosListComponent implements OnInit{
+export class AtivosListComponent implements OnInit {
 
   //mome das colunas do grid (DataTable) no material
-  colunas: string[] = ['id', 'tipoAtivo', 'nome', 'codigo'];
-  
+  colunas: string[] = ['id', 'tipoAtivo', 'nome', 'codigo', 'actions'];
+
   //dados preenchidos na tabela
   dataTable = new MatTableDataSource<AtivoModel>();
 
@@ -26,8 +27,9 @@ export class AtivosListComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
-    private spinnerService: NgxSpinnerService
-  ){
+    private spinnerService: NgxSpinnerService,
+    private _router: Router,
+  ) {
     this.listForm = this.formBuilder.group({
       id: null,
       tipoAtivo: null,
@@ -53,7 +55,7 @@ export class AtivosListComponent implements OnInit{
           data.forEach(item => {
             model.push({
               id: item.id,
-              tipoAtivo: item.tipoAtivo, 
+              tipoAtivo: item.tipoAtivo,
               nome: item.nome,
               codigo: item.codigo,
             });
@@ -108,5 +110,8 @@ export class AtivosListComponent implements OnInit{
       .add(() => {
         this.spinnerService.hide();
       })
+  }
+  redirectToNew() {
+    this._router.navigate(['ativos/ativos-create'])
   }
 }

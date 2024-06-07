@@ -6,11 +6,11 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 const routes: Routes = [
   {
     path: '',
-    component : LoginComponent,
+    component: LoginComponent,
   },
   {
     path: 'forget-password',
-    component : ForgetPasswordComponent
+    component: ForgetPasswordComponent
   },
 ];
 

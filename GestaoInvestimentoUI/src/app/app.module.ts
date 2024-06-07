@@ -14,6 +14,7 @@ import { AtivosListComponent } from './components/admin/ativos/ativos-list/ativo
 import { PortfoliosListComponent } from './components/admin/portfolios/portfolios-list/portfolios-list.component';
 import { TransacoesListComponent } from './components/admin/transacoes/transacoes-list/transacoes-list.component';
 import { UsuariosListComponent } from './components/admin/usuarios/usuarios-list/usuarios-list.component';
+import { AtivoCreateComponent } from './components/admin/ativos/ativos-create/ativos-create.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -30,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     AtivosListComponent,
     PortfoliosListComponent,
     TransacoesListComponent,
-    UsuariosListComponent
+    UsuariosListComponent,
+    AtivoCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -8,44 +8,24 @@
     <app-messages [texto]="resposta"></app-messages>
 
     <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-      <p><button
-          mat-raised-button
-          color="primary"
-          type="button"
-          [routerLink]="['/ativos/consulta-de-ativos']"
-          (click)="onClickButton()"
-        >
-          CONSULTAR ATIVOS
+      <p><button mat-raised-button color="primary" type="button" [routerLink]="['/ativos/consulta-de-ativos']"
+          (click)="onClickButton()">
+          GERENCIAR ATIVOS
         </button>
 
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          [routerLink]="['/portfolios/consulta-de-portfolios']"
-          (click)="onClickButton()"
-        >
-          CONSULTAR PORTFOLIOS
+        <button mat-raised-button color="primary" type="button" [routerLink]="['/portfolios/consulta-de-portfolios']"
+          (click)="onClickButton()">
+          GERENCIAR PORTFOLIOS
         </button>
 
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          [routerLink]="['/transacoes/consulta-de-transacoes']"
-          (click)="onClickButton()"
-        >
-          CONSULTAR TRANSAÇÕES
+        <button mat-raised-button color="primary" type="button" [routerLink]="['/transacoes/consulta-de-transacoes']"
+          (click)="onClickButton()">
+          GERENCIAR TRANSAÇÕES
         </button>
-        
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          [routerLink]="['/usuarios/consulta-de-usuarios']"
-          (click)="onClickButton()"
-        >
-          CONSULTAR USUÁRIOS
+
+        <button mat-raised-button color="primary" type="button" [routerLink]="['/usuarios/consulta-de-usuarios']"
+          (click)="onClickButton()">
+          GERENCIAR USUÁRIOS
         </button>
       </p>
     </form>

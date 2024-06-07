@@ -10,39 +10,39 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit {
-  forgetPasswordForm! : FormGroup;
+  forgetPasswordForm!: FormGroup;
 
   constructor(
-      private _authService : AuthService,
-      private _fb : FormBuilder,
-      private _toastr : ToastrService
-  ){
+    private _authService: AuthService,
+    private _fb: FormBuilder,
+    private _toastr: ToastrService
+  ) {
 
   }
 
   ngOnInit(): void {
     this.forgetPasswordForm = this._fb.group({
-      email : ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]]
     })
   }
 
 
-  submit(formValue : any){
+  submit(formValue: any) {
     let postData = {
-      email : formValue.email
+      email: formValue.email
     }
 
     this._authService.forgetPassword(postData).subscribe({
-      next : (res: any) => {
-        if(res.status === 200){
+      next: (res: any) => {
+        if (res.status === 200) {
           //Write your logic after response is received
           console.log('ok')
         }
       },
-      error : (err : any) => {
+      error: (err: any) => {
         this._toastr.error(err.error.message, 'Error');
       },
-      complete : () => {
+      complete: () => {
         this._toastr.success('Email sent successfully', 'Success')
       }
     })

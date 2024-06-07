@@ -10,11 +10,11 @@ import { getTransacao } from 'src/app/services/transacoes-services';
   templateUrl: './transacoes-list.component.html',
   styleUrls: ['./transacoes-list.component.css']
 })
-export class TransacoesListComponent implements OnInit{
+export class TransacoesListComponent implements OnInit {
 
   //mome das colunas do grid (DataTable) no material
-  colunas: string[] = ['id', 'portfolioId', 'ativoId', 'tipoTransacao', 'quantidade', 'preco', 'dataTransacao'];
-  
+  colunas: string[] = ['id', 'portfolioId', 'ativoId', 'tipoTransacao', 'quantidade', 'preco', 'dataTransacao', 'actions'];
+
   //dados preenchidos na tabela
   dataTable = new MatTableDataSource<TransacaoModel>();
 
@@ -27,7 +27,7 @@ export class TransacoesListComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private spinnerService: NgxSpinnerService
-  ){
+  ) {
     this.listForm = this.formBuilder.group({
       id: null,
       portfolioId: null,
