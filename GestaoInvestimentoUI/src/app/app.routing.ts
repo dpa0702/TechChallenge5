@@ -8,6 +8,10 @@ import { UsuariosListComponent } from './components/admin/usuarios/usuarios-list
 
 const routes: Routes = [
   {
+    path : '',
+    loadChildren : () => import('./components/auth/auth.module').then(m => m.AuthModule),
+  },
+  {
     path: 'home',
     component: HomeComponent,
   },
@@ -26,11 +30,6 @@ const routes: Routes = [
   {
     path: 'usuarios/consulta-de-usuarios',
     component: UsuariosListComponent,
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/home',
   },
 ];
 

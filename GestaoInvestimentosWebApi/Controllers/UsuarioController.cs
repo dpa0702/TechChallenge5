@@ -88,5 +88,35 @@ namespace GestaoInvestimentosWebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public IActionResult Login()
+        {
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("Forget")]
+        public IActionResult Forget()
+        {
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
