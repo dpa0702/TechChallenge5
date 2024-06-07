@@ -11,23 +11,22 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm! : FormGroup;
+  loginForm!: FormGroup;
 
   constructor(
-      private _router : Router,
-      private _authService : AuthService,
-      private _fb : FormBuilder,
-      private _toastr : ToastrService
-    )
-  {
+    private _router: Router,
+    private _authService: AuthService,
+    private _fb: FormBuilder,
+    private _toastr: ToastrService
+  ) {
 
   }
 
-  ngOnInit(){
-      this.loginForm = this._fb.group({
-        username : ['', [Validators.required, Validators.email]],
-        password : ['', Validators.required]
-      });
+  ngOnInit() {
+    this.loginForm = this._fb.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
 
   /**
@@ -35,31 +34,31 @@ export class LoginComponent implements OnInit {
    * Use - Called when
    * @param formValue
    */
-  submit(formValue:any){
+  submit(formValue: any) {
     let postData = {
-      email : formValue.username,
-      password : formValue.password
+      email: formValue.username,
+      password: formValue.password
     }
 
     this._authService.login(postData).subscribe({
-      next : (res: any) => {
-        if(res.status === 200){
+      next: (res: any) => {
+        if (res.status === 200) {
           //Write your logic after response is received
           //Store token in localStorage/SessionStorage
           this._toastr.success('Login is Successful', 'Success');
         }
       },
-      error : (err : any) => {
+      error: (err: any) => {
         this._toastr.error(err.error.message, 'Error');
       },
-      complete : () => {
+      complete: () => {
         //Write your logic after API completion
         this._router.navigate(['home']);
       }
     })
   }
 
-  redirectToForgetPassword(){
+  redirectToForgetPassword() {
     this._router.navigate(['/forget-password'])
   }
 

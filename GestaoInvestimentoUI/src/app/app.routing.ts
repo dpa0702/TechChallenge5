@@ -5,6 +5,7 @@ import { AtivosListComponent } from './components/admin/ativos/ativos-list/ativo
 import { PortfoliosListComponent } from './components/admin/portfolios/portfolios-list/portfolios-list.component';
 import { TransacoesListComponent } from './components/admin/transacoes/transacoes-list/transacoes-list.component';
 import { UsuariosListComponent } from './components/admin/usuarios/usuarios-list/usuarios-list.component';
+import { AtivoCreateComponent } from './components/admin/ativos/ativos-create/ativos-create.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'usuarios/consulta-de-usuarios',
     component: UsuariosListComponent,
+  },
+  {
+    path: 'ativos/ativos-create',
+    component: AtivoCreateComponent,
   },
 ];
 

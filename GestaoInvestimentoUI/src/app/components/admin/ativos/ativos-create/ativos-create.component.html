@@ -1,0 +1,56 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Cadastro de Ativos</mat-card-title>
+        <mat-card-subtitle>Cadastro de ativos</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <br />
+
+        <!-- exibição das mensagens -->
+        <app-messages [texto]="mensagem" />
+        <br />
+
+        <div>
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+                <div class="grid-container">
+                    <mat-form-field class="grid-item">
+                        <mat-label>Tipo Ativo:</mat-label>
+                        <mat-select formControlName="tipoAtivo">
+                            <mat-option value="">Escolha uma opção</mat-option>
+                            <mat-option [value]="1">Ação</mat-option>
+                            <mat-option [value]="2">Título</mat-option>
+                            <mat-option [value]="3">Criptomoeda</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="form.tipoAtivo && form.tipoAtivo.invalid">
+                            <span *ngIf="form.tipoAtivo.errors.required">
+                                Por favor, selecione o gênero.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="grid-item">
+                        <input matInput placeholder="Nome:" formControlName="nome" />
+                        <mat-error *ngIf="form.name && form.name.invalid">
+                            <span *ngIf="form.name.errors.required">
+                                Por favor, informe o nome do ativo.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="grid-item">
+                        <input matInput placeholder="Código:" formControlName="codigo" />
+                        <mat-error *ngIf="form.codigo && form.codigo.invalid">
+                            <span *ngIf="form.codigo.errors.required">
+                                Por favor, informe o codigo do ativo.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+
+
+                    <button mat-raised-button class="grid-item" color="primary" type="submit"
+                        [disabled]="!createForm.valid">
+                        CADASTRAR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

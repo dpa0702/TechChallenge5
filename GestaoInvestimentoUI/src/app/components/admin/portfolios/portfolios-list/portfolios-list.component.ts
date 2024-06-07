@@ -10,11 +10,11 @@ import { getPortfolio } from 'src/app/services/portfolios-service';
   templateUrl: './portfolios-list.component.html',
   styleUrls: ['./portfolios-list.component.css']
 })
-export class PortfoliosListComponent implements OnInit{
+export class PortfoliosListComponent implements OnInit {
 
   //mome das colunas do grid (DataTable) no material
-  colunas: string[] = ['id', 'usuarioId', 'nome', 'descricao'];
-  
+  colunas: string[] = ['id', 'usuarioId', 'nome', 'descricao', 'actions'];
+
   //dados preenchidos na tabela
   dataTable = new MatTableDataSource<PortfoliosModel>();
 
@@ -27,7 +27,7 @@ export class PortfoliosListComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private spinnerService: NgxSpinnerService
-  ){
+  ) {
     this.listForm = this.formBuilder.group({
       id: null,
       usuarioId: null,

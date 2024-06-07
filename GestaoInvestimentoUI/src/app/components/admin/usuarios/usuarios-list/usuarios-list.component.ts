@@ -10,11 +10,11 @@ import { getUsuario } from 'src/app/services/usuarios-service';
   templateUrl: './usuarios-list.component.html',
   styleUrls: ['./usuarios-list.component.css']
 })
-export class UsuariosListComponent implements OnInit{
+export class UsuariosListComponent implements OnInit {
 
   //mome das colunas do grid (DataTable) no material
-  colunas: string[] = ['id', 'nome', 'email', 'senha'];
-  
+  colunas: string[] = ['id', 'nome', 'email', 'senha', 'actions'];
+
   //dados preenchidos na tabela
   dataTable = new MatTableDataSource<UsuarioModel>();
 
@@ -27,7 +27,7 @@ export class UsuariosListComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private spinnerService: NgxSpinnerService
-  ){
+  ) {
     this.listForm = this.formBuilder.group({
       id: null,
       nome: [''],
