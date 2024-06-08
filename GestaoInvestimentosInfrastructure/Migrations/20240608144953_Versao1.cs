@@ -7,7 +7,7 @@
 namespace GestaoInvestimentosInfrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class VersaoInicial : Migration
+    public partial class Versao1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -126,10 +126,10 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "AtivoId", "DataTransacao", "PortfolioId", "Preco", "Quantidade", "TipoTransacao" },
                 values: new object[,]
                 {
-                    { 1, 1, "2024-06-06 12:08:17.3592655", 1, "150", "10", 1 },
-                    { 2, 2, "2024-06-06 12:08:17.3592667", 1, "300", "20", 2 },
-                    { 3, 1, "2024-06-06 12:08:17.3592668", 2, "600", "50", 1 },
-                    { 4, 2, "2024-06-06 12:08:17.3592669", 2, "900", "90", 2 }
+                    { 1, 1, "2024-06-08 11:49:52.6986499", 1, "150", "10", 1 },
+                    { 2, 2, "2024-06-08 11:49:52.6986515", 1, "300", "20", 2 },
+                    { 3, 1, "2024-06-08 11:49:52.6986517", 2, "600", "50", 1 },
+                    { 4, 2, "2024-06-08 11:49:52.6986519", 2, "900", "90", 2 }
                 });
 
             migrationBuilder.CreateIndex(

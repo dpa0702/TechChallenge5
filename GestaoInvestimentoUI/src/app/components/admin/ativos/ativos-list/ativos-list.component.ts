@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { AtivoModel } from 'src/app/models/ativos.model';
 import { getAtivo } from 'src/app/services/ativos-service';
+import { deleteAtivo } from 'src/app/services/ativos-service';
 
 @Component({
   selector: 'app-ativos-list',
@@ -113,5 +114,31 @@ export class AtivosListComponent implements OnInit {
   }
   redirectToNew() {
     this._router.navigate(['ativos/ativos-create'])
+  }
+  redirectToEdit(id: number) {
+    this._router.navigate(['ativos/ativos-edit/' + id])
+  }
+  redirectToDelete(id: number){
+    alert(id);
+    const request = new AtivoModel(
+      0,
+      0,
+      '',
+      '',
+    );
+
+    deleteAtivo(id)
+    .subscribe({
+      next: () => {
+        this.mensagem = `${id}`;
+      },
+      error: (e) => {
+        this.mensagem = `Erro: ${e.response.data}`;
+        console.log(e.response.data);
+      },
+    })
+    .add(() => {
+      this.spinnerService.hide();
+    });
   }
 }

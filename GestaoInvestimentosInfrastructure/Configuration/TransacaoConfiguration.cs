@@ -10,7 +10,7 @@ namespace GestaoInvestimentosInfrastructure.Configuration
         {
             builder.ToTable("Transacao");
             builder.HasKey(u => u.Id);
-            builder.Property(u => u.Id).HasColumnType("INT").ValueGeneratedNever().UseIdentityColumn();
+            builder.Property(u => u.Id).HasColumnType("INT").UseIdentityColumn();
             builder.Property(u => u.TipoTransacao).HasColumnType("INT").IsRequired();
             builder.Property(u => u.Quantidade).HasColumnType("VARCHAR(50)").IsRequired();
             builder.Property(u => u.Preco).HasColumnType("VARCHAR(100)").IsRequired();

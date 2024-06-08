@@ -22,7 +22,7 @@ namespace GestaoInvestimentosInfrastructure.Repositories
         public void Insert(Ativo ativo)
         {
             _context.Ativos.Add(ativo);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Update(Ativo ativo)
