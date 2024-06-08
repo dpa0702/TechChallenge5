@@ -9,6 +9,6 @@ namespace GestaoInvestimentosCore.Interfaces.Services
         IEnumerable<Ativo> GetAllAtivosAsync();
         void AddAtivoAsync(CreateAtivoDTO createAtivoDTO);
         void UpdateAtivoAsync(UpdateAtivoDTO updateAtivoDTO);
-        void DeleteAtivoAsync(Ativo ativo);
+        void DeleteAtivoAsync(int id);
     }
 }

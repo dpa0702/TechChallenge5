@@ -43,7 +43,8 @@ namespace GestaoInvestimentosWebApi
                                     policy =>
                                     {
                                         policy.WithOrigins("http://localhost:4200")
-                                            .AllowAnyHeader();
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
                                     });
             });
 

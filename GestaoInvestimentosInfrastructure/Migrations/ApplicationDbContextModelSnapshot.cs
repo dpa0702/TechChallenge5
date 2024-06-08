@@ -24,6 +24,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Ativo", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INT");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -70,6 +71,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Portfolio", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INT");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -111,6 +113,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Transacao", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INT");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -149,7 +152,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 1,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-06 12:08:17.3592655",
+                            DataTransacao = "2024-06-08 11:49:52.6986499",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -159,7 +162,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 2,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-06 12:08:17.3592667",
+                            DataTransacao = "2024-06-08 11:49:52.6986515",
                             PortfolioId = 1,
                             Preco = "300",
                             Quantidade = "20",
@@ -169,7 +172,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 3,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-06 12:08:17.3592668",
+                            DataTransacao = "2024-06-08 11:49:52.6986517",
                             PortfolioId = 2,
                             Preco = "600",
                             Quantidade = "50",
@@ -179,7 +182,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 4,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-06 12:08:17.3592669",
+                            DataTransacao = "2024-06-08 11:49:52.6986519",
                             PortfolioId = 2,
                             Preco = "900",
                             Quantidade = "90",
@@ -190,6 +193,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Usuario", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INT");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));

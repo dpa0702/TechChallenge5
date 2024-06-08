@@ -88,11 +88,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Ativo ativo)
+        public IActionResult Delete(int id)
         {
             try
             {
-                _ativoService.DeleteAtivoAsync(ativo);
+                _ativoService.DeleteAtivoAsync(id);
                 return Ok("Ativo alterado com sucesso!");
             }
             catch (Exception ex)

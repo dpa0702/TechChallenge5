@@ -43,3 +43,13 @@ export function putAtivo(request: AtivoModel): Observable<AtivoModel> {
 
     return createRequest<AtivoModel>(config);
 }
+
+export function deleteAtivo(id: number): Observable<AtivoModel> {
+    const config = {
+        method: 'delete',
+        url: `${environment.apiGestaoInvestimentos}/Ativo/` + id,
+        data: id
+    }
+
+    return createRequest<AtivoModel>(config);
+}

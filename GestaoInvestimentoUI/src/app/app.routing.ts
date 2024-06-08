@@ -6,6 +6,7 @@ import { PortfoliosListComponent } from './components/admin/portfolios/portfolio
 import { TransacoesListComponent } from './components/admin/transacoes/transacoes-list/transacoes-list.component';
 import { UsuariosListComponent } from './components/admin/usuarios/usuarios-list/usuarios-list.component';
 import { AtivoCreateComponent } from './components/admin/ativos/ativos-create/ativos-create.component';
+import { AtivoEditComponent } from './components/admin/ativos/ativos-edit/ativos-edit.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'ativos/ativos-create',
     component: AtivoCreateComponent,
+  },
+  {
+    path: 'ativos/ativos-edit/:id',
+    component: AtivoEditComponent,
   },
 ];
 

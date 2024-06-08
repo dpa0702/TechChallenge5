@@ -26,11 +26,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public void DeleteAtivoAsync(Ativo ativo)
+        public void DeleteAtivoAsync(int id)
         {
             try
             {
-                _ativoRepository.Delete(ativo);
+                _ativoRepository.Delete(_ativoRepository.GetById(id));
             }
             catch (Exception ex)
             {
