@@ -14,10 +14,10 @@ export function getAtivo(): Observable<AtivoModel[]> {
 }
 
 //função para consultar 1 ativo por id
-export function getAtivoById(id: number): Observable<AtivoModel> {
+export function getAtivoById(id: any): Observable<AtivoModel> {
     const config = {
         method: 'get',
-        url: `${environment.apiGestaoInvestimentos}/Ativo/GetAtivoById/${id}`
+        url: `${environment.apiGestaoInvestimentos}/Ativo/${id}`
     }
 
     return createRequest<AtivoModel>(config);
@@ -37,7 +37,7 @@ export function postAtivo(request: AtivoModel): Observable<AtivoModel> {
 export function putAtivo(request: AtivoModel): Observable<AtivoModel> {
     const config = {
         method: 'put',
-        url: `${environment.apiGestaoInvestimentos}/Ativo`,
+        url: `${environment.apiGestaoInvestimentos}/Ativo/`,
         data: request
     }
 

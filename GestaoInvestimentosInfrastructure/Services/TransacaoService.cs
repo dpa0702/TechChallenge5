@@ -67,7 +67,7 @@ namespace GestaoInvestimentosInfrastructure.Services
         {
             try
             {
-                _transacaoRepository.Delete(new Transacao(updateTransacaoDTO));
+                _transacaoRepository.Update(new Transacao(updateTransacaoDTO));
             }
             catch (Exception ex)
             {

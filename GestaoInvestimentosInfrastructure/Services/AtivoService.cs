@@ -66,7 +66,7 @@ namespace GestaoInvestimentosInfrastructure.Services
         {
             try
             {
-                _ativoRepository.Delete(new Ativo(updateAtivoDTO));
+                _ativoRepository.Update(new Ativo(updateAtivoDTO));
             }
             catch (Exception ex)
             {

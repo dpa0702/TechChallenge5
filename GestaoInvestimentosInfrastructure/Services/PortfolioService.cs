@@ -66,7 +66,7 @@ namespace GestaoInvestimentosInfrastructure.Services
         {
             try
             {
-                _portfolioRepository.Delete(new Portfolio(updatePortfolioDTO));
+                _portfolioRepository.Update(new Portfolio(updatePortfolioDTO));
             }
             catch (Exception ex)
             {
