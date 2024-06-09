@@ -73,7 +73,7 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update(UpdateAtivoDTO updateAtivoDTO)
         {
             try

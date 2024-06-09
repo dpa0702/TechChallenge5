@@ -13,6 +13,7 @@
         <div>
             <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                 <div class="grid-container">
+
                     <mat-form-field class="grid-item">
                         <mat-label>Tipo Ativo:</mat-label>
                         <mat-select formControlName="tipoAtivo">
@@ -44,6 +45,9 @@
                         </mat-error>
                     </mat-form-field>
 
+                    <mat-form-field class="grid-item">
+                        <input matInput placeholder="ID:" formControlName="id" readonly="true" />
+                    </mat-form-field>
 
                     <button mat-raised-button class="grid-item" color="primary" type="submit"
                         [disabled]="!createForm.valid">

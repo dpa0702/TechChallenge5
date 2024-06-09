@@ -112,14 +112,16 @@ export class AtivosListComponent implements OnInit {
         this.spinnerService.hide();
       })
   }
+  
   redirectToNew() {
     this._router.navigate(['ativos/ativos-create'])
   }
+
   redirectToEdit(id: number) {
     this._router.navigate(['ativos/ativos-edit/' + id])
   }
+
   redirectToDelete(id: number){
-    alert(id);
     const request = new AtivoModel(
       0,
       0,
