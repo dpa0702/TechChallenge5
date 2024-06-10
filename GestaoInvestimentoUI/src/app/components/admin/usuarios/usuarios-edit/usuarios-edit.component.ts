@@ -2,22 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { getAtivoById } from 'src/app/services/ativos-service';
-import { putAtivo } from 'src/app/services/ativos-service';
-import { AtivoModel } from 'src/app/models/ativos.model';
+import { getUsuarioById } from 'src/app/services/usuarios-service';
+import { putUsuario } from 'src/app/services/usuarios-service';
+import { UsuarioModel } from 'src/app/models/usuarios.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ativos-edit',
-  templateUrl: './ativos-edit.component.html',
-  styleUrls: ['./ativos-edit.component.css'],
+  selector: 'app-usuarios-edit',
+  templateUrl: './usuarios-edit.component.html',
+  styleUrls: ['./usuarios-edit.component.css'],
 })
-export class AtivoEditComponent implements OnInit {
+export class UsuarioEditComponent implements OnInit {
   // public id: number = 0;
   createForm: FormGroup;
   mensagem: string = '';
-  dataTable = new MatTableDataSource<AtivoModel>();
+  dataTable = new MatTableDataSource<UsuarioModel>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,9 +27,9 @@ export class AtivoEditComponent implements OnInit {
   ) {
     this.createForm = this.formBuilder.group({
       id: 0,
-      tipoAtivo: ['', Validators.required],
       nome: ['', Validators.required],
-      codigo: ['', Validators.required],
+      email: ['', Validators.required],
+      senha: ['', Validators.required],
     });
   }
 
@@ -42,12 +42,12 @@ export class AtivoEditComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
 
-    getAtivoById(id)
+    getUsuarioById(id)
       .subscribe((data) => {
         this.createForm.controls['id'].setValue(data.id);
-        this.createForm.controls['tipoAtivo'].setValue(data.tipoAtivo);
         this.createForm.controls['nome'].setValue(data.nome);
-        this.createForm.controls['codigo'].setValue(data.codigo);
+        this.createForm.controls['email'].setValue(data.email);
+        this.createForm.controls['senha'].setValue(data.senha);
       })
       .add(() => {
         this.spinnerService.hide();
@@ -59,15 +59,15 @@ export class AtivoEditComponent implements OnInit {
     this.spinnerService.show();
 
     //capturar os campos do formulário
-    const request = new AtivoModel(
+    const request = new UsuarioModel(
       this.createForm.value.id as number,
-      this.createForm.value.tipoAtivo as number,
       this.createForm.value.nome as string,
-      this.createForm.value.codigo as string,
+      this.createForm.value.email as string,
+      this.createForm.value.senha as string,
     );
 
     //realizando a atualização
-    putAtivo(request)
+    putUsuario(request)
       .subscribe({
         next: (data) => {
           this.mensagem = `${data}`;
@@ -79,7 +79,7 @@ export class AtivoEditComponent implements OnInit {
         },
         complete: () => {
           //Write your logic after API completion
-          this._router.navigate(['ativos/consulta-de-ativos']);
+          this._router.navigate(['usuarios/consulta-de-usuarios']);
         }
       })
       .add(() => {

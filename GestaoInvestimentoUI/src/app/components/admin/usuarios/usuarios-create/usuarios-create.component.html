@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Usuários:</mat-card-title>
+        <mat-card-subtitle>Novo</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <br />
+
+        <!-- exibição das mensagens -->
+        <app-messages [texto]="mensagem" />
+        <br />
+
+        <div>
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+                <div class="grid-container">
+                    <mat-form-field class="grid-item">
+                        <input matInput placeholder="Nome:" formControlName="nome" />
+                        <mat-error *ngIf="form.name && form.name.invalid">
+                            <span *ngIf="form.name.errors.required">
+                                Por favor, informe o nome do Usuário.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="grid-item">
+                        <input matInput placeholder="E-mail:" formControlName="email" />
+                        <mat-error *ngIf="form.email && form.email.invalid">
+                            <span *ngIf="form.email.errors.required">
+                                Por favor, informe um E-mail
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="grid-item">
+                        <input matInput placeholder="Senha:" formControlName="senha" />
+                        <mat-error *ngIf="form.senha && form.senha.invalid">
+                            <span *ngIf="form.senha.errors.required">
+                                Por favor, informe uma Senha.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <button mat-raised-button class="grid-item" color="primary" type="submit"
+                        [disabled]="!createForm.valid">
+                        Cadastrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

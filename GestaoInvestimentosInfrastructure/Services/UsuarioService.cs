@@ -2,6 +2,7 @@
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
+using GestaoInvestimentosInfrastructure.Repositories;
 
 namespace GestaoInvestimentosInfrastructure.Services
 {
@@ -26,11 +27,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public void DeleteUsuarioAsync(Usuario usuario)
+        public void DeleteUsuarioAsync(int id)
         {
             try
             {
-                _usuarioRepository.Delete(usuario);
+                _usuarioRepository.Delete(_usuarioRepository.GetById(id));
             }
             catch (Exception ex)
             {
@@ -38,11 +39,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public IEnumerable<Usuario> GetAllUsuariosAsync()
+        public IEnumerable<Usuario> GetAllUsuariosAsync(int? id, string? nome, string? email, string? senha)
         {
             try
             {
-                return _usuarioRepository.GetAllAsync();
+                return _usuarioRepository.GetAllAsync(id, nome, email, senha);
             }
             catch (Exception ex)
             {

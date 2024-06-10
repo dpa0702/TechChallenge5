@@ -5,7 +5,6 @@ import { AtivoModel } from '../models/ativos.model';
 
 //função para acessar o serviço de consulta de livros
 export function getAtivo(request: AtivoModel): Observable<AtivoModel[]> {
-
     let Url = new URL(`${environment.apiGestaoInvestimentos}/Ativo`);
     if(request.id != null)
         Url.searchParams.set('id', request.id.toString());
@@ -15,8 +14,7 @@ export function getAtivo(request: AtivoModel): Observable<AtivoModel[]> {
         Url.searchParams.set('nome', request.nome);
     if(request.codigo != '')
         Url.searchParams.set('codigo', request.codigo);
-
-
+    // alert(Url);
     const config = {
         method: 'get',
         url: Url,//`${environment.apiGestaoInvestimentos}/Ativo?id=${request.id}&tipoAtivo=${request.tipoAtivo}&nome=${request.nome}&codigo=${request.codigo}`,

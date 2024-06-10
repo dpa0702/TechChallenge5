@@ -6,9 +6,9 @@ namespace GestaoInvestimentosCore.Interfaces.Services
     public interface IUsuarioService
     {
         Usuario GetUsuarioByIdAsync(int id);
-        IEnumerable<Usuario> GetAllUsuariosAsync();
+        IEnumerable<Usuario> GetAllUsuariosAsync(int? id, string? nome, string? email, string? senha);
         void AddUsuarioAsync(CreateUsuarioDTO createUsuarioDTO);
         void UpdateUsuarioAsync(UpdateUsuarioDTO updateUsuarioDTO);
-        void DeleteUsuarioAsync(Usuario usuario);
+        void DeleteUsuarioAsync(int id);
     }
 }

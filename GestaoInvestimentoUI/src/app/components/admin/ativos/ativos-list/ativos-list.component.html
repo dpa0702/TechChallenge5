@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Gerenciar Ativos</mat-card-title>
-    <mat-card-subtitle>Pesquisa de Ativos:<em>Preencha um ou mais campos.</em></mat-card-subtitle>
+    <mat-card-subtitle>Pesquisa de Ativos: <em>Preencha quantos campos preferir.</em></mat-card-subtitle>
     <div class="grid-container">
       &nbsp;
     </div>
@@ -24,7 +24,7 @@
         </mat-form-field>
 
         <mat-form-field class="grid-item">
-          <mat-label>Tipo Ativo:</mat-label>
+          <mat-label>Tipo Ativo</mat-label>
           <mat-select formControlName="tipoAtivo">
             <mat-option value="">Escolha uma opção</mat-option>
             <mat-option [value]="1">Ação</mat-option>
@@ -81,7 +81,7 @@
         </ng-container>
 
         <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef><strong>Funcionalidades</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
             <button mat-raised-button color="primary" (click)="redirectToEdit(item.id)">Editar</button>
             &nbsp;&nbsp;&nbsp;

@@ -6,7 +6,9 @@ import { PortfoliosListComponent } from './components/admin/portfolios/portfolio
 import { TransacoesListComponent } from './components/admin/transacoes/transacoes-list/transacoes-list.component';
 import { UsuariosListComponent } from './components/admin/usuarios/usuarios-list/usuarios-list.component';
 import { AtivoCreateComponent } from './components/admin/ativos/ativos-create/ativos-create.component';
+import { UsuariosCreateComponent } from './components/admin/usuarios/usuarios-create/usuarios-create.component';
 import { AtivoEditComponent } from './components/admin/ativos/ativos-edit/ativos-edit.component';
+import { UsuarioEditComponent } from './components/admin/usuarios/usuarios-edit/usuarios-edit.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,14 @@ const routes: Routes = [
   {
     path: 'ativos/ativos-edit/:id',
     component: AtivoEditComponent,
+  },
+  {
+    path: 'usuarios/usuarios-create',
+    component: UsuariosCreateComponent,
+  },
+  {
+    path: 'usuarios/usuarios-edit/:id',
+    component: UsuarioEditComponent,
   },
 ];
 
