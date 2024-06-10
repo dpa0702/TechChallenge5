@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Ativos:</mat-card-title>
-        <mat-card-subtitle>Novo</mat-card-subtitle>
+        <mat-card-title>Portfólios:</mat-card-title>
+        <mat-card-subtitle>Editar</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <br />
@@ -13,41 +13,37 @@
         <div>
             <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
                 <div class="grid-container">
+
                     <mat-form-field class="grid-item">
-                        <mat-label>Tipo Ativo:</mat-label>
-                        <mat-select formControlName="tipoAtivo">
-                            <mat-option value="">Escolha uma opção</mat-option>
-                            <mat-option [value]="1">Ação</mat-option>
-                            <mat-option [value]="2">Título</mat-option>
-                            <mat-option [value]="3">Criptomoeda</mat-option>
+                        <mat-select placeholder="Usuário:" formControlName="usuarioId" >
+                            <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
+                                {{ usuario.nome }}
+                            </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="form.tipoAtivo && form.tipoAtivo.invalid">
-                            <span *ngIf="form.tipoAtivo.errors.required">
-                                Por favor, selecione o Tipo de Ativo.
-                            </span>
-                        </mat-error>
                     </mat-form-field>
+
                     <mat-form-field class="grid-item">
                         <input matInput placeholder="Nome:" formControlName="nome" />
                         <mat-error *ngIf="form.name && form.name.invalid">
                             <span *ngIf="form.name.errors.required">
-                                Por favor, informe o nome do Ativo.
+                                Por favor, informe o nome do ativo.
                             </span>
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field class="grid-item">
-                        <input matInput placeholder="Código:" formControlName="codigo" />
-                        <mat-error *ngIf="form.codigo && form.codigo.invalid">
-                            <span *ngIf="form.codigo.errors.required">
-                                Por favor, informe o codigo do Ativo.
+                        <input matInput placeholder="Descrição" formControlName="descricao" />
+                        <mat-error *ngIf="form.descricao && form.descricao.invalid">
+                            <span *ngIf="form.descricao.errors.required">
+                                Por favor, informe o Descrição do ativo.
                             </span>
                         </mat-error>
                     </mat-form-field>
 
+                    <input matInput placeholder="ID:" formControlName="id" readonly="true" hidden="true" />
 
                     <button mat-raised-button class="grid-item" color="primary" type="submit"
                         [disabled]="!createForm.valid">
-                        Cadastrar
+                        Salvar
                     </button>
                 </div>
             </form>

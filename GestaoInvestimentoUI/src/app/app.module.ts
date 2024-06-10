@@ -18,12 +18,14 @@ import { AtivoCreateComponent } from './components/admin/ativos/ativos-create/at
 import { UsuariosCreateComponent } from './components/admin/usuarios/usuarios-create/usuarios-create.component';
 import { AtivoEditComponent } from './components/admin/ativos/ativos-edit/ativos-edit.component';
 import { UsuarioEditComponent } from './components/admin/usuarios/usuarios-edit/usuarios-edit.component';
+import { PortfolioCreateComponent } from './components/admin/portfolios/portfolios-create/portfolios-create.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http'
 import { ToastrModule } from 'ngx-toastr';
+import { PortfolioEditComponent } from './components/admin/portfolios/portfolios-edit/portfolios-edit.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
     AtivoCreateComponent,
     AtivoEditComponent,
     UsuariosCreateComponent,
-    UsuarioEditComponent
+    UsuarioEditComponent,
+    PortfolioCreateComponent,
+    PortfolioEditComponent
   ],
   imports: [
     BrowserModule,

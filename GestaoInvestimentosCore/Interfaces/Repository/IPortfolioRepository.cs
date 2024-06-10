@@ -4,6 +4,6 @@ namespace GestaoInvestimentosCore.Interfaces.Repository
 {
     public interface IPortfolioRepository : IRepository<Portfolio>
     {
-        IEnumerable<Portfolio> GetAllAsync();
+        IEnumerable<Portfolio> GetAllAsync(int? id, int? usuarioId, string? nome, string? dedescricao);
     }
 }

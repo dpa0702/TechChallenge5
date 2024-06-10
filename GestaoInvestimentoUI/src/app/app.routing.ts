@@ -9,6 +9,8 @@ import { AtivoCreateComponent } from './components/admin/ativos/ativos-create/at
 import { UsuariosCreateComponent } from './components/admin/usuarios/usuarios-create/usuarios-create.component';
 import { AtivoEditComponent } from './components/admin/ativos/ativos-edit/ativos-edit.component';
 import { UsuarioEditComponent } from './components/admin/usuarios/usuarios-edit/usuarios-edit.component';
+import { PortfolioCreateComponent } from './components/admin/portfolios/portfolios-create/portfolios-create.component';
+import { PortfolioEditComponent } from './components/admin/portfolios/portfolios-edit/portfolios-edit.component';
 
 const routes: Routes = [
   {
@@ -50,6 +52,14 @@ const routes: Routes = [
   {
     path: 'usuarios/usuarios-edit/:id',
     component: UsuarioEditComponent,
+  },
+  {
+    path: 'portfolios/portfolios-create',
+    component: PortfolioCreateComponent,
+  },
+  {
+    path: 'portfolios/portfolios-edit/:id',
+    component: PortfolioEditComponent,
   },
 ];
 

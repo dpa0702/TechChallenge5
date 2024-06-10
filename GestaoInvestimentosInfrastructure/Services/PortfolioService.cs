@@ -2,6 +2,7 @@
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
+using GestaoInvestimentosInfrastructure.Repositories;
 
 namespace GestaoInvestimentosInfrastructure.Services
 {
@@ -26,11 +27,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public void DeletePortfolioAsync(Portfolio portfolio)
+        public void DeletePortfolioAsync(int id)
         {
             try
             {
-                _portfolioRepository.Delete(portfolio);
+                _portfolioRepository.Delete(_portfolioRepository.GetById(id));
             }
             catch (Exception ex)
             {
@@ -38,11 +39,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public IEnumerable<Portfolio> GetAllPortfoliosAsync()
+        public IEnumerable<Portfolio> GetAllPortfoliosAsync(int? id, int? usuarioId, string? nome, string? dedescricao)
         {
             try
             {
-                return _portfolioRepository.GetAllAsync();
+                return _portfolioRepository.GetAllAsync(id, usuarioId, nome, dedescricao);
             }
             catch (Exception ex)
             {
