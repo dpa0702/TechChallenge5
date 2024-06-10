@@ -1,0 +1,18 @@
+mat-card {
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 0 20px 20px 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .grid-item {
+    width: 100%;
+  }
+  

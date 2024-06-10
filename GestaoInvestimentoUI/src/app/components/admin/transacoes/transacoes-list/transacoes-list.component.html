@@ -1,7 +1,14 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Consulta de Transações</mat-card-title>
-    <mat-card-subtitle>Pesquisa de Transações por xpto. <em>Preencha um ou mais campos.</em></mat-card-subtitle>
+    <mat-card-title>Gerenciar Transações</mat-card-title>
+    <mat-card-subtitle>Pesquisa de Transações: <em>Preencha quantos campos preferir.</em></mat-card-subtitle><div class="grid-container">
+      &nbsp;
+    </div>
+    <div class="grid-container">
+      <button mat-raised-button class="grid-item button" color="primary" type="submit" (click)="redirectToNew()">
+        Cadastrar Nova Transação
+      </button>
+    </div>
   </mat-card-header>
   <mat-card-content>
 
@@ -24,7 +31,7 @@
         </mat-form-field>
 
         <mat-form-field class="grid-item">
-          <input type="text" matInput placeholder="Tipo Transacao" formControlName="tipoTransacao" />
+          <input type="text" matInput placeholder="Tipo Transação" formControlName="tipoTransacao" />
         </mat-form-field>
 
         <mat-form-field class="grid-item">
@@ -40,7 +47,7 @@
         </mat-form-field>
 
         <button mat-raised-button class="grid-item button" color="primary" type="submit" [disabled]="!listForm.valid">
-          CONSULTAR
+          Consultar
         </button>
       </div>
     </form>
@@ -99,10 +106,11 @@
         </ng-container>
 
         <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-          <mat-cell *matCellDef="let row">
-            <button mat-button>Editar</button>
-            <button mat-button>Excluir</button>
+          <mat-header-cell *matHeaderCellDef><strong>Funcionalidades</strong></mat-header-cell>
+          <mat-cell *matCellDef="let item">
+            <button mat-raised-button color="primary" (click)="redirectToEdit(item.id)">Editar</button>
+            &nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary" (click)="redirectToDelete(item.id)">Excluir</button>
           </mat-cell>
         </ng-container>
 
@@ -113,9 +121,12 @@
       <p>
         Quantidade de registros obtidos: {{dataTable.data.length}}
       </p>
-      <button mat-raised-button class="grid-item button" color="primary" type="submit" [disabled]="!listForm.valid">
-        NOVO
-      </button>
+      <div class="grid-container">
+        <button mat-raised-button class="grid-item button" color="primary" type="submit" [disabled]="!listForm.valid"
+          (click)="redirectToHome()">
+          Voltar
+        </button>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

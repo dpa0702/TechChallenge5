@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/models/usuarios.model';
-import { getUsuario } from 'src/app/services/usuarios-service';
+import { deleteUsuario, getUsuario } from 'src/app/services/usuarios-service';
 
 @Component({
   selector: 'app-usuarios-list',
@@ -26,7 +27,8 @@ export class UsuariosListComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private _router: Router,
   ) {
     this.listForm = this.formBuilder.group({
       id: null,
@@ -39,9 +41,14 @@ export class UsuariosListComponent implements OnInit {
   ngOnInit() {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
+    const request = new UsuarioModel(
+      this.listForm.value.id,
+      this.listForm.value.nome as string,
+      this.listForm.value.email as string,
+      this.listForm.value.senha as string,
+    );
 
-    getUsuario()
+    getUsuario(request)
       .subscribe({
         next: (data) => {
 
@@ -75,9 +82,14 @@ export class UsuariosListComponent implements OnInit {
   onSubmit(): void {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
+    const request = new UsuarioModel(
+      this.listForm.value.id,
+      this.listForm.value.nome as string,
+      this.listForm.value.email as string,
+      this.listForm.value.senha as string,
+    );
 
-    getUsuario()
+    getUsuario(request)
       .subscribe({
         next: (data) => {
 
@@ -102,5 +114,40 @@ export class UsuariosListComponent implements OnInit {
       .add(() => {
         this.spinnerService.hide();
       })
+  }
+  redirectToNew() {
+    this._router.navigate(['usuarios/usuarios-create'])
+  }
+
+  redirectToEdit(id: number) {
+    this._router.navigate(['usuarios/usuarios-edit/' + id])
+  }
+
+  redirectToDelete(id: number){
+    const request = new UsuarioModel(
+      0,
+      '',
+      '',
+      '',
+    );
+
+    deleteUsuario(id)
+    .subscribe({
+      next: () => {
+        // this.mensagem = `${id}`;
+        window.location.reload()
+      },
+      error: (e) => {
+        this.mensagem = `Erro: ${e.response.data}`;
+        console.log(e.response.data);
+      },
+    })
+    .add(() => {
+      this.spinnerService.hide();
+    });
+  }
+
+  redirectToHome() {
+    this._router.navigate(['home/'])
   }
 }

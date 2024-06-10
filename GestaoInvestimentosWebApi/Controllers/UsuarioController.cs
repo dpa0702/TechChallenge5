@@ -34,11 +34,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(int? id, string? nome, string? email, string? senha)
         {
             try
             {
-                return Ok(_usuarioService.GetAllUsuariosAsync());
+                return Ok(_usuarioService.GetAllUsuariosAsync(id, nome, email, senha));
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update(UpdateUsuarioDTO updateUsuarioDTO)
         {
             try
@@ -76,11 +76,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Usuario usuario)
+        public IActionResult Delete(int id)
         {
             try
             {
-                _usuarioService.DeleteUsuarioAsync(usuario);
+                _usuarioService.DeleteUsuarioAsync(id);
                 return Ok("Usuario alterado com sucesso!");
             }
             catch (Exception ex)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 import { PortfoliosModel } from 'src/app/models/portfolios.model';
 import { getPortfolio } from 'src/app/services/portfolios-service';
 
@@ -26,7 +27,8 @@ export class PortfoliosListComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private spinnerService: NgxSpinnerService
+    private spinnerService: NgxSpinnerService,
+    private _router: Router,
   ) {
     this.listForm = this.formBuilder.group({
       id: null,
@@ -102,5 +104,41 @@ export class PortfoliosListComponent implements OnInit {
       .add(() => {
         this.spinnerService.hide();
       })
+  }
+
+  redirectToNew() {
+    this._router.navigate(['portfolios/portfolios-create'])
+  }
+
+  redirectToEdit(id: number) {
+    this._router.navigate(['portfolios/portfolios-edit/' + id])
+  }
+
+  redirectToDelete(id: number){
+    const request = new PortfoliosModel(
+      0,
+      0,
+      '',
+      '',
+    );
+
+    // deleteAtivo(id)
+    // .subscribe({
+    //   next: () => {
+    //     // this.mensagem = `${id}`;
+    //     window.location.reload()
+    //   },
+    //   error: (e) => {
+    //     this.mensagem = `Erro: ${e.response.data}`;
+    //     console.log(e.response.data);
+    //   },
+    // })
+    // .add(() => {
+    //   this.spinnerService.hide();
+    // });
+  }
+
+  redirectToHome() {
+    this._router.navigate(['home/'])
   }
 }
