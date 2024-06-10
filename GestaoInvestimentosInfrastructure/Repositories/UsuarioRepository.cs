@@ -12,7 +12,7 @@ namespace GestaoInvestimentosInfrastructure.Repositories
         public void Delete(Usuario usuario)
         {
             _context.Usuarios.Remove(usuario);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public IEnumerable<Usuario> GetAllAsync()
@@ -28,13 +28,13 @@ namespace GestaoInvestimentosInfrastructure.Repositories
         public void Insert(Usuario usuario)
         {
             _context.Usuarios.Add(usuario);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Update(Usuario usuario)
         {
             _context.Usuarios.Update(usuario);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

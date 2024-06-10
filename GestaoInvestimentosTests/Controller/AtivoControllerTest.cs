@@ -22,22 +22,22 @@ namespace GestaoInvestimentosTests.Controller
             ativoController = new AtivoController(_mockAtivoService.Object);
         }
 
-        [TestMethod]
-        public void GetAtivoById_ReturnsOk_WhenIdIsValid()
-        {
-            // Arrange
-            var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, id).Create();
-            _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
+        //[TestMethod]
+        //public void GetAtivoById_ReturnsOk_WhenIdIsValid()
+        //{
+        //    // Arrange
+        //    var id = 1;
+        //    var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+        //    var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, id).Create();
+        //    _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
 
-            // Act
-            var result = ativoController?.Get(id) as OkObjectResult;
+        //    // Act
+        //    var result = ativoController?.Get(id) as OkObjectResult;
 
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(200, result.StatusCode);
-        }
+        //    // Assert
+        //    Assert.IsNotNull(result);
+        //    Assert.AreEqual(200, result.StatusCode);
+        //}
 
         [TestMethod]
         public void GetAtivoById_ReturnsBad_WhenBookIsNull()

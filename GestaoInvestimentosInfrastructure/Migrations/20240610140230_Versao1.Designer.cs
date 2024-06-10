@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoInvestimentosInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240608144953_Versao1")]
+    [Migration("20240610140230_Versao1")]
     partial class Versao1
     {
         /// <inheritdoc />
@@ -51,23 +51,30 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Codigo = "ATV01",
-                            Nome = "Nome Ativo 1",
+                            Codigo = "NAA001",
+                            Nome = "Nome Ativo Acao 001",
                             TipoAtivo = 1
                         },
                         new
                         {
                             Id = 2,
-                            Codigo = "ATV02",
-                            Nome = "Nome Ativo 2",
+                            Codigo = "NAT001",
+                            Nome = "Nome Ativo Titulo 001",
                             TipoAtivo = 2
                         },
                         new
                         {
                             Id = 3,
-                            Codigo = "ATV03",
-                            Nome = "Nome Ativo 3",
+                            Codigo = "NAC001",
+                            Nome = "Nome Ativo Criptomoeda 001",
                             TipoAtivo = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Codigo = "NAT002",
+                            Nome = "Nome Ativo Titulo 002",
+                            TipoAtivo = 2
                         });
                 });
 
@@ -100,16 +107,30 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Descricao = "Descricao Portfolio 1",
-                            Nome = "Nome Portfolio 1",
+                            Descricao = "Descricao Portfolio Demetrios",
+                            Nome = "Portfolio Demetrios",
                             UsuarioId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Descricao = "Descricao Portfolio 2",
-                            Nome = "Nome Portfolio 2",
+                            Descricao = "Descricao Portfolio Erick",
+                            Nome = "Portfolio Erick",
                             UsuarioId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descricao = "Descricao Portfolio MARINA",
+                            Nome = "Portfolio MARINA",
+                            UsuarioId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Descricao = "Descricao Portfolio Pamela",
+                            Nome = "Portfolio Pamela",
+                            UsuarioId = 4
                         });
                 });
 
@@ -155,7 +176,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 1,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-08 11:49:52.6986499",
+                            DataTransacao = "2024-06-10 11:02:30.0872848",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -165,30 +186,150 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 2,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-08 11:49:52.6986515",
+                            DataTransacao = "2024-06-10 11:02:30.0872867",
                             PortfolioId = 1,
-                            Preco = "300",
-                            Quantidade = "20",
+                            Preco = "150",
+                            Quantidade = "10",
                             TipoTransacao = 2
                         },
                         new
                         {
                             Id = 3,
-                            AtivoId = 1,
-                            DataTransacao = "2024-06-08 11:49:52.6986517",
-                            PortfolioId = 2,
-                            Preco = "600",
-                            Quantidade = "50",
+                            AtivoId = 3,
+                            DataTransacao = "2024-06-10 11:02:30.0872871",
+                            PortfolioId = 1,
+                            Preco = "150",
+                            Quantidade = "10",
                             TipoTransacao = 1
                         },
                         new
                         {
                             Id = 4,
-                            AtivoId = 2,
-                            DataTransacao = "2024-06-08 11:49:52.6986519",
+                            AtivoId = 4,
+                            DataTransacao = "2024-06-10 11:02:30.0872874",
+                            PortfolioId = 1,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AtivoId = 1,
+                            DataTransacao = "2024-06-10 11:02:30.0872877",
                             PortfolioId = 2,
-                            Preco = "900",
-                            Quantidade = "90",
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AtivoId = 2,
+                            DataTransacao = "2024-06-10 11:02:30.087288",
+                            PortfolioId = 2,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AtivoId = 3,
+                            DataTransacao = "2024-06-10 11:02:30.0872882",
+                            PortfolioId = 2,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AtivoId = 4,
+                            DataTransacao = "2024-06-10 11:02:30.0872885",
+                            PortfolioId = 2,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AtivoId = 1,
+                            DataTransacao = "2024-06-10 11:02:30.087289",
+                            PortfolioId = 3,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AtivoId = 2,
+                            DataTransacao = "2024-06-10 11:02:30.0872893",
+                            PortfolioId = 3,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 2
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AtivoId = 3,
+                            DataTransacao = "2024-06-10 11:02:30.0872896",
+                            PortfolioId = 3,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AtivoId = 4,
+                            DataTransacao = "2024-06-10 11:02:30.0872898",
+                            PortfolioId = 3,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 2
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AtivoId = 1,
+                            DataTransacao = "2024-06-10 11:02:30.08729",
+                            PortfolioId = 4,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AtivoId = 2,
+                            DataTransacao = "2024-06-10 11:02:30.0872902",
+                            PortfolioId = 4,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AtivoId = 3,
+                            DataTransacao = "2024-06-10 11:02:30.0872904",
+                            PortfolioId = 4,
+                            Preco = "150",
+                            Quantidade = "10",
+                            TipoTransacao = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AtivoId = 4,
+                            DataTransacao = "2024-06-10 11:02:30.0872907",
+                            PortfolioId = 4,
+                            Preco = "150",
+                            Quantidade = "10",
                             TipoTransacao = 2
                         });
                 });
@@ -229,40 +370,48 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            Email = "usuario@teste.io",
-                            Nome = "usuario teste",
+                            Email = "rm351017@fiap.com.br",
+                            Nome = "Erick Felipe Vieira da Silva",
+                            Senha = "1q2w3e4r@#"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "rm352116@fiap.com.br",
+                            Nome = "MARINA SANT'ANA MIRANDA DE OLIVEIRA",
+                            Senha = "1q2w3e4r@#"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "rm352127@fiap.com.br",
+                            Nome = "Pamela Suellen Souza Caffa",
                             Senha = "1q2w3e4r@#"
                         });
                 });
 
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Portfolio", b =>
                 {
-                    b.HasOne("GestaoInvestimentosCore.Entities.Usuario", "Usuario")
+                    b.HasOne("GestaoInvestimentosCore.Entities.Usuario", null)
                         .WithMany("Portfolios")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Transacao", b =>
                 {
-                    b.HasOne("GestaoInvestimentosCore.Entities.Ativo", "Ativo")
+                    b.HasOne("GestaoInvestimentosCore.Entities.Ativo", null)
                         .WithMany("Transacoes")
                         .HasForeignKey("AtivoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GestaoInvestimentosCore.Entities.Portfolio", "Portfolio")
+                    b.HasOne("GestaoInvestimentosCore.Entities.Portfolio", null)
                         .WithMany("Transacoes")
                         .HasForeignKey("PortfolioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Ativo");
-
-                    b.Navigation("Portfolio");
                 });
 
             modelBuilder.Entity("GestaoInvestimentosCore.Entities.Ativo", b =>

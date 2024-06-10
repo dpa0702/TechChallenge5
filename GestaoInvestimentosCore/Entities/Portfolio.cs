@@ -2,25 +2,21 @@
 
 namespace GestaoInvestimentosCore.Entities
 {
-    public class Portfolio
+    public class Portfolio : EntityBase
     {
-        public int Id { get; set; }
         public int UsuarioId { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
         public virtual ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();
 
         public Portfolio()
         {
-            Usuario = new Usuario();
             Transacoes = new HashSet<Transacao>();
         }
 
-        public Portfolio(int id, int usuarioId, string nome, string descricao)
+        public Portfolio(int usuarioId, string nome, string descricao)
         {
-            Id = id;
             UsuarioId = usuarioId;
             Nome = nome;
             Descricao = descricao;
@@ -29,7 +25,6 @@ namespace GestaoInvestimentosCore.Entities
         }
         public Portfolio(CreatePortfolioDTO createPortfolioDTO)
         {
-            Id = createPortfolioDTO.Id;
             UsuarioId = createPortfolioDTO.UsuarioId;
             Nome = createPortfolioDTO.Nome;
             Descricao = createPortfolioDTO.Descricao;

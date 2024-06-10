@@ -9,7 +9,10 @@ namespace GestaoInvestimentosInfrastructure.Data
     {
         private readonly IConfiguration _configuration;
 
-        public ApplicationDbContext() { }
+        public ApplicationDbContext() {
+            //var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            //optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;");
+        }
 
         public ApplicationDbContext(IConfiguration configuration)
         {
@@ -23,6 +26,8 @@ namespace GestaoInvestimentosInfrastructure.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;");
+            //optionsBuilder.UseInMemoryDatabase("TestDatabaseInMemory");
             if (_configuration != null)
                 optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
             else
@@ -39,43 +44,44 @@ namespace GestaoInvestimentosInfrastructure.Data
         private void InsertData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Usuario>().HasData(
-                new Usuario(1, "Demetrios Pandelis Arghirachis", "rm352321@fiap.com.br", "1q2w3e4r@#"),
-                new Usuario(2, "Erick Felipe Vieira da Silva", "rm351017@fiap.com.br", "1q2w3e4r@#"),
-                new Usuario(1, "MARINA SANT'ANA MIRANDA DE OLIVEIRA", "rm352116@fiap.com.br", "1q2w3e4r@#"),
-                new Usuario(2, "Pamela Suellen Souza Caffa", "rm352127@fiap.com.br", "1q2w3e4r@#")
+                new Usuario() { Id = 1, Nome = "Demetrios Pandelis Arghirachis", Email = "rm352321@fiap.com.br", Senha = "1q2w3e4r@#" },
+                new Usuario() { Id = 2, Nome = "Erick Felipe Vieira da Silva", Email = "rm351017@fiap.com.br", Senha = "1q2w3e4r@#" },
+                new Usuario() { Id = 3, Nome = "MARINA SANT'ANA MIRANDA DE OLIVEIRA", Email = "rm352116@fiap.com.br", Senha = "1q2w3e4r@#" },
+                new Usuario() { Id = 4, Nome = "Pamela Suellen Souza Caffa", Email = "rm352127@fiap.com.br", Senha = "1q2w3e4r@#" }
+
                 );
 
             modelBuilder.Entity<Ativo>().HasData(
-                new Ativo(1, TipoAtivo.Acao, "Nome Ativo 1", "ATV01"),
-                new Ativo(2, TipoAtivo.Titulo, "Nome Ativo 2", "ATV02"),
-                new Ativo(3, TipoAtivo.Criptomoeda, "Nome Ativo 3", "ATV03"),
-                new Ativo(4, TipoAtivo.Titulo, "Nome Ativo 4", "ATV04")
+                new Ativo() { Id = 1, TipoAtivo = TipoAtivo.Acao, Nome = "Nome Ativo Acao 001", Codigo = "NAA001" },
+                new Ativo() { Id = 2, TipoAtivo = TipoAtivo.Titulo, Nome = "Nome Ativo Titulo 001", Codigo = "NAT001" },
+                new Ativo() { Id = 3, TipoAtivo = TipoAtivo.Criptomoeda, Nome = "Nome Ativo Criptomoeda 001", Codigo = "NAC001" },
+                new Ativo() { Id = 4, TipoAtivo = TipoAtivo.Titulo, Nome = "Nome Ativo Titulo 002", Codigo = "NAT002" }
                 );
 
             modelBuilder.Entity<Portfolio>().HasData(
-                new Portfolio(1, 1, "Portfolio Demetrios", "Descricao Portfolio"),
-                new Portfolio(2, 2, "Portfolio Erick", "Descricao Portfolio"),
-                new Portfolio(1, 1, "Portfolio MARINA", "Descricao Portfolio"),
-                new Portfolio(2, 2, "Portfolio Pamela", "Descricao Portfolio")
+                new Portfolio() { Id = 1, UsuarioId = 1, Nome = "Portfolio Demetrios", Descricao = "Descricao Portfolio Demetrios" },
+                new Portfolio() { Id = 2, UsuarioId = 2, Nome = "Portfolio Erick", Descricao = "Descricao Portfolio Erick" },
+                new Portfolio() { Id = 3, UsuarioId = 3, Nome = "Portfolio MARINA", Descricao = "Descricao Portfolio MARINA" },
+                new Portfolio() { Id = 4, UsuarioId = 4, Nome = "Portfolio Pamela", Descricao = "Descricao Portfolio Pamela" }
                 );
 
             modelBuilder.Entity<Transacao>().HasData(
-                new Transacao(1, 1, 1, TipoTransacao.Compra, 10, 150, DateTime.Now),
-                new Transacao(2, 1, 2, TipoTransacao.Venda, 20, 300, DateTime.Now),
-                new Transacao(3, 1, 3, TipoTransacao.Compra, 50, 600, DateTime.Now),
-                new Transacao(4, 1, 4, TipoTransacao.Venda, 90, 900, DateTime.Now),
-                new Transacao(1, 2, 1, TipoTransacao.Compra, 10, 150, DateTime.Now),
-                new Transacao(2, 2, 2, TipoTransacao.Venda, 20, 300, DateTime.Now),
-                new Transacao(3, 2, 3, TipoTransacao.Compra, 50, 600, DateTime.Now),
-                new Transacao(4, 2, 4, TipoTransacao.Venda, 90, 900, DateTime.Now),
-                new Transacao(1, 3, 1, TipoTransacao.Compra, 10, 150, DateTime.Now),
-                new Transacao(2, 3, 2, TipoTransacao.Venda, 20, 300, DateTime.Now),
-                new Transacao(3, 3, 3, TipoTransacao.Compra, 50, 600, DateTime.Now),
-                new Transacao(4, 3, 4, TipoTransacao.Venda, 90, 900, DateTime.Now),
-                new Transacao(1, 4, 1, TipoTransacao.Compra, 10, 150, DateTime.Now),
-                new Transacao(2, 4, 2, TipoTransacao.Venda, 20, 300, DateTime.Now),
-                new Transacao(3, 4, 3, TipoTransacao.Compra, 50, 600, DateTime.Now),
-                new Transacao(4, 4, 4, TipoTransacao.Venda, 90, 900, DateTime.Now)
+                new Transacao() { Id = 1, AtivoId = 1, PortfolioId = 1, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 2, AtivoId = 2, PortfolioId = 1, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 3, AtivoId = 3, PortfolioId = 1, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 4, AtivoId = 4, PortfolioId = 1, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 5, AtivoId = 1, PortfolioId = 2, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 6, AtivoId = 2, PortfolioId = 2, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 7, AtivoId = 3, PortfolioId = 2, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 8, AtivoId = 4, PortfolioId = 2, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 9, AtivoId = 1, PortfolioId = 3, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 10, AtivoId = 2, PortfolioId = 3, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 11, AtivoId = 3, PortfolioId = 3, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 12, AtivoId = 4, PortfolioId = 3, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 13, AtivoId = 1, PortfolioId = 4, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 14, AtivoId = 2, PortfolioId = 4, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 15, AtivoId = 3, PortfolioId = 4, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+                new Transacao() { Id = 16, AtivoId = 4, PortfolioId = 4, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now }
                 );
         }
     }

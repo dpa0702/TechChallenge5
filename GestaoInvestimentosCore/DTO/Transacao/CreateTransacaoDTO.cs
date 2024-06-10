@@ -4,7 +4,6 @@ namespace GestaoInvestimentosCore.DTO.Transacao
 {
     public class CreateTransacaoDTO
     {
-        public int Id { get; set; }
         public int PortfolioId { get; set; }
         public int AtivoId { get; set; }
         public TipoTransacao TipoTransacao { get; set; }

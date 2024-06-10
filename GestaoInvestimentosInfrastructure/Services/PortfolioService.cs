@@ -34,7 +34,7 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro na camada de serviço ao inserir Portfolio. Mensagem de Erro: {ex.Message}", ex);
+                throw new Exception($"Erro na camada de serviço ao excluir Portfolio. Mensagem de Erro: {ex.Message}", ex);
             }
         }
 

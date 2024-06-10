@@ -3,9 +3,8 @@ using GestaoInvestimentosCore.Enums;
 
 namespace GestaoInvestimentosCore.Entities
 {
-    public class Ativo
+    public class Ativo : EntityBase
     {
-        public int Id { get; set; }
         public TipoAtivo TipoAtivo { get; set; }
         public string Nome { get; set; }
         public string Codigo { get; set; }
@@ -17,9 +16,8 @@ namespace GestaoInvestimentosCore.Entities
             Transacoes = new HashSet<Transacao>();
         }
 
-        public Ativo(int id, TipoAtivo tipoAtivo, string nome, string codigo)
+        public Ativo(TipoAtivo tipoAtivo, string nome, string codigo)
         {
-            Id = id;
             TipoAtivo = tipoAtivo;
             Nome = nome;
             Codigo = codigo;
@@ -29,7 +27,6 @@ namespace GestaoInvestimentosCore.Entities
 
         public Ativo(CreateAtivoDTO createAtivoDTO)
         {
-            Id = createAtivoDTO.Id;
             TipoAtivo = createAtivoDTO.TipoAtivo;
             Nome = createAtivoDTO.Nome;
             Codigo = createAtivoDTO.Codigo;
