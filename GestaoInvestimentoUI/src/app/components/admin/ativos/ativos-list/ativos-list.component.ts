@@ -132,7 +132,8 @@ export class AtivosListComponent implements OnInit {
     deleteAtivo(id)
     .subscribe({
       next: () => {
-        this.mensagem = `${id}`;
+        // this.mensagem = `${id}`;
+        window.location.reload()
       },
       error: (e) => {
         this.mensagem = `Erro: ${e.response.data}`;
@@ -142,5 +143,9 @@ export class AtivosListComponent implements OnInit {
     .add(() => {
       this.spinnerService.hide();
     });
+  }
+
+  redirectToHome() {
+    this._router.navigate(['home/'])
   }
 }

@@ -6,6 +6,7 @@ import { getAtivoById } from 'src/app/services/ativos-service';
 import { putAtivo } from 'src/app/services/ativos-service';
 import { AtivoModel } from 'src/app/models/ativos.model';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ativos-edit',
@@ -22,6 +23,7 @@ export class AtivoEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private spinnerService: NgxSpinnerService,
     private route: ActivatedRoute,
+    private _router: Router,
   ) {
     this.createForm = this.formBuilder.group({
       id: 0,
@@ -75,6 +77,10 @@ export class AtivoEditComponent implements OnInit {
           this.mensagem = `Erro: ${e.response.data}`;
           console.log(e.response.data);
         },
+        complete: () => {
+          //Write your logic after API completion
+          this._router.navigate(['ativos/consulta-de-ativos']);
+        }
       })
       .add(() => {
         this.spinnerService.hide();
