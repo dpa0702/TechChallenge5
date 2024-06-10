@@ -98,9 +98,10 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "Codigo", "Nome", "TipoAtivo" },
                 values: new object[,]
                 {
-                    { 1, "ATV01", "Nome Ativo 1", 1 },
-                    { 2, "ATV02", "Nome Ativo 2", 2 },
-                    { 3, "ATV03", "Nome Ativo 3", 3 }
+                    { 1, "NAA001", "Nome Ativo Acao 001", 1 },
+                    { 2, "NAT001", "Nome Ativo Titulo 001", 2 },
+                    { 3, "NAC001", "Nome Ativo Criptomoeda 001", 3 },
+                    { 4, "NAT002", "Nome Ativo Titulo 002", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -109,7 +110,9 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 values: new object[,]
                 {
                     { 1, "rm352321@fiap.com.br", "Demetrios Pandelis Arghirachis", "1q2w3e4r@#" },
-                    { 2, "usuario@teste.io", "usuario teste", "1q2w3e4r@#" }
+                    { 2, "rm351017@fiap.com.br", "Erick Felipe Vieira da Silva", "1q2w3e4r@#" },
+                    { 3, "rm352116@fiap.com.br", "MARINA SANT'ANA MIRANDA DE OLIVEIRA", "1q2w3e4r@#" },
+                    { 4, "rm352127@fiap.com.br", "Pamela Suellen Souza Caffa", "1q2w3e4r@#" }
                 });
 
             migrationBuilder.InsertData(
@@ -117,8 +120,10 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "Descricao", "Nome", "UsuarioId" },
                 values: new object[,]
                 {
-                    { 1, "Descricao Portfolio 1", "Nome Portfolio 1", 1 },
-                    { 2, "Descricao Portfolio 2", "Nome Portfolio 2", 2 }
+                    { 1, "Descricao Portfolio Demetrios", "Portfolio Demetrios", 1 },
+                    { 2, "Descricao Portfolio Erick", "Portfolio Erick", 2 },
+                    { 3, "Descricao Portfolio MARINA", "Portfolio MARINA", 3 },
+                    { 4, "Descricao Portfolio Pamela", "Portfolio Pamela", 4 }
                 });
 
             migrationBuilder.InsertData(
@@ -126,10 +131,22 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "AtivoId", "DataTransacao", "PortfolioId", "Preco", "Quantidade", "TipoTransacao" },
                 values: new object[,]
                 {
-                    { 1, 1, "2024-06-08 11:49:52.6986499", 1, "150", "10", 1 },
-                    { 2, 2, "2024-06-08 11:49:52.6986515", 1, "300", "20", 2 },
-                    { 3, 1, "2024-06-08 11:49:52.6986517", 2, "600", "50", 1 },
-                    { 4, 2, "2024-06-08 11:49:52.6986519", 2, "900", "90", 2 }
+                    { 1, 1, "2024-06-10 11:02:30.0872848", 1, "150", "10", 1 },
+                    { 2, 2, "2024-06-10 11:02:30.0872867", 1, "150", "10", 2 },
+                    { 3, 3, "2024-06-10 11:02:30.0872871", 1, "150", "10", 1 },
+                    { 4, 4, "2024-06-10 11:02:30.0872874", 1, "150", "10", 2 },
+                    { 5, 1, "2024-06-10 11:02:30.0872877", 2, "150", "10", 1 },
+                    { 6, 2, "2024-06-10 11:02:30.087288", 2, "150", "10", 2 },
+                    { 7, 3, "2024-06-10 11:02:30.0872882", 2, "150", "10", 1 },
+                    { 8, 4, "2024-06-10 11:02:30.0872885", 2, "150", "10", 2 },
+                    { 9, 1, "2024-06-10 11:02:30.087289", 3, "150", "10", 1 },
+                    { 10, 2, "2024-06-10 11:02:30.0872893", 3, "150", "10", 2 },
+                    { 11, 3, "2024-06-10 11:02:30.0872896", 3, "150", "10", 1 },
+                    { 12, 4, "2024-06-10 11:02:30.0872898", 3, "150", "10", 2 },
+                    { 13, 1, "2024-06-10 11:02:30.08729", 4, "150", "10", 1 },
+                    { 14, 2, "2024-06-10 11:02:30.0872902", 4, "150", "10", 2 },
+                    { 15, 3, "2024-06-10 11:02:30.0872904", 4, "150", "10", 1 },
+                    { 16, 4, "2024-06-10 11:02:30.0872907", 4, "150", "10", 2 }
                 });
 
             migrationBuilder.CreateIndex(

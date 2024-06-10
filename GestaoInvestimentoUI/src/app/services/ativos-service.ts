@@ -4,10 +4,22 @@ import { createRequest } from './commons.service';
 import { AtivoModel } from '../models/ativos.model';
 
 //função para acessar o serviço de consulta de livros
-export function getAtivo(): Observable<AtivoModel[]> {
+export function getAtivo(request: AtivoModel): Observable<AtivoModel[]> {
+
+    let Url = new URL(`${environment.apiGestaoInvestimentos}/Ativo`);
+    if(request.id != null)
+        Url.searchParams.set('id', request.id.toString());
+    if(request.tipoAtivo != null)
+        Url.searchParams.set('tipoAtivo', request.tipoAtivo.toString());
+    if(request.nome != '')
+        Url.searchParams.set('nome', request.nome);
+    if(request.codigo != '')
+        Url.searchParams.set('codigo', request.codigo);
+
+
     const config = {
         method: 'get',
-        url: `${environment.apiGestaoInvestimentos}/Ativo`
+        url: Url,//`${environment.apiGestaoInvestimentos}/Ativo?id=${request.id}&tipoAtivo=${request.tipoAtivo}&nome=${request.nome}&codigo=${request.codigo}`,
     };
 
     return createRequest<AtivoModel[]>(config);

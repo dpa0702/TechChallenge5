@@ -34,7 +34,7 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro na camada de serviço ao inserir Usuario. Mensagem de Erro: {ex.Message}", ex);
+                throw new Exception($"Erro na camada de serviço ao excluir Usuario. Mensagem de Erro: {ex.Message}", ex);
             }
         }
 

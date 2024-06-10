@@ -2,23 +2,21 @@
 
 namespace GestaoInvestimentosCore.Entities
 {
-    public class Usuario
+    public class Usuario : EntityBase
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
 
-        public virtual ICollection<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
+        public virtual ICollection<Portfolio> Portfolios { get; } = new List<Portfolio>();
 
         public Usuario()
         {
             Portfolios = new HashSet<Portfolio>();
         }
 
-        public Usuario(int id, string nome, string email, string senha)
+        public Usuario(string nome, string email, string senha)
         {
-            Id = id;
             Nome = nome;
             Email = email;
             Senha = senha;
@@ -28,7 +26,6 @@ namespace GestaoInvestimentosCore.Entities
 
         public Usuario(CreateUsuarioDTO createUsuarioDTO)
         {
-            Id = createUsuarioDTO.Id;
             Nome = createUsuarioDTO.Nome;
             Email = createUsuarioDTO.Email;
             Senha = createUsuarioDTO.Senha;

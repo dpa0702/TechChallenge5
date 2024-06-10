@@ -3,9 +3,8 @@ using GestaoInvestimentosCore.Enums;
 
 namespace GestaoInvestimentosCore.Entities
 {
-    public class Transacao
+    public class Transacao : EntityBase
     {
-        public int Id { get; set; }
         public int PortfolioId { get; set; }
         public int AtivoId { get; set; }
         public TipoTransacao TipoTransacao { get; set; }
@@ -13,18 +12,14 @@ namespace GestaoInvestimentosCore.Entities
         public decimal Preco { get; set; }
         public DateTime DataTransacao { get; set; }
 
-        public virtual Portfolio Portfolio { get; set; }
-        public virtual Ativo Ativo { get; set; }
 
         public Transacao()
         {
-            Portfolio = new Portfolio();
-            Ativo = new Ativo();
+
         }
 
-        public Transacao(int id, int portfolioId, int ativoId, TipoTransacao tipoTransacao, int quantidade, decimal preco, DateTime dataTransacao)
+        public Transacao(int portfolioId, int ativoId, TipoTransacao tipoTransacao, int quantidade, decimal preco, DateTime dataTransacao)
         {
-            Id = id;
             PortfolioId = portfolioId;
             AtivoId = ativoId;
             TipoTransacao = tipoTransacao;
@@ -37,7 +32,6 @@ namespace GestaoInvestimentosCore.Entities
 
         public Transacao(CreateTransacaoDTO createTransacaoDTO)
         {
-            Id = createTransacaoDTO.Id;
             PortfolioId = createTransacaoDTO.PortfolioId;
             AtivoId = createTransacaoDTO.AtivoId;
             TipoTransacao = createTransacaoDTO.TipoTransacao;

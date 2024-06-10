@@ -24,7 +24,13 @@
         </mat-form-field>
 
         <mat-form-field class="grid-item">
-          <input type="text" matInput placeholder="Tipo de Ativo" formControlName="tipoAtivo" />
+          <mat-label>Tipo Ativo:</mat-label>
+          <mat-select formControlName="tipoAtivo">
+            <mat-option value="">Escolha uma opção</mat-option>
+            <mat-option [value]="1">Ação</mat-option>
+            <mat-option [value]="2">Título</mat-option>
+            <mat-option [value]="3">Criptomoeda</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field class="grid-item">

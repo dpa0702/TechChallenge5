@@ -12,7 +12,7 @@ namespace GestaoInvestimentosInfrastructure.Repositories
         public void Delete(Transacao transacao)
         {
             _context.Transacoes.Remove(transacao);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public IEnumerable<Transacao> GetAllAsync()
@@ -28,13 +28,13 @@ namespace GestaoInvestimentosInfrastructure.Repositories
         public void Insert(Transacao transacao)
         {
             _context.Transacoes.Add(transacao);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Update(Transacao transacao)
         {
             _context.Transacoes.Update(transacao);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

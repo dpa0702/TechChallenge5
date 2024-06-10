@@ -22,19 +22,19 @@ namespace GestaoInvestimentosInfrastructure.Repositories
         public void Insert(Portfolio portfolio)
         {
             _context.Portfolios.Add(portfolio);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Update(Portfolio portfolio)
         {
             _context.Portfolios.Update(portfolio);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void Delete(Portfolio portfolio)
         {
             _context.Portfolios.Remove(portfolio);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

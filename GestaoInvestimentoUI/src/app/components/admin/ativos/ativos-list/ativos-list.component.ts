@@ -41,13 +41,15 @@ export class AtivosListComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.show();
+    
+    const request = new AtivoModel(
+      this.listForm.value.id,
+      this.listForm.value.tipoAtivo as number,
+      this.listForm.value.nome as string,
+      this.listForm.value.codigo as string,
+    );
 
-    const id = this.listForm.value.id as number;
-    const tipoAtivo = this.listForm.value.tipoAtivo as number;
-    const nome = this.listForm.value.nome as string;
-    const codigo = this.listForm.value.codigo as string;
-
-    getAtivo()
+    getAtivo(request)
       .subscribe({
         next: (data) => {
 
@@ -81,12 +83,14 @@ export class AtivosListComponent implements OnInit {
   onSubmit(): void {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
-    const tipoAtivo = this.listForm.value.tipoAtivo as number;
-    const nome = this.listForm.value.nome as string;
-    const codigo = this.listForm.value.codigo as string;
+    const request = new AtivoModel(
+      this.listForm.value.id,
+      this.listForm.value.tipoAtivo as number,
+      this.listForm.value.nome as string,
+      this.listForm.value.codigo as string,
+    );
 
-    getAtivo()
+    getAtivo(request)
       .subscribe({
         next: (data) => {
 

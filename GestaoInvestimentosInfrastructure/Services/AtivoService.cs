@@ -1,5 +1,6 @@
 ﻿using GestaoInvestimentosCore.DTO.Ativo;
 using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
 
@@ -34,15 +35,15 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"Erro na camada de serviço ao inserir Ativo. Mensagem de Erro: {ex.Message}", ex);
+                throw new Exception($"Erro na camada de serviço ao excluir Ativo. Mensagem de Erro: {ex.Message}", ex);
             }
         }
 
-        public IEnumerable<Ativo> GetAllAtivosAsync()
+        public IEnumerable<Ativo> GetAllAtivosAsync(int? id, int? tipoAtivo, string nome, string codigo)
         {
             try
             {
-                return _ativoRepository.GetAllAsync();
+                return _ativoRepository.GetAllAsync(id, tipoAtivo, nome, codigo);
             }
             catch (Exception ex)
             {
@@ -72,6 +73,14 @@ namespace GestaoInvestimentosInfrastructure.Services
             {
                 throw new Exception($"Erro na camada de serviço ao atualizar Ativo. Mensagem de Erro: {ex.Message}", ex);
             }
+        }
+
+        public bool TipoAtivoIsValid(int? tipoAtivo)
+        {
+            if (tipoAtivo == null)
+                return true;
+            else
+                return Enum.IsDefined(typeof(TipoAtivo), tipoAtivo);
         }
     }
 }

@@ -46,11 +46,16 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(int? id, int? tipoAtivo, string? nome, string? codigo)
         {
             try
             {
-                return Ok(_ativoService.GetAllAtivosAsync());
+                if (_ativoService.TipoAtivoIsValid(tipoAtivo))
+                {
+                    return Ok(_ativoService.GetAllAtivosAsync(id, tipoAtivo, nome, codigo));
+                }
+                else
+                    return BadRequest("O TipoAtivo é inválido!");
             }
             catch (Exception ex)
             {
