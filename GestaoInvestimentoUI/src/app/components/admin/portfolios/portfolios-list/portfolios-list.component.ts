@@ -4,7 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { PortfoliosModel } from 'src/app/models/portfolios.model';
-import { getPortfolio } from 'src/app/services/portfolios-service';
+import { getPortfolio, deletPortfolio } from 'src/app/services/portfolios-service';
+import { UsuarioModel } from 'src/app/models/usuarios.model';
+import { getUsuario } from 'src/app/services/usuarios-service';
 
 @Component({
   selector: 'app-portfolios-list',
@@ -24,6 +26,9 @@ export class PortfoliosListComponent implements OnInit {
 
   //exibição de mensagem:
   mensagem: string = '';
+  usuarios = [
+    { id: 1, nome: 'Nome', email: 'E-mail', senha: 'Senha' }
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,9 +46,14 @@ export class PortfoliosListComponent implements OnInit {
   ngOnInit() {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
+    const requestP = new PortfoliosModel(
+      this.listForm.value.id,
+      this.listForm.value.usuarioId as number,
+      this.listForm.value.nome as string,
+      this.listForm.value.descricao as string,
+    );
 
-    getPortfolio()
+    getPortfolio(requestP)
       .subscribe({
         next: (data) => {
 
@@ -67,7 +77,38 @@ export class PortfoliosListComponent implements OnInit {
       })
       .add(() => {
         this.spinnerService.hide();
+      });
+
+    const requestU = new UsuarioModel(
+      0,
+      '',
+      '',
+      '',
+    );
+
+    getUsuario(requestU)
+      .subscribe({
+        next: (data) => {
+
+          const model: UsuarioModel[] = [];
+
+          data.forEach(item => {
+            model.push({
+              id: item.id,
+              nome: item.nome,
+              email: item.email,
+              senha: item.senha,
+            });
+          });
+          this.usuarios = model;
+        },
+        error: (e) => {
+          console.log(e.error.response);
+        }
       })
+      .add(() => {
+        this.spinnerService.hide();
+      });
   }
 
   get form(): any {
@@ -77,9 +118,14 @@ export class PortfoliosListComponent implements OnInit {
   onSubmit(): void {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
+    const requestP = new PortfoliosModel(
+      this.listForm.value.id,
+      this.listForm.value.usuarioId as number,
+      this.listForm.value.nome as string,
+      this.listForm.value.descricao as string,
+    );
 
-    getPortfolio()
+    getPortfolio(requestP)
       .subscribe({
         next: (data) => {
 
@@ -114,7 +160,7 @@ export class PortfoliosListComponent implements OnInit {
     this._router.navigate(['portfolios/portfolios-edit/' + id])
   }
 
-  redirectToDelete(id: number){
+  redirectToDelete(id: number) {
     const request = new PortfoliosModel(
       0,
       0,
@@ -122,20 +168,20 @@ export class PortfoliosListComponent implements OnInit {
       '',
     );
 
-    // deleteAtivo(id)
-    // .subscribe({
-    //   next: () => {
-    //     // this.mensagem = `${id}`;
-    //     window.location.reload()
-    //   },
-    //   error: (e) => {
-    //     this.mensagem = `Erro: ${e.response.data}`;
-    //     console.log(e.response.data);
-    //   },
-    // })
-    // .add(() => {
-    //   this.spinnerService.hide();
-    // });
+    deletPortfolio(id)
+    .subscribe({
+      next: () => {
+        // this.mensagem = `${id}`;
+        window.location.reload()
+      },
+      error: (e) => {
+        this.mensagem = `Erro: ${e.response.data}`;
+        console.log(e.response.data);
+      },
+    })
+    .add(() => {
+      this.spinnerService.hide();
+    });
   }
 
   redirectToHome() {

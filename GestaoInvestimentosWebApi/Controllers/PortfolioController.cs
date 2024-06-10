@@ -34,11 +34,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(int? id, int? usuarioId, string? nome, string? dedescricao)
         {
             try
             {
-                return Ok(_portfolioService.GetAllPortfoliosAsync());
+                return Ok(_portfolioService.GetAllPortfoliosAsync(id, usuarioId, nome, dedescricao));
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> Update(UpdatePortfolioDTO updatePortfolioDTO)
         {
             try
@@ -76,11 +76,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Portfolio portfolio)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                _portfolioService.DeletePortfolioAsync(portfolio);
+                _portfolioService.DeletePortfolioAsync(id);
                 return Ok("Portfolio alterado com sucesso!");
             }
             catch (Exception ex)
