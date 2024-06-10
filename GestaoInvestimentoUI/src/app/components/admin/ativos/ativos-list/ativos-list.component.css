@@ -19,4 +19,9 @@ mat-card {
   .button {
     margin-top: 10px;
   }
-  
+  #container {
+    border: #000000 solid 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+}

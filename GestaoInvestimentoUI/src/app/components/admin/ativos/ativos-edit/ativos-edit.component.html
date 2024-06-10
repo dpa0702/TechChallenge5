@@ -45,9 +45,7 @@
                         </mat-error>
                     </mat-form-field>
 
-                    <mat-form-field class="grid-item">
-                        <input matInput placeholder="ID:" formControlName="id" readonly="true" />
-                    </mat-form-field>
+                    <input matInput placeholder="ID:" formControlName="id" readonly="true" hidden="true" />
 
                     <button mat-raised-button class="grid-item" color="primary" type="submit"
                         [disabled]="!createForm.valid">
