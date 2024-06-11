@@ -39,11 +39,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public IEnumerable<Portfolio> GetAllPortfoliosAsync(int? id, int? usuarioId, string? nome, string? dedescricao)
+        public IEnumerable<Portfolio> GetAllPortfoliosAsync(int? id, int? usuarioId, string? nome, string? descricao)
         {
             try
             {
-                return _portfolioRepository.GetAllAsync(id, usuarioId, nome, dedescricao);
+                return _portfolioRepository.GetAllAsync(id, usuarioId, nome, descricao);
             }
             catch (Exception ex)
             {

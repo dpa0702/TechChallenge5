@@ -5,6 +5,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { TransacaoModel } from 'src/app/models/transacoes.model';
 import { deleteTransacao, getTransacao } from 'src/app/services/transacoes-services';
+import { AtivoModel } from 'src/app/models/ativos.model';
+import { getAtivo } from 'src/app/services/ativos-service';
+import { PortfoliosModel } from 'src/app/models/portfolios.model';
+import { getPortfolio } from 'src/app/services/portfolios-service';
 
 @Component({
   selector: 'app-transacoes-list',
@@ -25,6 +29,14 @@ export class TransacoesListComponent implements OnInit {
   //exibição de mensagem:
   mensagem: string = '';
 
+  portfolios = [
+    { id: 0, usuarioId: 0, nome: 'nome', descricao: 'descricao' }
+  ];
+
+  ativos = [
+    { id: 0, tipoAtivo: 0, nome: 'Escolha uma opção', codigo: 'Código' }
+  ];
+
   constructor(
     private formBuilder: FormBuilder,
     private spinnerService: NgxSpinnerService,
@@ -43,6 +55,38 @@ export class TransacoesListComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.show();
+
+    const requestP = new PortfoliosModel(
+      0,
+      0,
+      '',
+      '',
+    );
+
+    getPortfolio(requestP)
+      .subscribe({
+        next: (dataP) => {
+
+          const modelP: PortfoliosModel[] = [];
+
+          dataP.forEach(item => {
+            modelP.push({
+              id: item.id,
+              usuarioId: item.usuarioId,
+              nome: item.nome,
+              descricao: item.descricao,
+            });
+          });
+          this.portfolios = modelP;
+        },
+        error: (e) => {
+          console.log(e.error.response);
+        }
+      })
+      .add(() => {
+        this.spinnerService.hide();
+      });
+
 
     const requestT = new TransacaoModel(
       this.listForm.value.id,
@@ -81,7 +125,36 @@ export class TransacoesListComponent implements OnInit {
       })
       .add(() => {
         this.spinnerService.hide();
+      });
+
+    const requestA = new AtivoModel(
+      0,
+      0,
+      '',
+      '',
+    );
+
+    getAtivo(requestA)
+      .subscribe({
+        next: (dataA) => {
+          dataA.forEach(item => {
+            this.ativos.push({
+              id: item.id,
+              tipoAtivo: item.tipoAtivo,
+              nome: item.nome,
+              codigo: item.codigo,
+            });
+          });
+        },
+        error: (e) => {
+          console.log(e.error.response);
+        }
       })
+      .add(() => {
+        this.spinnerService.hide();
+      });
+
+
   }
 
   get form(): any {
@@ -139,7 +212,7 @@ export class TransacoesListComponent implements OnInit {
     this._router.navigate(['transacoes/transacoes-edit/' + id])
   }
 
-  redirectToDelete(id: number){
+  redirectToDelete(id: number) {
     const request = new TransacaoModel(
       0,
       0,
@@ -151,19 +224,19 @@ export class TransacoesListComponent implements OnInit {
     );
 
     deleteTransacao(id)
-    .subscribe({
-      next: () => {
-        // this.mensagem = `${id}`;
-        window.location.reload()
-      },
-      error: (e) => {
-        this.mensagem = `Erro: ${e.response.data}`;
-        console.log(e.response.data);
-      },
-    })
-    .add(() => {
-      this.spinnerService.hide();
-    });
+      .subscribe({
+        next: () => {
+          // this.mensagem = `${id}`;
+          window.location.reload()
+        },
+        error: (e) => {
+          this.mensagem = `Erro: ${e.response.data}`;
+          console.log(e.response.data);
+        },
+      })
+      .add(() => {
+        this.spinnerService.hide();
+      });
   }
 
   redirectToHome() {

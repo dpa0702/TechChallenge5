@@ -34,11 +34,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll(int? id, int? usuarioId, string? nome, string? dedescricao)
+        public IActionResult GetAll(int? id, int? usuarioId, string? nome, string? descricao)
         {
             try
             {
-                return Ok(_portfolioService.GetAllPortfoliosAsync(id, usuarioId, nome, dedescricao));
+                return Ok(_portfolioService.GetAllPortfoliosAsync(id, usuarioId, nome, descricao));
             }
             catch (Exception ex)
             {
