@@ -23,15 +23,30 @@
         </mat-form-field>
 
         <mat-form-field class="grid-item">
-          <input type="text" matInput placeholder="Portfolio Id" formControlName="portfolioId" />
+          <mat-label>Portfólio</mat-label>
+          <mat-select placeholder="Portfólio:" formControlName="portfolioId" >
+              <mat-option *ngFor="let portfolio of portfolios" [value]="portfolio.id">
+                  {{ portfolio.nome }}
+              </mat-option>
+          </mat-select>
+      </mat-form-field>
+
+        <mat-form-field class="grid-item">
+          <mat-label>Ativo</mat-label>
+            <mat-select placeholder="Ativo Id" formControlName="ativoId" >
+                <mat-option *ngFor="let ativo of ativos" [value]="ativo.id">
+                    {{ ativo.nome }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
 
         <mat-form-field class="grid-item">
-          <input type="text" matInput placeholder="Ativo Id" formControlName="ativoId" />
-        </mat-form-field>
-
-        <mat-form-field class="grid-item">
-          <input type="text" matInput placeholder="Tipo Transação" formControlName="tipoTransacao" />
+          <mat-label>Tipo Transação</mat-label>
+          <mat-select placeholder="Tipo Transação" formControlName="tipoTransacao">
+              <mat-option value="">Escolha uma opção</mat-option>
+              <mat-option [value]="1">Compra</mat-option>
+              <mat-option [value]="2">Venda</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field class="grid-item">
