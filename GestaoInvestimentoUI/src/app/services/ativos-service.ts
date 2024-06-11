@@ -14,7 +14,7 @@ export function getAtivo(request: AtivoModel): Observable<AtivoModel[]> {
         Url.searchParams.set('nome', request.nome);
     if(request.codigo != '')
         Url.searchParams.set('codigo', request.codigo);
-    // alert(Url);
+    //  alert(Url);
     const config = {
         method: 'get',
         url: Url,//`${environment.apiGestaoInvestimentos}/Ativo?id=${request.id}&tipoAtivo=${request.tipoAtivo}&nome=${request.nome}&codigo=${request.codigo}`,

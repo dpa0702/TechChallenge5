@@ -45,11 +45,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string? dataTransacao)
         {
             try
             {
-                return Ok(_transacaoService.GetAlTransacoesAsync());
+                return Ok(_transacaoService.GetAlTransacoesAsync(id, portfolioId, ativoId, tipoTransacao, quantidade, preco, dataTransacao));
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update(UpdateTransacaoDTO updateTransacaoDTO)
         {
             try
@@ -87,11 +87,11 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(Transacao transacao)
+        public IActionResult Delete(int id)
         {
             try
             {
-                _transacaoService.DeleteTransacaoAsync(transacao);
+                _transacaoService.DeleteTransacaoAsync(id);
                 return Ok("Transacao alterado com sucesso!");
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
 import { TransacaoModel } from 'src/app/models/transacoes.model';
-import { getTransacao } from 'src/app/services/transacoes-services';
+import { deleteTransacao, getTransacao } from 'src/app/services/transacoes-services';
 
 @Component({
   selector: 'app-transacoes-list',
@@ -44,9 +44,17 @@ export class TransacoesListComponent implements OnInit {
   ngOnInit() {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
+    const requestT = new TransacaoModel(
+      this.listForm.value.id,
+      this.listForm.value.portfolioId as number,
+      this.listForm.value.ativoId as number,
+      this.listForm.value.tipoTransacao as number,
+      this.listForm.value.quantidade as number,
+      this.listForm.value.preco as number,
+      this.listForm.value.dataTransacao as string,
+    );
 
-    getTransacao()
+    getTransacao(requestT)
       .subscribe({
         next: (data) => {
 
@@ -83,9 +91,17 @@ export class TransacoesListComponent implements OnInit {
   onSubmit(): void {
     this.spinnerService.show();
 
-    const id = this.listForm.value.id as number;
+    const requestTN = new TransacaoModel(
+      this.listForm.value.id,
+      this.listForm.value.portfolioId as number,
+      this.listForm.value.ativoId as number,
+      this.listForm.value.tipoTransacao as number,
+      this.listForm.value.quantidade as number,
+      this.listForm.value.preco as number,
+      this.listForm.value.dataTransacao as string,
+    );
 
-    getTransacao()
+    getTransacao(requestTN)
       .subscribe({
         next: (data) => {
 
@@ -116,11 +132,11 @@ export class TransacoesListComponent implements OnInit {
   }
 
   redirectToNew() {
-    this._router.navigate(['usuarios/usuarios-create'])
+    this._router.navigate(['transacoes/transacoes-create'])
   }
 
   redirectToEdit(id: number) {
-    this._router.navigate(['usuarios/usuarios-edit/' + id])
+    this._router.navigate(['transacoes/transacoes-edit/' + id])
   }
 
   redirectToDelete(id: number){
@@ -134,20 +150,20 @@ export class TransacoesListComponent implements OnInit {
       ''
     );
 
-    // deleteAtivo(id)
-    // .subscribe({
-    //   next: () => {
-    //     // this.mensagem = `${id}`;
-    //     window.location.reload()
-    //   },
-    //   error: (e) => {
-    //     this.mensagem = `Erro: ${e.response.data}`;
-    //     console.log(e.response.data);
-    //   },
-    // })
-    // .add(() => {
-    //   this.spinnerService.hide();
-    // });
+    deleteTransacao(id)
+    .subscribe({
+      next: () => {
+        // this.mensagem = `${id}`;
+        window.location.reload()
+      },
+      error: (e) => {
+        this.mensagem = `Erro: ${e.response.data}`;
+        console.log(e.response.data);
+      },
+    })
+    .add(() => {
+      this.spinnerService.hide();
+    });
   }
 
   redirectToHome() {

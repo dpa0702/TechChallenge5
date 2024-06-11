@@ -15,22 +15,22 @@ namespace GestaoInvestimentosInfrastructure.Repositories
             return _context.Portfolios.AsNoTracking().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Portfolio> GetAllAsync(int? id, int? usuarioId, string? nome, string? dedescricao)
+        public IEnumerable<Portfolio> GetAllAsync(int? id, int? usuarioId, string? nome, string? descricao)
         {
             //return _context.Portfolios.AsNoTracking();
             var portfolios = _context.Portfolios.AsNoTracking();
 
             if (id != null && id > 0)
                 portfolios = portfolios.Where(x => x.Id == id);
-
-            if (usuarioId != null)
+            
+            if (usuarioId != null && usuarioId > 0)
                 portfolios = portfolios.Where(x => x.UsuarioId == usuarioId);
 
             if (!string.IsNullOrEmpty(nome))
                 portfolios = portfolios.Where(x => x.Nome == nome);
 
-            if (!string.IsNullOrEmpty(dedescricao))
-                portfolios = portfolios.Where(x => x.Descricao == dedescricao);
+            if (!string.IsNullOrEmpty(descricao))
+                portfolios = portfolios.Where(x => x.Descricao == descricao);
 
             return portfolios?.ToList() ?? new List<Portfolio>();
         }
