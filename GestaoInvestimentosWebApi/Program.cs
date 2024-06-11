@@ -1,5 +1,8 @@
 using GestaoInvestimentosInfrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Serilog;
+using System.Reflection;
 
 namespace GestaoInvestimentosWebApi
 {
@@ -15,12 +18,22 @@ namespace GestaoInvestimentosWebApi
 
             var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-            // Add services to the container.
+            builder.Services.AddLogging(builder =>
+            {
+                builder.AddSerilog().AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
+            });
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(opt =>
+            {
+                opt.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestão de Investimentos", Version = "v1" });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                opt.IncludeXmlComments(xmlPath);
+            });
 
             string? connectionString = configuration.GetConnectionString("DefaultConnection");
             string? commandTimeout = configuration.GetSection("AppSettings:CommandTimeout")?.Value;
@@ -34,6 +47,8 @@ namespace GestaoInvestimentosWebApi
                     .EnableSensitiveDataLogging(false);
                 }, ServiceLifetime.Scoped);
             }
+            else
+                Log.Logger.Fatal("Variável de ambiente: ConnectionString não encontrada.");
 
             builder.Services.AddServices().AddRepositories();
 
@@ -58,6 +73,12 @@ namespace GestaoInvestimentosWebApi
                 app.UseDeveloperExceptionPage();
                 app.UseCors(MyAllowSpecificOrigins);
             }
+
+            app.UseReDoc(c =>
+            {
+                c.DocumentTitle = "REDOC Gestão de Investimetos API";
+                c.RoutePrefix = "";
+            });
 
             app.UseHttpsRedirection();
 

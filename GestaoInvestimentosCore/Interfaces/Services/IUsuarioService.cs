@@ -10,5 +10,6 @@ namespace GestaoInvestimentosCore.Interfaces.Services
         void AddUsuarioAsync(CreateUsuarioDTO createUsuarioDTO);
         void UpdateUsuarioAsync(UpdateUsuarioDTO updateUsuarioDTO);
         void DeleteUsuarioAsync(int id);
+        LoginUsuarioDTO Login(LoginUsuarioDTO loginUsuarioDTO);
     }
 }

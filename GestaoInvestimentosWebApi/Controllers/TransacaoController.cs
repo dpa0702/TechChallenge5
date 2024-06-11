@@ -10,10 +10,12 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class TransacaoController : ControllerBase
     {
         private readonly ITransacaoService _transacaoService;
+        private readonly ILogger<AtivoController> _logger;
 
-        public TransacaoController(ITransacaoService transacaoService)
+        public TransacaoController(ITransacaoService transacaoService, ILogger<AtivoController> logger)
         {
             _transacaoService = transacaoService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -34,7 +36,10 @@ namespace GestaoInvestimentosWebApi.Controllers
             {
                 Transacao transacao = _transacaoService.GetTransacaoByIdAsync(id);
                 if (transacao == null)
+                {
+                    _logger.LogWarning("Não há transacao com o id informado!");
                     return BadRequest("Não há transacao com o id informado!");
+                }
 
                 return Ok(transacao);
             }

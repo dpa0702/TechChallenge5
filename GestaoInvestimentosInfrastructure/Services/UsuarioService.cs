@@ -3,6 +3,10 @@ using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosInfrastructure.Repositories;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace GestaoInvestimentosInfrastructure.Services
 {
@@ -74,5 +78,44 @@ namespace GestaoInvestimentosInfrastructure.Services
                 throw new Exception($"Erro na camada de serviço ao atualizar Usuario. Mensagem de Erro: {ex.Message}", ex);
             }
         }
+
+        public LoginUsuarioDTO Login(LoginUsuarioDTO loginUsuarioDTO)
+        {
+            try
+            {
+                var usuario = _usuarioRepository.GetAllAsync(0, null, loginUsuarioDTO.Email, loginUsuarioDTO.Senha).FirstOrDefault();
+                if(usuario == null)
+                {
+                    throw new Exception($"Erro no Login:");
+                }
+                return GenerateToken(loginUsuarioDTO);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro na camada de serviço ao consultar Usuario por id. Mensagem de Erro: {ex.Message}", ex);
+            }
+        }
+
+        public static LoginUsuarioDTO GenerateToken(LoginUsuarioDTO loginUsuarioDTO)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e");//(Settings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, loginUsuarioDTO.Email.ToString()),
+                    new Claim(ClaimTypes.Role, loginUsuarioDTO.Senha.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            loginUsuarioDTO.Token = tokenHandler.WriteToken(token);
+
+            return loginUsuarioDTO;
+        }
+
     }
 }

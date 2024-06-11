@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../services/auth.service';
+import { stringToKeyValue } from '@angular/flex-layout/extended/style/style-transforms';
+import { UsuarioModel } from 'src/app/models/usuarios.model';
 
 @Component({
   selector: 'app-login',
@@ -37,11 +39,14 @@ export class LoginComponent implements OnInit {
   submit(formValue: any) {
     let postData = {
       email: formValue.username,
-      password: formValue.password
-    }
+      senha: formValue.password,
+      token: ''
+    };
+
 
     this._authService.login(postData).subscribe({
       next: (res: any) => {
+
         if (res.status === 200) {
           //Write your logic after response is received
           //Store token in localStorage/SessionStorage

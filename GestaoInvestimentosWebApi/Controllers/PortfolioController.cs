@@ -10,10 +10,12 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class PortfolioController : ControllerBase
     {
         private readonly IPortfolioService _portfolioService;
+        private readonly ILogger<AtivoController> _logger;
 
-        public PortfolioController(IPortfolioService portfolioService)
+        public PortfolioController(IPortfolioService portfolioService, ILogger<AtivoController> logger)
         {
             _portfolioService = portfolioService;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
@@ -23,7 +25,10 @@ namespace GestaoInvestimentosWebApi.Controllers
             {
                 Portfolio portfolio = _portfolioService.GetPortfolioByIdAsync(id);
                 if (portfolio == null)
+                {
+                    _logger.LogWarning("Não há portfolio com o id informado!");
                     return BadRequest("Não há portfolio com o id informado!");
+                }
 
                 return Ok(portfolio);
             }
