@@ -51,7 +51,7 @@ namespace GestaoInvestimentosCore.Entities
 
             AssertionValidations.AssertArgumentLenght(Nome, 100, "O nome deve ter no máximo 100 caracteres!");
             AssertionValidations.AssertArgumentLenght(Email, 100, "O email deve ter no máximo 100 caracteres!");
-            AssertionValidations.AssertArgumentLenght(Senha, 50, "A senha deve ter no máximo 50 caracteres!");
+            AssertionValidations.AssertArgumentLenght(Senha, 150, "A senha deve ter no máximo 50 caracteres!");
         }
     }
 }

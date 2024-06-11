@@ -173,7 +173,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 1,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-10 11:02:30.0872848",
+                            DataTransacao = "2024-06-11 17:06:12.8595737",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -183,7 +183,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 2,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-10 11:02:30.0872867",
+                            DataTransacao = "2024-06-11 17:06:12.8595753",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -193,7 +193,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 3,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-10 11:02:30.0872871",
+                            DataTransacao = "2024-06-11 17:06:12.8595755",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -203,7 +203,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 4,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-10 11:02:30.0872874",
+                            DataTransacao = "2024-06-11 17:06:12.8595757",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -213,7 +213,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 5,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-10 11:02:30.0872877",
+                            DataTransacao = "2024-06-11 17:06:12.859576",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -223,7 +223,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 6,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-10 11:02:30.087288",
+                            DataTransacao = "2024-06-11 17:06:12.8595762",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -233,7 +233,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 7,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-10 11:02:30.0872882",
+                            DataTransacao = "2024-06-11 17:06:12.8595764",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -243,7 +243,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 8,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-10 11:02:30.0872885",
+                            DataTransacao = "2024-06-11 17:06:12.8595766",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -253,7 +253,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 9,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-10 11:02:30.087289",
+                            DataTransacao = "2024-06-11 17:06:12.859577",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -263,7 +263,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 10,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-10 11:02:30.0872893",
+                            DataTransacao = "2024-06-11 17:06:12.8595772",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -273,7 +273,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 11,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-10 11:02:30.0872896",
+                            DataTransacao = "2024-06-11 17:06:12.8595775",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -283,7 +283,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 12,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-10 11:02:30.0872898",
+                            DataTransacao = "2024-06-11 17:06:12.8595777",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -293,7 +293,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 13,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-10 11:02:30.08729",
+                            DataTransacao = "2024-06-11 17:06:12.8595778",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -303,7 +303,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 14,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-10 11:02:30.0872902",
+                            DataTransacao = "2024-06-11 17:06:12.859578",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -313,7 +313,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 15,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-10 11:02:30.0872904",
+                            DataTransacao = "2024-06-11 17:06:12.8595782",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -323,7 +323,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 16,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-10 11:02:30.0872907",
+                            DataTransacao = "2024-06-11 17:06:12.8595784",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -350,7 +350,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
 
                     b.Property<string>("Senha")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(50)");
+                        .HasColumnType("VARCHAR(150)");
 
                     b.HasKey("Id");
 

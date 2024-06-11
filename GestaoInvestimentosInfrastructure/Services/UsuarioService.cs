@@ -2,10 +2,11 @@
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
-using GestaoInvestimentosInfrastructure.Repositories;
+using Microsoft.AspNet.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GestaoInvestimentosInfrastructure.Services
@@ -13,6 +14,7 @@ namespace GestaoInvestimentosInfrastructure.Services
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly RandomNumberGenerator _rng;
 
         public UsuarioService(IUsuarioRepository usuarioRepository)
         {
@@ -23,6 +25,7 @@ namespace GestaoInvestimentosInfrastructure.Services
         {
             try
             {
+                createUsuarioDTO.Senha = new PasswordHasher().HashPassword(createUsuarioDTO.Senha);
                 _usuarioRepository.Insert(new Usuario(createUsuarioDTO));
             }
             catch (Exception ex)
@@ -71,6 +74,7 @@ namespace GestaoInvestimentosInfrastructure.Services
         {
             try
             {
+                updateUsuarioDTO.Senha = new PasswordHasher().HashPassword(updateUsuarioDTO.Senha);
                 _usuarioRepository.Update(new Usuario(updateUsuarioDTO));
             }
             catch (Exception ex)
@@ -83,11 +87,14 @@ namespace GestaoInvestimentosInfrastructure.Services
         {
             try
             {
-                var usuario = _usuarioRepository.GetAllAsync(0, null, loginUsuarioDTO.Email, loginUsuarioDTO.Senha).FirstOrDefault();
+                var usuario = _usuarioRepository.GetAllAsync(0, null, loginUsuarioDTO.Email, null).FirstOrDefault();
                 if(usuario == null)
                 {
                     throw new Exception($"Erro no Login:");
                 }
+
+                PasswordVerificationResult passwordVerificationResult = new PasswordHasher().VerifyHashedPassword(usuario.Senha, loginUsuarioDTO.Senha);
+
                 return GenerateToken(loginUsuarioDTO);
             }
             catch (Exception ex)
@@ -116,6 +123,5 @@ namespace GestaoInvestimentosInfrastructure.Services
 
             return loginUsuarioDTO;
         }
-
     }
 }

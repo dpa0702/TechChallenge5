@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
+import { NewComponent } from './new/new.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -14,7 +15,8 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     LoginComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    NewComponent
   ],
   imports: [
     CommonModule,

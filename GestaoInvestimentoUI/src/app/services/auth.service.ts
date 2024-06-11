@@ -29,4 +29,15 @@ export class AuthService {
   forgetPassword(postData : any){
     return this._http.post(environment.apiGestaoInvestimentos + '/Usuario/forget', postData, {observe : 'response'})
   }
+
+  /**
+   * Function - forgetPassword()
+   * Use - To recover the password
+   * @param postData
+   * @returns
+   */
+  new(postData : any){
+    return this._http.post(environment.apiGestaoInvestimentos + '/Usuario/new', postData, {observe : 'response'})
+  }
+
 }

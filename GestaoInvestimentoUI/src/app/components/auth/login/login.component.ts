@@ -67,4 +67,8 @@ export class LoginComponent implements OnInit {
     this._router.navigate(['/forget-password'])
   }
 
+  redirectToNew() {
+    this._router.navigate(['/new'])
+  }
+
 }
