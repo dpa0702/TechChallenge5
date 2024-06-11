@@ -29,45 +29,45 @@ namespace GestaoInvestimentosTests.Repository
             _repository = new AtivoRepository(_context);
         }
 
-        //[TestMethod]
-        //public void GetById_ReturnsAtivo_WhenValidId()
-        //{
-        //    // Arrange
-        //    int idToFakeInsertAndSearch = 100;
+        [TestMethod]
+        public void GetById_ReturnsAtivo_WhenValidId()
+        {
+            // Arrange
+            int idToFakeInsertAndSearch = 100;
 
-        //    var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-        //    var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?))
-        //        .With(x => x.Id, idToFakeInsertAndSearch)
-        //        .With(x => x.TipoAtivo, TipoAtivo.Titulo).Create();
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?))
+                .With(x => x.Id, idToFakeInsertAndSearch)
+                .With(x => x.TipoAtivo, TipoAtivo.Titulo).Create();
 
-        //    _context.Ativos.Add(ativo);
-        //    _context.SaveChanges();
+            _context.Ativos.Add(ativo);
+            _context.SaveChanges();
 
-        //    // Act
-        //    var result = _repository.GetById(idToFakeInsertAndSearch);
+            // Act
+            var result = _repository.GetById(idToFakeInsertAndSearch);
 
-        //    // Assert
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(TipoAtivo.Titulo, result.TipoAtivo);
-        //}
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(TipoAtivo.Titulo, result.TipoAtivo);
+        }
 
-        //[TestMethod]
-        //public void GetById_ReturnNull_WhenInvalidId()
-        //{
-        //    // Arrange
-        //    int idToFakeInsert = 1;
-        //    int idToSearch = 666;
+        [TestMethod]
+        public void GetById_ReturnNull_WhenInvalidId()
+        {
+            // Arrange
+            int idToFakeInsert = 1;
+            int idToSearch = 666;
 
-        //    var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-        //    var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, idToFakeInsert).Create();
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, idToFakeInsert).Create();
 
-        //    _context.Ativos.Add(ativo);
+            _context.Ativos.Add(ativo);
 
-        //    // Act
-        //    var result = _repository.GetById(idToSearch);
+            // Act
+            var result = _repository.GetById(idToSearch);
 
-        //    // Assert
-        //    Assert.IsNull(result);
-        //}
+            // Assert
+            Assert.IsNull(result);
+        }
     }
 }

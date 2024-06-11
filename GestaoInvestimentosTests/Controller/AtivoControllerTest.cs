@@ -14,14 +14,14 @@ namespace GestaoInvestimentosTests.Controller
     {
         AtivoController? ativoController;
         private Mock<IAtivoService> _mockAtivoService;
-        private Mock<ILogger<AtivoController>> _mockLogger;
+        private readonly ILogger<AtivoController> _logger;
 
         [TestInitialize]
         public void Start()
         {
             _mockAtivoService = new Mock<IAtivoService>();
 
-            ativoController = new AtivoController(_mockAtivoService.Object, _mockLogger.Object);
+            ativoController = new AtivoController(_mockAtivoService.Object, _logger);
         }
 
         //[TestMethod]
