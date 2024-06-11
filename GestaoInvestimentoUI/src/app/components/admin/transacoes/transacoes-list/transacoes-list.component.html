@@ -81,14 +81,22 @@
         <ng-container matColumnDef="portfolioId">
           <mat-header-cell *matHeaderCellDef><strong>Portfolio Id</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
-            {{ item.portfolioId }}
+            <!-- {{ item.portfolioId }} -->
+            <p *ngIf="item.portfolioId === 1">Portfolio Demetrios</p>
+            <p *ngIf="item.portfolioId === 2">Portfolio Erick</p>
+            <p *ngIf="item.portfolioId === 3">Portfolio MARINA </p>
+            <p *ngIf="item.portfolioId === 4">Portfolio Pamela</p>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="ativoId">
           <mat-header-cell *matHeaderCellDef><strong>Ativo Id</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
-            {{ item.ativoId }}
+            <!-- {{ item.ativoId }} -->
+            <p *ngIf="item.ativoId === 1">Nome Ativo Acao 001</p>
+            <p *ngIf="item.ativoId === 2">Nome Ativo Titulo 001</p>
+            <p *ngIf="item.ativoId === 3">Nome Ativo Criptomoeda 001</p>
+            <p *ngIf="item.ativoId === 4">Nome Ativo Titulo 002</p>
           </mat-cell>
         </ng-container>
 

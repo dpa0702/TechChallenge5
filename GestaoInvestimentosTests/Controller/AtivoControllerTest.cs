@@ -4,6 +4,7 @@ using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosWebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace GestaoInvestimentosTests.Controller
@@ -13,13 +14,14 @@ namespace GestaoInvestimentosTests.Controller
     {
         AtivoController? ativoController;
         private Mock<IAtivoService> _mockAtivoService;
+        private Mock<ILogger<AtivoController>> _mockLogger;
 
         [TestInitialize]
         public void Start()
         {
             _mockAtivoService = new Mock<IAtivoService>();
 
-            ativoController = new AtivoController(_mockAtivoService.Object);
+            ativoController = new AtivoController(_mockAtivoService.Object, _mockLogger.Object);
         }
 
         //[TestMethod]

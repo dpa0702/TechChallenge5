@@ -10,10 +10,12 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly ILogger<AtivoController> _logger;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public UsuarioController(IUsuarioService usuarioService, ILogger<AtivoController> logger)
         {
             _usuarioService = usuarioService;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
@@ -23,7 +25,10 @@ namespace GestaoInvestimentosWebApi.Controllers
             {
                 Usuario usuario = _usuarioService.GetUsuarioByIdAsync(id);
                 if (usuario == null)
+                {
+                    _logger.LogWarning("Não há usuario com o id informado!");
                     return BadRequest("Não há usuario com o id informado!");
+                }
 
                 return Ok(usuario);
             }
@@ -91,12 +96,18 @@ namespace GestaoInvestimentosWebApi.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login()
+        public IActionResult Login(LoginUsuarioDTO loginUsuarioDTO)
         {
             try
             {
+                var usuarioLogin = _usuarioService.Login(loginUsuarioDTO);
+                if (usuarioLogin == null)
+                {
+                    _logger.LogWarning("Usuário ou senha inválidos!");
+                    return NotFound(new { message = "Usuário ou senha inválidos!" });
+                }
                 return Ok();
-
+                //return Ok(usuarioLogin);
             }
             catch (Exception ex)
             {

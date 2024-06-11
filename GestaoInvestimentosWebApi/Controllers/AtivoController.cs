@@ -11,10 +11,12 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class AtivoController : ControllerBase
     {
         private readonly IAtivoService _ativoService;
+        private readonly ILogger<AtivoController> _logger;
 
-        public AtivoController(IAtivoService ativoService)
+        public AtivoController(IAtivoService ativoService, ILogger<AtivoController> logger)
         {
             _ativoService = ativoService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -34,8 +36,10 @@ namespace GestaoInvestimentosWebApi.Controllers
             try
             {
                 Ativo ativo = _ativoService.GetAtivoByIdAsync(id);
-                if (ativo == null)
+                if (ativo == null) {
+                    _logger.LogWarning("Não há ativo com o id informado!");
                     return BadRequest("Não há ativo com o id informado!");
+                }
 
                 return Ok(ativo);
             }
@@ -55,7 +59,10 @@ namespace GestaoInvestimentosWebApi.Controllers
                     return Ok(_ativoService.GetAllAtivosAsync(id, tipoAtivo, nome, codigo));
                 }
                 else
+                {
+                    _logger.LogWarning("O TipoAtivo é inválido!");
                     return BadRequest("O TipoAtivo é inválido!");
+                }
             }
             catch (Exception ex)
             {
