@@ -14,6 +14,7 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   appxPackageDir: '$(build.artifactStagingDirectory)\AppxPackages\\'
+  defaultWorkingDirectory : 'D:/a'
 
 steps:
 - task: UseDotNet@2
