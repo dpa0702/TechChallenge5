@@ -14,7 +14,7 @@ export function getPortfolio(request: PortfoliosModel): Observable<PortfoliosMod
         Url.searchParams.set('nome', request.nome);
     if(request.descricao != '')
         Url.searchParams.set('descricao', request.descricao);
-    //  alert(Url);
+    //   alert(Url);
     const config = {
         method: 'get',
         url: Url,//`${environment.apiGestaoInvestimentos}/Portfolio`

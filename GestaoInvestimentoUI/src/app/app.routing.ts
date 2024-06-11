@@ -11,6 +11,8 @@ import { AtivoEditComponent } from './components/admin/ativos/ativos-edit/ativos
 import { UsuarioEditComponent } from './components/admin/usuarios/usuarios-edit/usuarios-edit.component';
 import { PortfolioCreateComponent } from './components/admin/portfolios/portfolios-create/portfolios-create.component';
 import { PortfolioEditComponent } from './components/admin/portfolios/portfolios-edit/portfolios-edit.component';
+import { TransacaoCreateComponent } from './components/admin/transacoes/transacoes-create/transacoes-create.component';
+import { TransacaoEditComponent } from './components/admin/transacoes/transacoes-edit/transacoes-edit.component';
 
 const routes: Routes = [
   {
@@ -60,6 +62,14 @@ const routes: Routes = [
   {
     path: 'portfolios/portfolios-edit/:id',
     component: PortfolioEditComponent,
+  },
+  {
+    path: 'transacoes/transacoes-create',
+    component: TransacaoCreateComponent,
+  },
+  {
+    path: 'transacoes/transacoes-edit/:id',
+    component: TransacaoEditComponent,
   },
 ];
 

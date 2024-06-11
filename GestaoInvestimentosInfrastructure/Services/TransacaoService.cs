@@ -2,6 +2,7 @@
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
+using GestaoInvestimentosInfrastructure.Repositories;
 
 namespace GestaoInvestimentosInfrastructure.Services
 {
@@ -27,11 +28,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public void DeleteTransacaoAsync(Transacao transacao)
+        public void DeleteTransacaoAsync(int id)
         {
             try
             {
-                _transacaoRepository.Delete(transacao);
+                _transacaoRepository.Delete(_transacaoRepository.GetById(id));
             }
             catch (Exception ex)
             {
@@ -39,11 +40,11 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public IEnumerable<Transacao> GetAlTransacoesAsync()
+        public IEnumerable<Transacao> GetAlTransacoesAsync(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string dataTransacao)
         {
             try
             {
-                return _transacaoRepository.GetAllAsync();
+                return _transacaoRepository.GetAllAsync(id, portfolioId, ativoId, tipoTransacao, quantidade, preco, dataTransacao);
             }
             catch (Exception ex)
             {

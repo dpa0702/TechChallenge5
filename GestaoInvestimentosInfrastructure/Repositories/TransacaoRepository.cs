@@ -1,4 +1,5 @@
 ﻿using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosInfrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,33 @@ namespace GestaoInvestimentosInfrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public IEnumerable<Transacao> GetAllAsync()
+        public IEnumerable<Transacao> GetAllAsync(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string dataTransacao)
         {
-            return _context.Transacoes.AsNoTracking();
+            //return _context.Transacoes.AsNoTracking();
+            var transacao = _context.Transacoes.AsNoTracking();
+
+            if (id != null && id > 0)
+                transacao = transacao.Where(x => x.Id == id);
+
+            if (portfolioId != null && portfolioId > 0)
+                transacao = transacao.Where(x => x.PortfolioId == portfolioId);
+
+            if (ativoId != null && ativoId > 0)
+                transacao = transacao.Where(x => x.AtivoId == ativoId);
+
+            if (tipoTransacao != null && tipoTransacao > 0)
+                transacao = transacao.Where(x => x.TipoTransacao == (TipoTransacao)tipoTransacao.Value);
+
+            if (quantidade != null && quantidade > 0)
+                transacao = transacao.Where(x => x.Quantidade == quantidade);
+
+            if (preco != null && preco > 0)
+                transacao = transacao.Where(x => x.Preco == preco);
+
+            if (!string.IsNullOrEmpty(dataTransacao))
+                transacao = transacao.Where(x => x.DataTransacao.ToString() == dataTransacao.ToString());
+
+            return transacao?.ToList() ?? new List<Transacao>();
         }
 
         public Transacao GetById(int id)

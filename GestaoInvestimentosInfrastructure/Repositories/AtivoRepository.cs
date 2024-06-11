@@ -22,7 +22,7 @@ namespace GestaoInvestimentosInfrastructure.Repositories
             if (id != null && id > 0)
                 ativo = ativo.Where(x => x.Id == id);
 
-            if (tipoAtivo != null)
+            if (tipoAtivo != null && tipoAtivo > 0)
                 ativo = ativo.Where(x => x.TipoAtivo == (TipoAtivo)tipoAtivo.Value);
 
             if (!string.IsNullOrEmpty(nome))

@@ -77,7 +77,7 @@ namespace GestaoInvestimentosInfrastructure.Services
 
         public bool TipoAtivoIsValid(int? tipoAtivo)
         {
-            if (tipoAtivo == null)
+            if (tipoAtivo == null || tipoAtivo == 0)
                 return true;
             else
                 return Enum.IsDefined(typeof(TipoAtivo), tipoAtivo);

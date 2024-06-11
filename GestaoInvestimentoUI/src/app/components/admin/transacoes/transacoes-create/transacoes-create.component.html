@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Transações:</mat-card-title>
+        <mat-card-subtitle>Nova</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <br />
+
+        <!-- exibição das mensagens -->
+        <app-messages [texto]="mensagem" />
+        <br />
+
+        <div>
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+                <div class="grid-container">
+                    <mat-form-field class="grid-item">
+                        <mat-select placeholder="Portfolio:" formControlName="PortfolioId" >
+                            <mat-option *ngFor="let portfolio of portfolios" [value]="portfolio.id">
+                                {{ portfolio.nome }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="grid-item">
+                        <mat-select placeholder="Ativo:" formControlName="AtivoId" >
+                            <mat-option *ngFor="let ativo of ativos" [value]="ativo.id">
+                                {{ ativo.nome }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="grid-item">
+                        <mat-label>Tipo Transação</mat-label>
+                        <mat-select formControlName="TipoTransacao">
+                            <mat-option value="">Escolha uma opção</mat-option>
+                            <mat-option [value]="1">Compra</mat-option>
+                            <mat-option [value]="2">Venda</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="grid-item">
+                        <input type="text" matInput placeholder="Quantidade" formControlName="Quantidade" />
+                    </mat-form-field>
+                    <mat-form-field class="grid-item">
+                        <input type="text" matInput placeholder="Preço" formControlName="Preco" />
+                    </mat-form-field>
+                    <!-- <input matInput placeholder="DataTransacao" formControlName="dataTransacao" readonly="true" hidden="true" /> -->
+                    <button mat-raised-button class="grid-item" color="primary" type="submit"
+                        [disabled]="!createForm.valid">
+                        Cadastrar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>
