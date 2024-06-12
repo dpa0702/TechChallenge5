@@ -10,9 +10,9 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class TransacaoController : ControllerBase
     {
         private readonly ITransacaoService _transacaoService;
-        private readonly ILogger<AtivoController> _logger;
+        private readonly ILogger<TransacaoController> _logger;
 
-        public TransacaoController(ITransacaoService transacaoService, ILogger<AtivoController> logger)
+        public TransacaoController(ITransacaoService transacaoService, ILogger<TransacaoController> logger)
         {
             _transacaoService = transacaoService;
             _logger = logger;

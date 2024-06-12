@@ -10,16 +10,16 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class PortfolioController : ControllerBase
     {
         private readonly IPortfolioService _portfolioService;
-        private readonly ILogger<AtivoController> _logger;
+        private readonly ILogger<PortfolioController> _logger;
 
-        public PortfolioController(IPortfolioService portfolioService, ILogger<AtivoController> logger)
+        public PortfolioController(IPortfolioService portfolioService, ILogger<PortfolioController> logger)
         {
             _portfolioService = portfolioService;
             _logger = logger;
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public IActionResult Get(int id)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreatePortfolioDTO createPortfolioDTO)
+        public IActionResult Create(CreatePortfolioDTO createPortfolioDTO)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(UpdatePortfolioDTO updatePortfolioDTO)
+        public IActionResult Update(UpdatePortfolioDTO updatePortfolioDTO)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             {

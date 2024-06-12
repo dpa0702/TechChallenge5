@@ -10,9 +10,9 @@ namespace GestaoInvestimentosWebApi.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
-        private readonly ILogger<AtivoController> _logger;
+        private readonly ILogger<UsuarioController> _logger;
 
-        public UsuarioController(IUsuarioService usuarioService, ILogger<AtivoController> logger)
+        public UsuarioController(IUsuarioService usuarioService, ILogger<UsuarioController> logger)
         {
             _usuarioService = usuarioService;
             _logger = logger;
