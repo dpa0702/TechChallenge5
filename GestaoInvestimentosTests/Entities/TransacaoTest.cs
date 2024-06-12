@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bogus;
 
 namespace GestaoInvestimentosTests.Entities
 {
     public class TransacaoTest
     {
+        private readonly Faker _faker;
+
+        public TransacaoTest()
+        {
+            _faker = new Faker();
+        }
     }
 }

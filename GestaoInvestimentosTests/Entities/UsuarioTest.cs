@@ -2,11 +2,6 @@
 using GestaoInvestimentosCore.DTO.Usuario;
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosTests.Entities.Mock;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoInvestimentosTests.Entities
 {
