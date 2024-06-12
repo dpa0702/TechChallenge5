@@ -45,13 +45,13 @@ namespace GestaoInvestimentosCore.Entities
 
         public void ValidateEntity()
         {
-            AssertionValidations.AssertArgumentNullOrEmpty(Nome, "O nome não pode ser nulo nem vazio!");
-            AssertionValidations.AssertArgumentNullOrEmpty(Email, "O email não pode ser nulo nem vazio!");
-            AssertionValidations.AssertArgumentNullOrEmpty(Senha, "A senha não pode ser nulo nem vazio!");
+            AssertionValidations.AssertArgumentNullOrEmpty(Nome, "O Nome não pode ser nulo nem vazio!");
+            AssertionValidations.AssertArgumentNullOrEmpty(Email, "O Email não pode ser nulo nem vazio!");
+            AssertionValidations.AssertArgumentNullOrEmpty(Senha, "A Senha não pode ser nulo nem vazio!");
 
-            AssertionValidations.AssertArgumentLenght(Nome, 100, "O nome deve ter no máximo 100 caracteres!");
-            AssertionValidations.AssertArgumentLenght(Email, 100, "O email deve ter no máximo 100 caracteres!");
-            AssertionValidations.AssertArgumentLenght(Senha, 150, "A senha deve ter no máximo 50 caracteres!");
+            AssertionValidations.AssertArgumentLenght(Nome, 100, "O Nome deve ter no máximo 100 caracteres!");
+            AssertionValidations.AssertArgumentLenght(Email, 100, "O Email deve ter no máximo 100 caracteres!");
+            AssertionValidations.AssertArgumentLenght(Senha, 150, "A Senha deve ter no máximo 50 caracteres!");
         }
     }
 }

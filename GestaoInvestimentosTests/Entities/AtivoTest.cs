@@ -156,19 +156,19 @@ namespace GestaoInvestimentosTests.Entities
         }
 
         [TestMethod]
-        public void ValidateUpdateBook_ShouldReturnSuccess()
+        public void ValidateUpdateAtivo_ShouldReturnSuccess()
         {
             // Arrange
             var ativoDtoMock = new MockAtivoDTO();
 
             // Act
-            var bookDto = new UpdateAtivoDTO { Id = ativoDtoMock.Id, TipoAtivo = ativoDtoMock.TipoAtivo, Nome = ativoDtoMock.Nome, Codigo = ativoDtoMock.Codigo};
+            var ativoDto = new UpdateAtivoDTO { Id = ativoDtoMock.Id, TipoAtivo = ativoDtoMock.TipoAtivo, Nome = ativoDtoMock.Nome, Codigo = ativoDtoMock.Codigo};
 
             // Assert
-            Assert.AreEqual(ativoDtoMock.Id, bookDto.Id);
-            Assert.AreEqual(ativoDtoMock.TipoAtivo, bookDto.TipoAtivo);
-            Assert.AreEqual(ativoDtoMock.Nome, bookDto.Nome);
-            Assert.AreEqual(ativoDtoMock.Codigo, bookDto.Codigo);
+            Assert.AreEqual(ativoDtoMock.Id, ativoDto.Id);
+            Assert.AreEqual(ativoDtoMock.TipoAtivo, ativoDto.TipoAtivo);
+            Assert.AreEqual(ativoDtoMock.Nome, ativoDto.Nome);
+            Assert.AreEqual(ativoDtoMock.Codigo, ativoDto.Codigo);
         }
         #endregion
     }

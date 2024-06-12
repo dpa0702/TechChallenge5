@@ -42,7 +42,7 @@ namespace GestaoInvestimentosTests.Controller
         }
 
         [TestMethod]
-        public void GetAtivoById_ReturnsBad_WhenBookIsNull()
+        public void GetAtivoById_ReturnsBad_WhenAtivoIsNull()
         {
             // Act
             var result = ativoController?.Get(1) as BadRequestObjectResult;

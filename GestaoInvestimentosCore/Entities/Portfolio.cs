@@ -44,10 +44,10 @@ namespace GestaoInvestimentosCore.Entities
 
         public void ValidateEntity()
         {
-            AssertionValidations.AssertArgumentNullOrEmpty(Nome, "O nome não pode ser nulo nem vazio!");
+            AssertionValidations.AssertArgumentNullOrEmpty(Nome, "O Nome não pode ser nulo nem vazio!");
             AssertionValidations.AssertArgumentNullOrEmpty(Descricao, "A Descricao não pode ser nulo nem vazio!");
 
-            AssertionValidations.AssertArgumentLenght(Nome, 100, "O nome deve ter no máximo 100 caracteres!");
+            AssertionValidations.AssertArgumentLenght(Nome, 100, "O Nome deve ter no máximo 100 caracteres!");
             AssertionValidations.AssertArgumentLenght(Descricao, 100, "A Descricao deve ter no máximo 100 caracteres!");
         }        
     }

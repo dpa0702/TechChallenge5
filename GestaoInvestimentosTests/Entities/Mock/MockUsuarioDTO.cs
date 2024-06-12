@@ -7,23 +7,22 @@ using System.Threading.Tasks;
 
 namespace GestaoInvestimentosTests.Entities.Mock
 {
-    public class MockPortfolioDTO
+    public class MockUsuarioDTO
     {
         private readonly Faker _faker;
 
         public int Id { get; set; }
-        public int UsuarioId { get; set; }
         public string Nome { get; set; }
-        public string Descricao { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
 
-        public MockPortfolioDTO()
+        public MockUsuarioDTO()
         {
             _faker = new Faker();
             Id = 1;
-            UsuarioId = new Random().Next();
             Nome = _faker.Random.String2(100);
-            Descricao = _faker.Random.String2(50);
-
+            Email = _faker.Random.String2(100);
+            Senha = _faker.Random.String2(150);
         }
     }
 }
