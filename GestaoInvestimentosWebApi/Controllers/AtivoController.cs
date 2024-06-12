@@ -20,7 +20,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         /// <summary>
-        /// Obtem livro por id
+        /// Obtem ativo por id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

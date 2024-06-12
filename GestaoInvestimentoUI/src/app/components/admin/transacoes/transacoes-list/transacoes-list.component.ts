@@ -30,7 +30,7 @@ export class TransacoesListComponent implements OnInit {
   mensagem: string = '';
 
   portfolios = [
-    { id: 0, usuarioId: 0, nome: 'nome', descricao: 'descricao' }
+    { id: 0, usuarioId: 0, nome: 'Escolha uma opção', descricao: 'descricao' }
   ];
 
   ativos = [
@@ -66,18 +66,14 @@ export class TransacoesListComponent implements OnInit {
     getPortfolio(requestP)
       .subscribe({
         next: (dataP) => {
-
-          const modelP: PortfoliosModel[] = [];
-
           dataP.forEach(item => {
-            modelP.push({
+            this.portfolios.push({
               id: item.id,
               usuarioId: item.usuarioId,
               nome: item.nome,
               descricao: item.descricao,
             });
           });
-          this.portfolios = modelP;
         },
         error: (e) => {
           console.log(e.error.response);

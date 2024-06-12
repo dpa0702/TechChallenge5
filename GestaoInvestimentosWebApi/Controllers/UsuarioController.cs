@@ -106,8 +106,9 @@ namespace GestaoInvestimentosWebApi.Controllers
                     _logger.LogWarning("Usuário ou senha inválidos!");
                     return NotFound(new { message = "Usuário ou senha inválidos!" });
                 }
-                return Ok();
-                //return Ok(usuarioLogin);
+                //return Ok();
+                usuarioLogin.Senha = string.Empty;
+                return Ok(usuarioLogin);
             }
             catch (Exception ex)
             {

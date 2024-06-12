@@ -43,12 +43,12 @@ namespace GestaoInvestimentosInfrastructure.Data
 
         private void InsertData(ModelBuilder modelBuilder)
         {
+            //Senha padrão: 1q2w3e4r@#
             modelBuilder.Entity<Usuario>().HasData(
-                new Usuario() { Id = 1, Nome = "Demetrios Pandelis Arghirachis", Email = "rm352321@fiap.com.br", Senha = "1q2w3e4r@#" },
-                new Usuario() { Id = 2, Nome = "Erick Felipe Vieira da Silva", Email = "rm351017@fiap.com.br", Senha = "1q2w3e4r@#" },
-                new Usuario() { Id = 3, Nome = "MARINA SANT'ANA MIRANDA DE OLIVEIRA", Email = "rm352116@fiap.com.br", Senha = "1q2w3e4r@#" },
-                new Usuario() { Id = 4, Nome = "Pamela Suellen Souza Caffa", Email = "rm352127@fiap.com.br", Senha = "1q2w3e4r@#" }
-
+                new Usuario() { Id = 1, Nome = "Demetrios Pandelis Arghirachis", Email = "rm352321@fiap.com.br", Senha = "AEA45ZjxGEaVS/nMOv6iLh+yXq+nLo3RhngEN88IadBPn6GtcKREtLJVX0ezE4TBTw==" },
+                new Usuario() { Id = 2, Nome = "Erick Felipe Vieira da Silva", Email = "rm351017@fiap.com.br", Senha = "AL3kMTAV6y4Ty9M5yq6EmDqWfCAoPf0Anz2xqLuIzTD0PvpHGQYEingUa7Je5DoBiw==" },
+                new Usuario() { Id = 3, Nome = "MARINA SANT'ANA MIRANDA DE OLIVEIRA", Email = "rm352116@fiap.com.br", Senha = "AO/R/7ijuoYCcg6qrYpUjyUEbAjZlYmg/6Fh9WNxsFmcGpN20Aq4Ab4sNbpunAFLZg==" },
+                new Usuario() { Id = 4, Nome = "Pamela Suellen Souza Caffa", Email = "rm352127@fiap.com.br", Senha = "AO02lkhYnwlszcuSRTEpPO86qR6WESIaET7WEbCv2VghefI7F8/7xTt49CaNIYQhQg==" }
                 );
 
             modelBuilder.Entity<Ativo>().HasData(

@@ -1,7 +1,8 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Gerenciar Transações</mat-card-title>
-    <mat-card-subtitle>Pesquisa de Transações: <em>Preencha quantos campos preferir.</em></mat-card-subtitle><div class="grid-container">
+    <mat-card-subtitle>Pesquisa de Transações: <em>Preencha quantos campos preferir.</em></mat-card-subtitle>
+    <div class="grid-container">
       &nbsp;
     </div>
     <div class="grid-container">
@@ -24,28 +25,28 @@
 
         <mat-form-field class="grid-item">
           <mat-label>Portfólio</mat-label>
-          <mat-select placeholder="Portfólio:" formControlName="portfolioId" >
-              <mat-option *ngFor="let portfolio of portfolios" [value]="portfolio.id">
-                  {{ portfolio.nome }}
-              </mat-option>
+          <mat-select placeholder="Portfólio:" formControlName="portfolioId">
+            <mat-option *ngFor="let portfolio of portfolios" [value]="portfolio.id">
+              {{ portfolio.nome }}
+            </mat-option>
           </mat-select>
-      </mat-form-field>
+        </mat-form-field>
 
         <mat-form-field class="grid-item">
           <mat-label>Ativo</mat-label>
-            <mat-select placeholder="Ativo Id" formControlName="ativoId" >
-                <mat-option *ngFor="let ativo of ativos" [value]="ativo.id">
-                    {{ ativo.nome }}
-                </mat-option>
-            </mat-select>
+          <mat-select placeholder="Ativo Id" formControlName="ativoId">
+            <mat-option *ngFor="let ativo of ativos" [value]="ativo.id">
+              {{ ativo.nome }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field class="grid-item">
           <mat-label>Tipo Transação</mat-label>
           <mat-select placeholder="Tipo Transação" formControlName="tipoTransacao">
-              <mat-option value="">Escolha uma opção</mat-option>
-              <mat-option [value]="1">Compra</mat-option>
-              <mat-option [value]="2">Venda</mat-option>
+            <mat-option value="">Escolha uma opção</mat-option>
+            <mat-option [value]="1">Compra</mat-option>
+            <mat-option [value]="2">Venda</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -81,29 +82,31 @@
         <ng-container matColumnDef="portfolioId">
           <mat-header-cell *matHeaderCellDef><strong>Portfolio Id</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
-            <!-- {{ item.portfolioId }} -->
-            <p *ngIf="item.portfolioId === 1">Portfolio Demetrios</p>
+            {{ item.portfolioId }}
+            <!-- <p *ngIf="item.portfolioId === 1">Portfolio Demetrios</p>
             <p *ngIf="item.portfolioId === 2">Portfolio Erick</p>
             <p *ngIf="item.portfolioId === 3">Portfolio MARINA </p>
-            <p *ngIf="item.portfolioId === 4">Portfolio Pamela</p>
+            <p *ngIf="item.portfolioId === 4">Portfolio Pamela</p> -->
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="ativoId">
           <mat-header-cell *matHeaderCellDef><strong>Ativo Id</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
-            <!-- {{ item.ativoId }} -->
-            <p *ngIf="item.ativoId === 1">Nome Ativo Acao 001</p>
+            {{ item.ativoId }}
+            <!-- <p *ngIf="item.ativoId === 1">Nome Ativo Acao 001</p>
             <p *ngIf="item.ativoId === 2">Nome Ativo Titulo 001</p>
             <p *ngIf="item.ativoId === 3">Nome Ativo Criptomoeda 001</p>
-            <p *ngIf="item.ativoId === 4">Nome Ativo Titulo 002</p>
+            <p *ngIf="item.ativoId === 4">Nome Ativo Titulo 002</p> -->
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="tipoTransacao">
           <mat-header-cell *matHeaderCellDef><strong>Tipo Transação</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
-            {{ item.tipoTransacao }}
+            <!-- {{ item.tipoTransacao }} -->
+            <p *ngIf="item.tipoTransacao === 1">Compra</p>
+            <p *ngIf="item.tipoTransacao === 2">Venda</p>
           </mat-cell>
         </ng-container>
 

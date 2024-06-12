@@ -95,7 +95,10 @@ namespace GestaoInvestimentosInfrastructure.Services
 
                 PasswordVerificationResult passwordVerificationResult = new PasswordHasher().VerifyHashedPassword(usuario.Senha, loginUsuarioDTO.Senha);
 
-                return GenerateToken(loginUsuarioDTO);
+                if (passwordVerificationResult.Equals(PasswordVerificationResult.Success))
+                    return GenerateToken(loginUsuarioDTO);
+                else
+                    throw new Exception($"Senha Incorreta");
             }
             catch (Exception ex)
             {

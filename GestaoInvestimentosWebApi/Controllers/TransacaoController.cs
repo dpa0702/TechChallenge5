@@ -19,7 +19,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         /// <summary>
-        /// Obtem livro por id
+        /// Obtem transacao por id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
