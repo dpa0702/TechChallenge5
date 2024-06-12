@@ -50,7 +50,7 @@ namespace GestaoInvestimentosCore.Entities
             AssertionValidations.AssertArgumentNullOrEmpty(Codigo, "O Codigo não pode ser nulo nem vazio!");
 
             AssertionValidations.AssertArgumentLenght(Nome, 100, "O Nome deve ter no máximo 100 caracteres!");
-            AssertionValidations.AssertArgumentLenght(Codigo, 100, "O Codigo deve ter no máximo 100 caracteres!");
+            AssertionValidations.AssertArgumentLenght(Codigo, 50, "O Codigo deve ter no máximo 50 caracteres!");
 
         }
     }
