@@ -2,9 +2,11 @@
 using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosInfrastructure.Repositories;
 using GestaoInvestimentosInfrastructure.Services;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosWebApi
 {
+    [ExcludeFromCodeCoverage]
     public static class Register
     {
         public static IServiceCollection AddServices(this IServiceCollection services)

@@ -1,9 +1,11 @@
 ﻿using GestaoInvestimentosCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosInfrastructure.Configuration
 {
+    [ExcludeFromCodeCoverage]
     public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)

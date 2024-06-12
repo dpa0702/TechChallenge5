@@ -1,9 +1,11 @@
 ﻿using GestaoInvestimentosCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosInfrastructure.Configuration
 {
+    [ExcludeFromCodeCoverage]
     public class PortfolioConfiguration : IEntityTypeConfiguration<Portfolio>
     {
         public void Configure(EntityTypeBuilder<Portfolio> builder)

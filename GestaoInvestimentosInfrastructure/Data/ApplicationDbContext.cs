@@ -2,9 +2,11 @@
 using GestaoInvestimentosCore.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosInfrastructure.Data
 {
+    [ExcludeFromCodeCoverage]
     public class ApplicationDbContext : DbContext
     {
         private readonly IConfiguration _configuration;

@@ -1,9 +1,11 @@
 ﻿using GestaoInvestimentosCore.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosInfrastructure.Configuration
 {
+    [ExcludeFromCodeCoverage]
     public class TransacaoConfiguration : IEntityTypeConfiguration<Transacao>
     {
         public void Configure(EntityTypeBuilder<Transacao> builder)

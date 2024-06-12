@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Reflection;
+using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosWebApi
 {
+    [ExcludeFromCodeCoverage]
     public class Program
     {
         public static void Main(string[] args)
