@@ -100,14 +100,13 @@ namespace GestaoInvestimentosWebApi.Controllers
         {
             try
             {
-                var usuarioLogin = _usuarioService.Login(loginUsuarioDTO);
+                LoginUsuarioDTO usuarioLogin = _usuarioService.Login(loginUsuarioDTO);
                 if (usuarioLogin == null)
                 {
                     _logger.LogWarning("Usuário ou senha inválidos!");
                     return NotFound(new { message = "Usuário ou senha inválidos!" });
                 }
-                //return Ok();
-                usuarioLogin.Senha = string.Empty;
+
                 return Ok(usuarioLogin);
             }
             catch (Exception ex)

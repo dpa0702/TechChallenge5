@@ -14,11 +14,13 @@ namespace GestaoInvestimentosInfrastructure.Services
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly ITokenService _tokenService;
         private readonly RandomNumberGenerator _rng;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, ITokenService tokenService)
         {
             _usuarioRepository = usuarioRepository;
+            _tokenService = tokenService;
         }
 
         public void AddUsuarioAsync(CreateUsuarioDTO createUsuarioDTO)
@@ -90,13 +92,13 @@ namespace GestaoInvestimentosInfrastructure.Services
                 var usuario = _usuarioRepository.GetAllAsync(0, null, loginUsuarioDTO.Email, null).FirstOrDefault();
                 if(usuario == null)
                 {
-                    throw new Exception($"Erro no Login:");
+                    throw new Exception($"Usuário não encontrado");
                 }
 
                 PasswordVerificationResult passwordVerificationResult = new PasswordHasher().VerifyHashedPassword(usuario.Senha, loginUsuarioDTO.Senha);
 
                 if (passwordVerificationResult.Equals(PasswordVerificationResult.Success))
-                    return GenerateToken(loginUsuarioDTO);
+                    return _tokenService.GenerateToken(loginUsuarioDTO);
                 else
                     throw new Exception($"Senha Incorreta");
             }
@@ -106,25 +108,5 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public static LoginUsuarioDTO GenerateToken(LoginUsuarioDTO loginUsuarioDTO)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e");//(Settings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, loginUsuarioDTO.Email.ToString()),
-                    new Claim(ClaimTypes.Role, loginUsuarioDTO.Senha.ToString())
-                }),
-                Expires = DateTime.UtcNow.AddHours(2),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            loginUsuarioDTO.Token = tokenHandler.WriteToken(token);
-
-            return loginUsuarioDTO;
-        }
     }
 }

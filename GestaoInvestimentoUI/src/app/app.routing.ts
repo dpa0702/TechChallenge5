@@ -13,6 +13,7 @@ import { PortfolioCreateComponent } from './components/admin/portfolios/portfoli
 import { PortfolioEditComponent } from './components/admin/portfolios/portfolios-edit/portfolios-edit.component';
 import { TransacaoCreateComponent } from './components/admin/transacoes/transacoes-create/transacoes-create.component';
 import { TransacaoEditComponent } from './components/admin/transacoes/transacoes-edit/transacoes-edit.component';
+import { guardaGuard } from './components/auth/guard/guarda.guard';
 
 const routes: Routes = [
   {
@@ -26,50 +27,62 @@ const routes: Routes = [
   {
     path: 'ativos/consulta-de-ativos',
     component: AtivosListComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'portfolios/consulta-de-portfolios',
     component: PortfoliosListComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'transacoes/consulta-de-transacoes',
     component: TransacoesListComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'usuarios/consulta-de-usuarios',
     component: UsuariosListComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'ativos/ativos-create',
     component: AtivoCreateComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'ativos/ativos-edit/:id',
     component: AtivoEditComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'usuarios/usuarios-create',
     component: UsuariosCreateComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'usuarios/usuarios-edit/:id',
     component: UsuarioEditComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'portfolios/portfolios-create',
     component: PortfolioCreateComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'portfolios/portfolios-edit/:id',
     component: PortfolioEditComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'transacoes/transacoes-create',
     component: TransacaoCreateComponent,
+    canActivate: [guardaGuard]
   },
   {
     path: 'transacoes/transacoes-edit/:id',
     component: TransacaoEditComponent,
+    canActivate: [guardaGuard]
   },
 ];
 

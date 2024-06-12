@@ -22,13 +22,12 @@ import { PortfolioCreateComponent } from './components/admin/portfolios/portfoli
 import { PortfolioEditComponent } from './components/admin/portfolios/portfolios-edit/portfolios-edit.component';
 import { TransacaoCreateComponent } from './components/admin/transacoes/transacoes-create/transacoes-create.component';
 import { TransacaoEditComponent } from './components/admin/transacoes/transacoes-edit/transacoes-edit.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http'
 import { ToastrModule } from 'ngx-toastr';
-
 
 @NgModule({
   declarations: [
