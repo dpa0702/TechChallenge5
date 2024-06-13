@@ -12,6 +12,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GestaoInvestimentosCore.Enums;
+using GestaoInvestimentosTests.Entities.Mock;
+using GestaoInvestimentosCore.DTO.Portfolio;
+using GestaoInvestimentosCore.DTO.Transacao;
 
 namespace GestaoInvestimentosTests.Controller
 {
@@ -49,7 +52,7 @@ namespace GestaoInvestimentosTests.Controller
         }
 
         [TestMethod]
-        public void GetTransacaoById_ReturnsBad_WhenPortfolioIsNull()
+        public void GetTransacaoById_ReturnsBad_WhenTransacaoIsNull()
         {
             // Act
             var result = transacaoController?.Get(1) as BadRequestObjectResult;
@@ -81,13 +84,12 @@ namespace GestaoInvestimentosTests.Controller
         public void CreateTransacao_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
-            var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var transacao = autoFixture.Build<Transacao>().With(x => x.Id, id).Create();
-            _mockTransacaoService.Setup(service => service.GetTransacaoByIdAsync(id)).Returns(transacao);
+            var transacaoDtoMock = new MockTransacaoDTO();
+            var transacaoDto = new CreateTransacaoDTO { PortfolioId = transacaoDtoMock.PortfolioId, AtivoId = transacaoDtoMock.AtivoId, TipoTransacao = transacaoDtoMock.TipoTransacao, Preco = transacaoDtoMock.Preco, Quantidade = transacaoDtoMock.Quantidade, DataTransacao = transacaoDtoMock.DataTransacao };
+            _mockTransacaoService.Setup(service => service.AddTransacaoAsync(transacaoDto));
 
             // Act
-            var result = transacaoController?.Get(id) as OkObjectResult;
+            var result = transacaoController?.Create(transacaoDto) as OkObjectResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -95,15 +97,31 @@ namespace GestaoInvestimentosTests.Controller
         }
         #endregion Create
 
+        #region Update
+        [TestMethod]
+        public void UpdateTransacao_ReturnsOk()
+        {
+            // Arrange
+            var transacaoDtoMock = new MockTransacaoDTO();
+            var transacaoDto = new UpdateTransacaoDTO { PortfolioId = transacaoDtoMock.PortfolioId, AtivoId = transacaoDtoMock.AtivoId, TipoTransacao = transacaoDtoMock.TipoTransacao, Preco = transacaoDtoMock.Preco, Quantidade = transacaoDtoMock.Quantidade, DataTransacao = transacaoDtoMock.DataTransacao };
+            _mockTransacaoService.Setup(service => service.UpdateTransacaoAsync(transacaoDto));
+
+            // Act
+            var result = transacaoController?.Update(transacaoDto) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Update
+
         #region Delete
         [TestMethod]
         public void DeleteTransacaoo_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
             var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var transacao = autoFixture.Build<Transacao>().With(x => x.Id, id).Create();
-            _mockTransacaoService.Setup(service => service.GetTransacaoByIdAsync(id)).Returns(transacao);
+            _mockTransacaoService.Setup(service => service.DeleteTransacaoAsync(id));
 
             // Act
             var result = transacaoController?.Delete(id) as OkObjectResult;

@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using GestaoInvestimentosCore.Enums;
+using GestaoInvestimentosCore.DTO.Ativo;
+using GestaoInvestimentosTests.Entities.Mock;
+using GestaoInvestimentosCore.DTO.Portfolio;
 
 namespace GestaoInvestimentosTests.Controller
 {
@@ -76,13 +79,12 @@ namespace GestaoInvestimentosTests.Controller
         public void CreatePortfolio_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
-            var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var portfolio = autoFixture.Build<Portfolio>().With(x => x.Id, id).Create();
-            _mockPortfolioService.Setup(service => service.GetPortfolioByIdAsync(id)).Returns(portfolio);
+            var portfolioDtoMock = new MockPortfolioDTO();
+            var portfolioDto = new CreatePortfolioDTO { UsuarioId = portfolioDtoMock.UsuarioId, Nome = portfolioDtoMock.Nome, Descricao = portfolioDtoMock.Descricao };
+            _mockPortfolioService.Setup(service => service.AddPortfolioAsync(portfolioDto));
 
             // Act
-            var result = portfolioController?.Get(id) as OkObjectResult;
+            var result = portfolioController?.Create(portfolioDto) as OkObjectResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -90,15 +92,31 @@ namespace GestaoInvestimentosTests.Controller
         }
         #endregion Create
 
+        #region Update
+        [TestMethod]
+        public void UpdatePortfolio_ReturnsOk()
+        {
+            // Arrange
+            var portfolioDtoMock = new MockPortfolioDTO();
+            var portfolioDto = new UpdatePortfolioDTO { Id = portfolioDtoMock.Id, UsuarioId = portfolioDtoMock.UsuarioId, Nome = portfolioDtoMock.Nome, Descricao = portfolioDtoMock.Descricao };
+            _mockPortfolioService.Setup(service => service.UpdatePortfolioAsync(portfolioDto));
+
+            // Act
+            var result = portfolioController?.Update(portfolioDto) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Update
+
         #region Delete
         [TestMethod]
         public void DeletePortfolio_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
             var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var portfolio = autoFixture.Build<Portfolio>().With(x => x.Id, id).Create();
-            _mockPortfolioService.Setup(service => service.GetPortfolioByIdAsync(id)).Returns(portfolio);
+            _mockPortfolioService.Setup(service => service.DeletePortfolioAsync(id));
 
             // Act
             var result = portfolioController?.Delete(id) as OkObjectResult;

@@ -1,8 +1,10 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
+using GestaoInvestimentosCore.DTO.Ativo;
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosCore.Interfaces.Services;
+using GestaoInvestimentosTests.Entities.Mock;
 using GestaoInvestimentosWebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -44,7 +46,7 @@ namespace GestaoInvestimentosTests.Controller
         }
 
         [TestMethod]
-        public void GetAtivoById_ReturnsBad_WhenAtivoIsNull()
+        public void GetAtivoById_ReturnsBad_WhenPortfolioIsNull()
         {
             // Act
             var result = ativoController?.Get(1) as BadRequestObjectResult;
@@ -76,13 +78,12 @@ namespace GestaoInvestimentosTests.Controller
         public void CreateAtivo_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
-            var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var ativo = autoFixture.Build<Ativo>().With(x => x.Id, id).Create();
-            _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
+            var ativoDtoMock = new MockAtivoDTO();
+            var ativoDto = new CreateAtivoDTO { Nome = ativoDtoMock.Nome, TipoAtivo = ativoDtoMock.TipoAtivo, Codigo = ativoDtoMock.Codigo };
+            _mockAtivoService.Setup(service => service.TipoAtivoIsValid(It.IsAny<int>())).Returns(true);
 
             // Act
-            var result = ativoController?.Get(id) as OkObjectResult;
+            var result = ativoController?.Create(ativoDto) as OkObjectResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -90,15 +91,31 @@ namespace GestaoInvestimentosTests.Controller
         }
         #endregion Create
 
+        #region Update
+        [TestMethod]
+        public void UpdateAtivo_ReturnsOk()
+        {
+            // Arrange
+            var ativoDtoMock = new MockAtivoDTO();
+            var ativoDto = new UpdateAtivoDTO { Id = ativoDtoMock.Id, Nome = ativoDtoMock.Nome, TipoAtivo = ativoDtoMock.TipoAtivo, Codigo = ativoDtoMock.Codigo };
+            _mockAtivoService.Setup(service => service.TipoAtivoIsValid(It.IsAny<int>())).Returns(true);
+
+            // Act
+            var result = ativoController?.Update(ativoDto) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Update
+
         #region Delete
         [TestMethod]
         public void DeleteAtivo_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
             var id = 1;
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var ativo = autoFixture.Build<Ativo>().With(x => x.Id, id).Create();
-            _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
+            _mockAtivoService.Setup(service => service.DeleteAtivoAsync(id));
 
             // Act
             var result = ativoController?.Delete(id) as OkObjectResult;
