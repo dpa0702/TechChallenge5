@@ -38,7 +38,7 @@ export class NewComponent implements OnInit {
       0,
       this.newForm.value.nome as string,
       this.newForm.value.email as string,
-      'SenhaPredefinida',
+      '1q2w3e4r@#',
     );
 
     //realizando o cadastro

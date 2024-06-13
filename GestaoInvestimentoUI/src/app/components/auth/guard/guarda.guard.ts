@@ -7,9 +7,10 @@ export const guardaGuard: CanActivateFn = (route, state) => {
     if (oauthService.hasAccess() ) {
       return true;
     }
-    oauthService.redirecionaLogin();
-    return false;
-
+    else{
+      oauthService.redirecionaLogin();
+      return false;
+    }
 };
 
 

@@ -7,14 +7,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-
   constructor(
     private spinnerService: NgxSpinnerService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
   }
 
-  
+  Logoff() {
+    localStorage.removeItem('token');
+  }
+
 }

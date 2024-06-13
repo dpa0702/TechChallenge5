@@ -54,7 +54,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         {
             try
             {
-                if (_ativoService.TipoAtivoIsValid(tipoAtivo))
+                if (tipoAtivo.GetHashCode() is 1 or 2 or 3)
                 {
                     return Ok(_ativoService.GetAllAtivosAsync(id, tipoAtivo, nome, codigo));
                 }

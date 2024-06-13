@@ -1,6 +1,7 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosWebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,7 @@ namespace GestaoInvestimentosTests.Controller
             ativoController = new AtivoController(_mockAtivoService.Object, _logger);
         }
 
+        #region Get
         [TestMethod]
         public void GetAtivoById_ReturnsOk_WhenIdIsValid()
         {
@@ -67,5 +69,37 @@ namespace GestaoInvestimentosTests.Controller
             Assert.AreEqual(400, result.StatusCode);
             Assert.AreEqual($"Service exception", result.Value);
         }
+        #endregion Get
+
+        #region GetAll
+        [TestMethod]
+        public void GetAllAtivo_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, id).Create();
+            _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
+
+            // Act
+            var result = ativoController?.GetAll(id, TipoAtivo.Titulo.GetHashCode(), null, null) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void GetAllAtivo_ReturnsBad_WhenAtivoIsNull()
+        {
+
+            // Act
+            var result = ativoController?.GetAll(null, null, null, null) as BadRequestObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(400, result.StatusCode);
+        }
+        #endregion GetAll
     }
 }
