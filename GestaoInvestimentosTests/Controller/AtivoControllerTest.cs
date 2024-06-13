@@ -71,35 +71,42 @@ namespace GestaoInvestimentosTests.Controller
         }
         #endregion Get
 
-        #region GetAll
+        #region Create
         [TestMethod]
-        public void GetAllAtivo_ReturnsOk_WhenIdIsValid()
+        public void CreateAtivo_ReturnsOk_WhenIdIsValid()
         {
             // Arrange
             var id = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, id).Create();
+            var ativo = autoFixture.Build<Ativo>().With(x => x.Id, id).Create();
             _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
 
             // Act
-            var result = ativoController?.GetAll(id, TipoAtivo.Titulo.GetHashCode(), null, null) as OkObjectResult;
+            var result = ativoController?.Get(id) as OkObjectResult;
 
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual(200, result.StatusCode);
         }
+        #endregion Create
 
+        #region Delete
         [TestMethod]
-        public void GetAllAtivo_ReturnsBad_WhenAtivoIsNull()
+        public void DeleteAtivo_ReturnsOk_WhenIdIsValid()
         {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var ativo = autoFixture.Build<Ativo>().With(x => x.Id, id).Create();
+            _mockAtivoService.Setup(service => service.GetAtivoByIdAsync(id)).Returns(ativo);
 
             // Act
-            var result = ativoController?.GetAll(null, null, null, null) as BadRequestObjectResult;
+            var result = ativoController?.Delete(id) as OkObjectResult;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(400, result.StatusCode);
+            Assert.AreEqual(200, result.StatusCode);
         }
-        #endregion GetAll
+        #endregion Delete
     }
 }

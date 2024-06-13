@@ -40,7 +40,7 @@ namespace GestaoInvestimentosInfrastructure.Services
             }
         }
 
-        public IEnumerable<Transacao> GetAlTransacoesAsync(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string dataTransacao)
+        public IEnumerable<Transacao> GetAllTransacoesAsync(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string dataTransacao)
         {
             try
             {

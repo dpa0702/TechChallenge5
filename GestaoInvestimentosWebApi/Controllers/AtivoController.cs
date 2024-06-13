@@ -20,7 +20,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         /// <summary>
-        /// Obtem ativo por id
+        /// Obtém ativo por id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -49,20 +49,22 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtém todos ativos
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpGet]
         public IActionResult GetAll(int? id, int? tipoAtivo, string? nome, string? codigo)
         {
             try
             {
-                if (tipoAtivo.GetHashCode() is 1 or 2 or 3)
-                {
-                    return Ok(_ativoService.GetAllAtivosAsync(id, tipoAtivo, nome, codigo));
-                }
-                else
-                {
-                    _logger.LogWarning("O TipoAtivo é inválido!");
-                    return BadRequest("O TipoAtivo é inválido!");
-                }
+                return Ok(_ativoService.GetAllAtivosAsync(id, tipoAtivo, nome, codigo));
             }
             catch (Exception ex)
             {
@@ -70,6 +72,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cria um ativo
+        /// </summary>
+        /// <param name="createAtivoDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPost]
         public IActionResult Create(CreateAtivoDTO createAtivoDTO)
         {
@@ -85,6 +98,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um ativo
+        /// </summary>
+        /// <param name="updateAtivoDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPut]
         public IActionResult Update(UpdateAtivoDTO updateAtivoDTO)
         {
@@ -99,6 +123,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui um ativo
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

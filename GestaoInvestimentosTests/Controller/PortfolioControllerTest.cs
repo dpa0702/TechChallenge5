@@ -6,6 +6,7 @@ using GestaoInvestimentosWebApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
+using GestaoInvestimentosCore.Enums;
 
 namespace GestaoInvestimentosTests.Controller
 {
@@ -24,6 +25,7 @@ namespace GestaoInvestimentosTests.Controller
             portfolioController = new PortfolioController(_mockPortfolioService.Object, _logger);
         }
 
+        #region Get
         [TestMethod]
         public void GetPortfolioById_ReturnsOk_WhenIdIsValid()
         {
@@ -67,5 +69,44 @@ namespace GestaoInvestimentosTests.Controller
             Assert.AreEqual(400, result.StatusCode);
             Assert.AreEqual($"Service exception", result.Value);
         }
+        #endregion Get
+
+        #region Create
+        [TestMethod]
+        public void CreatePortfolio_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var portfolio = autoFixture.Build<Portfolio>().With(x => x.Id, id).Create();
+            _mockPortfolioService.Setup(service => service.GetPortfolioByIdAsync(id)).Returns(portfolio);
+
+            // Act
+            var result = portfolioController?.Get(id) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Create
+
+        #region Delete
+        [TestMethod]
+        public void DeletePortfolio_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var portfolio = autoFixture.Build<Portfolio>().With(x => x.Id, id).Create();
+            _mockPortfolioService.Setup(service => service.GetPortfolioByIdAsync(id)).Returns(portfolio);
+
+            // Act
+            var result = portfolioController?.Delete(id) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Delete
     }
 }

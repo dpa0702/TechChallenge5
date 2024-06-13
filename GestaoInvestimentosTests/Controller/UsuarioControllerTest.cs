@@ -29,6 +29,7 @@ namespace GestaoInvestimentosTests.Controller
             usuarioController = new UsuarioController(_mockUsuarioService.Object, _logger);
         }
 
+        #region Get
         [TestMethod]
         public void GeUsuarioById_ReturnsOk_WhenIdIsValid()
         {
@@ -72,6 +73,44 @@ namespace GestaoInvestimentosTests.Controller
             Assert.AreEqual(400, result.StatusCode);
             Assert.AreEqual($"Service exception", result.Value);
         }
+        #endregion Get
 
+        #region Create
+        [TestMethod]
+        public void CreateUsuario_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var usuario = autoFixture.Build<Usuario>().With(x => x.Id, id).Create();
+            _mockUsuarioService.Setup(service => service.GetUsuarioByIdAsync(id)).Returns(usuario);
+
+            // Act
+            var result = usuarioController?.Get(id) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Create
+
+        #region Delete
+        [TestMethod]
+        public void DeleteUsuario_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var usuario = autoFixture.Build<Usuario>().With(x => x.Id, id).Create();
+            _mockUsuarioService.Setup(service => service.GetUsuarioByIdAsync(id)).Returns(usuario);
+
+            // Act
+            var result = usuarioController?.Delete(id) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Delete
     }
 }

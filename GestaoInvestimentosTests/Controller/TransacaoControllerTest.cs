@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GestaoInvestimentosCore.Enums;
 
 namespace GestaoInvestimentosTests.Controller
 {
@@ -29,6 +30,7 @@ namespace GestaoInvestimentosTests.Controller
             transacaoController = new TransacaoController(_mockTransacaoService.Object, _logger);
         }
 
+        #region Get
         [TestMethod]
         public void GetTransacaoById_ReturnsOk_WhenIdIsValid()
         {
@@ -72,5 +74,45 @@ namespace GestaoInvestimentosTests.Controller
             Assert.AreEqual(400, result.StatusCode);
             Assert.AreEqual($"Service exception", result.Value);
         }
+        #endregion Get
+
+        #region Create
+        [TestMethod]
+        public void CreateTransacao_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var transacao = autoFixture.Build<Transacao>().With(x => x.Id, id).Create();
+            _mockTransacaoService.Setup(service => service.GetTransacaoByIdAsync(id)).Returns(transacao);
+
+            // Act
+            var result = transacaoController?.Get(id) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Create
+
+        #region Delete
+        [TestMethod]
+        public void DeleteTransacaoo_ReturnsOk_WhenIdIsValid()
+        {
+            // Arrange
+            var id = 1;
+            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
+            var transacao = autoFixture.Build<Transacao>().With(x => x.Id, id).Create();
+            _mockTransacaoService.Setup(service => service.GetTransacaoByIdAsync(id)).Returns(transacao);
+
+            // Act
+            var result = transacaoController?.Delete(id) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        #endregion Delete
+
     }
 }

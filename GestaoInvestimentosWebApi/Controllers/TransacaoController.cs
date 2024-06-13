@@ -19,7 +19,7 @@ namespace GestaoInvestimentosWebApi.Controllers
         }
 
         /// <summary>
-        /// Obtem transacao por id
+        /// Obtém transação por id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -49,12 +49,22 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtém todas transações
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpGet]
         public IActionResult GetAll(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string? dataTransacao)
         {
             try
             {
-                return Ok(_transacaoService.GetAlTransacoesAsync(id, portfolioId, ativoId, tipoTransacao, quantidade, preco, dataTransacao));
+                return Ok(_transacaoService.GetAllTransacoesAsync(id, portfolioId, ativoId, tipoTransacao, quantidade, preco, dataTransacao));
             }
             catch (Exception ex)
             {
@@ -62,6 +72,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cria uma Transação
+        /// </summary>
+        /// <param name="createTransacaoDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPost]
         public IActionResult Create(CreateTransacaoDTO createTransacaoDTO)
         {
@@ -77,6 +98,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza uma Transação
+        /// </summary>
+        /// <param name="updateTransacaoDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPut]
         public IActionResult Update(UpdateTransacaoDTO updateTransacaoDTO)
         {
@@ -91,6 +123,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui uma Transação
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

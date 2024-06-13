@@ -18,6 +18,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Obtém portfólio por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -38,6 +49,16 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtém todos portfólios
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpGet]
         public IActionResult GetAll(int? id, int? usuarioId, string? nome, string? descricao)
         {
@@ -51,6 +72,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cria um Portfólio
+        /// </summary>
+        /// <param name="createPortfolioDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPost]
         public IActionResult Create(CreatePortfolioDTO createPortfolioDTO)
         {
@@ -66,6 +98,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um Portfólio
+        /// </summary>
+        /// <param name="updatePortfolioDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPut]
         public IActionResult Update(UpdatePortfolioDTO updatePortfolioDTO)
         {
@@ -80,6 +123,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui um Portfólio
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

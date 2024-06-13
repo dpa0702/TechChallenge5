@@ -18,6 +18,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Obtém usuário por id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -38,6 +49,16 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Obtém todos usuários
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpGet]
         public IActionResult GetAll(int? id, string? nome, string? email, string? senha)
         {
@@ -51,6 +72,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Cria um Usuário
+        /// </summary>
+        /// <param name="createUsuarioDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPost]
         public IActionResult Create(CreateUsuarioDTO createUsuarioDTO)
         {
@@ -66,6 +98,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza um Usuário
+        /// </summary>
+        /// <param name="updateUsuarioDTO"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpPut]
         public IActionResult Update(UpdateUsuarioDTO updateUsuarioDTO)
         {
@@ -80,6 +123,17 @@ namespace GestaoInvestimentosWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Exclui um Usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo:
+        /// 
+        /// Enviar Id para requisição
+        /// </remarks>
+        /// <response code="200">Retorna Sucesso</response>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
