@@ -4,7 +4,7 @@ using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
 
-namespace GestaoInvestimentosInfrastructure.Services
+namespace GestaoInvestimentosCore.Services
 {
     public class AtivoService : IAtivoService
     {

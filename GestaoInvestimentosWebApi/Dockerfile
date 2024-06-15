@@ -3,7 +3,7 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
-
+EXPOSE 8080
 #ENV DB_CONNECTION_STRING="Server=localhost,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;"
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build

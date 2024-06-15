@@ -137,7 +137,8 @@ export class AtivosListComponent implements OnInit {
     .subscribe({
       next: () => {
         // this.mensagem = `${id}`;
-        window.location.reload()
+        // window.location.reload();
+        this._router.navigate(['home/']);
       },
       error: (e) => {
         this.mensagem = `Erro: ${e.response.data}`;

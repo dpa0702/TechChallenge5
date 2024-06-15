@@ -3,7 +3,7 @@ using AutoFixture;
 using Bogus;
 using Moq;
 using GestaoInvestimentosCore.Interfaces.Repository;
-using GestaoInvestimentosInfrastructure.Services;
+using GestaoInvestimentosCore.Services;
 using GestaoInvestimentosCore.Entities;
 
 namespace GestaoInvestimentosTests.Services

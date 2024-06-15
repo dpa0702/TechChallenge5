@@ -5,7 +5,7 @@ using GestaoInvestimentosCore.Interfaces.Services;
 using Microsoft.AspNet.Identity;
 using System.Security.Cryptography;
 
-namespace GestaoInvestimentosInfrastructure.Services
+namespace GestaoInvestimentosCore.Services
 {
     public class UsuarioService : IUsuarioService
     {

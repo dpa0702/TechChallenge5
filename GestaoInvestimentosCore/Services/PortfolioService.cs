@@ -2,9 +2,8 @@
 using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
-using GestaoInvestimentosInfrastructure.Repositories;
 
-namespace GestaoInvestimentosInfrastructure.Services
+namespace GestaoInvestimentosCore.Services
 {
     public class PortfolioService : IPortfolioService
     {

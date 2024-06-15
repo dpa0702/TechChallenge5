@@ -1,7 +1,7 @@
 ﻿using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
 using GestaoInvestimentosInfrastructure.Repositories;
-using GestaoInvestimentosInfrastructure.Services;
+using GestaoInvestimentosCore.Services;
 using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosWebApi
