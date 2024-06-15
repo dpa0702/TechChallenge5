@@ -3,13 +3,17 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 9090
+EXPOSE 9091
+
+#ENV DB_CONNECTION_STRING="Server=localhost,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;"
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["GestaoInvestimentosWebApi/GestaoInvestimentosWebApi.csproj", "GestaoInvestimentosWebApi/"]
+COPY ["GestaoInvestimentosCore/GestaoInvestimentosCore.csproj", "GestaoInvestimentosCore/"]
+COPY ["GestaoInvestimentosInfrastructure/GestaoInvestimentosInfrastructure.csproj", "GestaoInvestimentosInfrastructure/"]
 RUN dotnet restore "./GestaoInvestimentosWebApi/GestaoInvestimentosWebApi.csproj"
 COPY . .
 WORKDIR "/src/GestaoInvestimentosWebApi"

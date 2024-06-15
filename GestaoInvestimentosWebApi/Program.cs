@@ -59,7 +59,9 @@ namespace GestaoInvestimentosWebApi
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                     policy =>
                                     {
-                                        policy.WithOrigins("http://localhost:4200")
+                                        policy
+                                            .WithOrigins("*")
+                                            //.WithOrigins("http://localhost:4200")
                                             .AllowAnyHeader()
                                             .AllowAnyMethod();
                                     });
@@ -68,13 +70,13 @@ namespace GestaoInvestimentosWebApi
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
+            //if (app.Environment.IsDevelopment())
+            //{
                 app.UseSwagger();
                 app.UseSwaggerUI();
                 app.UseDeveloperExceptionPage();
                 app.UseCors(MyAllowSpecificOrigins);
-            }
+            //}
 
             app.UseReDoc(c =>
             {

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoInvestimentosInfrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240611200613_Versao1")]
-    partial class Versao1
+    [Migration("20240613235347_VersaoInicial")]
+    partial class VersaoInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -176,7 +176,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 1,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-11 17:06:12.8595737",
+                            DataTransacao = "2024-06-13 20:53:46.9985335",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -186,7 +186,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 2,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-11 17:06:12.8595753",
+                            DataTransacao = "2024-06-13 20:53:46.9985348",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -196,7 +196,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 3,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-11 17:06:12.8595755",
+                            DataTransacao = "2024-06-13 20:53:46.998535",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -206,7 +206,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 4,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-11 17:06:12.8595757",
+                            DataTransacao = "2024-06-13 20:53:46.9985352",
                             PortfolioId = 1,
                             Preco = "150",
                             Quantidade = "10",
@@ -216,7 +216,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 5,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-11 17:06:12.859576",
+                            DataTransacao = "2024-06-13 20:53:46.9985354",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -226,7 +226,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 6,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-11 17:06:12.8595762",
+                            DataTransacao = "2024-06-13 20:53:46.9985356",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -236,7 +236,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 7,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-11 17:06:12.8595764",
+                            DataTransacao = "2024-06-13 20:53:46.9985357",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -246,7 +246,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 8,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-11 17:06:12.8595766",
+                            DataTransacao = "2024-06-13 20:53:46.9985359",
                             PortfolioId = 2,
                             Preco = "150",
                             Quantidade = "10",
@@ -256,7 +256,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 9,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-11 17:06:12.859577",
+                            DataTransacao = "2024-06-13 20:53:46.9985361",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -266,7 +266,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 10,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-11 17:06:12.8595772",
+                            DataTransacao = "2024-06-13 20:53:46.9985363",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -276,7 +276,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 11,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-11 17:06:12.8595775",
+                            DataTransacao = "2024-06-13 20:53:46.9985364",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -286,7 +286,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 12,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-11 17:06:12.8595777",
+                            DataTransacao = "2024-06-13 20:53:46.9985366",
                             PortfolioId = 3,
                             Preco = "150",
                             Quantidade = "10",
@@ -296,7 +296,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 13,
                             AtivoId = 1,
-                            DataTransacao = "2024-06-11 17:06:12.8595778",
+                            DataTransacao = "2024-06-13 20:53:46.9985368",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -306,7 +306,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 14,
                             AtivoId = 2,
-                            DataTransacao = "2024-06-11 17:06:12.859578",
+                            DataTransacao = "2024-06-13 20:53:46.998537",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -316,7 +316,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 15,
                             AtivoId = 3,
-                            DataTransacao = "2024-06-11 17:06:12.8595782",
+                            DataTransacao = "2024-06-13 20:53:46.9985372",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -326,7 +326,7 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                         {
                             Id = 16,
                             AtivoId = 4,
-                            DataTransacao = "2024-06-11 17:06:12.8595784",
+                            DataTransacao = "2024-06-13 20:53:46.9985374",
                             PortfolioId = 4,
                             Preco = "150",
                             Quantidade = "10",
@@ -365,28 +365,28 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                             Id = 1,
                             Email = "rm352321@fiap.com.br",
                             Nome = "Demetrios Pandelis Arghirachis",
-                            Senha = "1q2w3e4r@#"
+                            Senha = "AEA45ZjxGEaVS/nMOv6iLh+yXq+nLo3RhngEN88IadBPn6GtcKREtLJVX0ezE4TBTw=="
                         },
                         new
                         {
                             Id = 2,
                             Email = "rm351017@fiap.com.br",
                             Nome = "Erick Felipe Vieira da Silva",
-                            Senha = "1q2w3e4r@#"
+                            Senha = "AL3kMTAV6y4Ty9M5yq6EmDqWfCAoPf0Anz2xqLuIzTD0PvpHGQYEingUa7Je5DoBiw=="
                         },
                         new
                         {
                             Id = 3,
                             Email = "rm352116@fiap.com.br",
                             Nome = "MARINA SANT'ANA MIRANDA DE OLIVEIRA",
-                            Senha = "1q2w3e4r@#"
+                            Senha = "AO/R/7ijuoYCcg6qrYpUjyUEbAjZlYmg/6Fh9WNxsFmcGpN20Aq4Ab4sNbpunAFLZg=="
                         },
                         new
                         {
                             Id = 4,
                             Email = "rm352127@fiap.com.br",
                             Nome = "Pamela Suellen Souza Caffa",
-                            Senha = "1q2w3e4r@#"
+                            Senha = "AO02lkhYnwlszcuSRTEpPO86qR6WESIaET7WEbCv2VghefI7F8/7xTt49CaNIYQhQg=="
                         });
                 });
 

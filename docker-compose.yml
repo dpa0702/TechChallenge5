@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  gestaoinvestimentosui:
+    image: gestao-de-investimentos-app
+    build:
+     context: .
+     dockerfile: GestaoInvestimentoUI/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - gestaoinvestimentoswebapi
+      - mssql-server
+
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "1q2w3e4r@#"
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - C:\dados\volumes\sqlserver:/var/opt/mssql/data
+
+  gestaoinvestimentoswebapi:
+    container_name: GestaoInvestimentosApi
+    image: ${DOCKER_REGISTRY-}gestaoinvestimentoswebapi
+    build:
+      context: .
+      dockerfile: GestaoInvestimentosWebApi/Dockerfile
+    # ports:
+    #   - "5000:9090"
+    depends_on:
+      - mssql-server
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=localhost,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;"

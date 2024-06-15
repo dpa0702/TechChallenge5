@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
@@ -7,9 +6,8 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace GestaoInvestimentosInfrastructure.Migrations
 {
-    [ExcludeFromCodeCoverage]
     /// <inheritdoc />
-    public partial class Versao1 : Migration
+    public partial class VersaoInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -111,10 +109,10 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "Email", "Nome", "Senha" },
                 values: new object[,]
                 {
-                    { 1, "rm352321@fiap.com.br", "Demetrios Pandelis Arghirachis", "1q2w3e4r@#" },
-                    { 2, "rm351017@fiap.com.br", "Erick Felipe Vieira da Silva", "1q2w3e4r@#" },
-                    { 3, "rm352116@fiap.com.br", "MARINA SANT'ANA MIRANDA DE OLIVEIRA", "1q2w3e4r@#" },
-                    { 4, "rm352127@fiap.com.br", "Pamela Suellen Souza Caffa", "1q2w3e4r@#" }
+                    { 1, "rm352321@fiap.com.br", "Demetrios Pandelis Arghirachis", "AEA45ZjxGEaVS/nMOv6iLh+yXq+nLo3RhngEN88IadBPn6GtcKREtLJVX0ezE4TBTw==" },
+                    { 2, "rm351017@fiap.com.br", "Erick Felipe Vieira da Silva", "AL3kMTAV6y4Ty9M5yq6EmDqWfCAoPf0Anz2xqLuIzTD0PvpHGQYEingUa7Je5DoBiw==" },
+                    { 3, "rm352116@fiap.com.br", "MARINA SANT'ANA MIRANDA DE OLIVEIRA", "AO/R/7ijuoYCcg6qrYpUjyUEbAjZlYmg/6Fh9WNxsFmcGpN20Aq4Ab4sNbpunAFLZg==" },
+                    { 4, "rm352127@fiap.com.br", "Pamela Suellen Souza Caffa", "AO02lkhYnwlszcuSRTEpPO86qR6WESIaET7WEbCv2VghefI7F8/7xTt49CaNIYQhQg==" }
                 });
 
             migrationBuilder.InsertData(
@@ -133,22 +131,22 @@ namespace GestaoInvestimentosInfrastructure.Migrations
                 columns: new[] { "Id", "AtivoId", "DataTransacao", "PortfolioId", "Preco", "Quantidade", "TipoTransacao" },
                 values: new object[,]
                 {
-                    { 1, 1, "2024-06-11 17:06:12.8595737", 1, "150", "10", 1 },
-                    { 2, 2, "2024-06-11 17:06:12.8595753", 1, "150", "10", 2 },
-                    { 3, 3, "2024-06-11 17:06:12.8595755", 1, "150", "10", 1 },
-                    { 4, 4, "2024-06-11 17:06:12.8595757", 1, "150", "10", 2 },
-                    { 5, 1, "2024-06-11 17:06:12.859576", 2, "150", "10", 1 },
-                    { 6, 2, "2024-06-11 17:06:12.8595762", 2, "150", "10", 2 },
-                    { 7, 3, "2024-06-11 17:06:12.8595764", 2, "150", "10", 1 },
-                    { 8, 4, "2024-06-11 17:06:12.8595766", 2, "150", "10", 2 },
-                    { 9, 1, "2024-06-11 17:06:12.859577", 3, "150", "10", 1 },
-                    { 10, 2, "2024-06-11 17:06:12.8595772", 3, "150", "10", 2 },
-                    { 11, 3, "2024-06-11 17:06:12.8595775", 3, "150", "10", 1 },
-                    { 12, 4, "2024-06-11 17:06:12.8595777", 3, "150", "10", 2 },
-                    { 13, 1, "2024-06-11 17:06:12.8595778", 4, "150", "10", 1 },
-                    { 14, 2, "2024-06-11 17:06:12.859578", 4, "150", "10", 2 },
-                    { 15, 3, "2024-06-11 17:06:12.8595782", 4, "150", "10", 1 },
-                    { 16, 4, "2024-06-11 17:06:12.8595784", 4, "150", "10", 2 }
+                    { 1, 1, "2024-06-13 20:53:46.9985335", 1, "150", "10", 1 },
+                    { 2, 2, "2024-06-13 20:53:46.9985348", 1, "150", "10", 2 },
+                    { 3, 3, "2024-06-13 20:53:46.998535", 1, "150", "10", 1 },
+                    { 4, 4, "2024-06-13 20:53:46.9985352", 1, "150", "10", 2 },
+                    { 5, 1, "2024-06-13 20:53:46.9985354", 2, "150", "10", 1 },
+                    { 6, 2, "2024-06-13 20:53:46.9985356", 2, "150", "10", 2 },
+                    { 7, 3, "2024-06-13 20:53:46.9985357", 2, "150", "10", 1 },
+                    { 8, 4, "2024-06-13 20:53:46.9985359", 2, "150", "10", 2 },
+                    { 9, 1, "2024-06-13 20:53:46.9985361", 3, "150", "10", 1 },
+                    { 10, 2, "2024-06-13 20:53:46.9985363", 3, "150", "10", 2 },
+                    { 11, 3, "2024-06-13 20:53:46.9985364", 3, "150", "10", 1 },
+                    { 12, 4, "2024-06-13 20:53:46.9985366", 3, "150", "10", 2 },
+                    { 13, 1, "2024-06-13 20:53:46.9985368", 4, "150", "10", 1 },
+                    { 14, 2, "2024-06-13 20:53:46.998537", 4, "150", "10", 2 },
+                    { 15, 3, "2024-06-13 20:53:46.9985372", 4, "150", "10", 1 },
+                    { 16, 4, "2024-06-13 20:53:46.9985374", 4, "150", "10", 2 }
                 });
 
             migrationBuilder.CreateIndex(
