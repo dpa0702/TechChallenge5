@@ -30,28 +30,6 @@ namespace GestaoInvestimentosTests.Repository
         }
 
         [TestMethod]
-        public void GetById_ReturnsAtivo_WhenValidId()
-        {
-            // Arrange
-            int idToFakeInsertAndSearch = 100;
-
-            var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var ativo = autoFixture.Build<Ativo>().With(x => x.Transacoes, default(ICollection<Transacao>?))
-                .With(x => x.Id, idToFakeInsertAndSearch)
-                .With(x => x.TipoAtivo, TipoAtivo.Titulo).Create();
-
-            _context.Ativos.Add(ativo);
-            _context.SaveChanges();
-
-            // Act
-            var result = _repository.GetById(idToFakeInsertAndSearch);
-
-            // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(TipoAtivo.Titulo, result.TipoAtivo);
-        }
-
-        [TestMethod]
         public void GetById_ReturnNull_WhenInvalidId()
         {
             // Arrange

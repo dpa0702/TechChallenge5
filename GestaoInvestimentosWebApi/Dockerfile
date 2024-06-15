@@ -3,8 +3,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
 WORKDIR /app
-EXPOSE 9090
-EXPOSE 9091
 
 #ENV DB_CONNECTION_STRING="Server=localhost,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;"
 

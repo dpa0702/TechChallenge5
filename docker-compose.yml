@@ -29,8 +29,8 @@ services:
     build:
       context: .
       dockerfile: GestaoInvestimentosWebApi/Dockerfile
-    # ports:
-    #   - "5000:9090"
+    ports:
+      - "50301:8080"
     depends_on:
       - mssql-server
     environment:
