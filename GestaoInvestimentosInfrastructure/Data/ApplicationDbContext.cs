@@ -29,13 +29,13 @@ namespace GestaoInvestimentosInfrastructure.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=host.docker.internal,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=host.docker.internal,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;");
             //optionsBuilder.UseSqlServer("Server=DESKTOP-LP07H3G;Database=Investimentos;Trusted_Connection=true;TrustServerCertificate=true;");
             //optionsBuilder.UseInMemoryDatabase("TestDatabaseInMemory");
-            if (_configuration != null)
-                optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-            else
-                optionsBuilder.UseInMemoryDatabase("TestDatabaseInMemory");
+            //if (_configuration != null)
+            //    optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
+            //else
+            //    optionsBuilder.UseInMemoryDatabase("TestDatabaseInMemory");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

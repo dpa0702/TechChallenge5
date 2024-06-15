@@ -89,6 +89,56 @@ namespace GestaoInvestimentosTests.Controller
             Assert.IsNotNull(result);
             Assert.AreEqual(200, result.StatusCode);
         }
+
+        [TestMethod]
+        public void CreateAtivo_ReturnsOk_WhenTipoAtivoTituloIsValid()
+        {
+            // Arrange
+            var ativoDtoMock = new MockAtivoDTO();
+            ativoDtoMock.TipoAtivo = TipoAtivo.Titulo;
+            var ativoDto = new CreateAtivoDTO { Nome = ativoDtoMock.Nome, TipoAtivo = ativoDtoMock.TipoAtivo, Codigo = ativoDtoMock.Codigo };
+            _mockAtivoService.Setup(service => service.TipoAtivoIsValid(It.IsAny<int>())).Returns(true);
+
+            // Act
+            var result = ativoController?.Create(ativoDto) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+        [TestMethod]
+        public void CreateAtivo_ReturnsOk_WhenTipoAtivoCriptomoedaIsValid()
+        {
+            // Arrange
+            var ativoDtoMock = new MockAtivoDTO();
+            ativoDtoMock.TipoAtivo = TipoAtivo.Criptomoeda;
+            var ativoDto = new CreateAtivoDTO { Nome = ativoDtoMock.Nome, TipoAtivo = ativoDtoMock.TipoAtivo, Codigo = ativoDtoMock.Codigo };
+            _mockAtivoService.Setup(service => service.TipoAtivoIsValid(It.IsAny<int>())).Returns(true);
+
+            // Act
+            var result = ativoController?.Create(ativoDto) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
+
+        [TestMethod]
+        public void CreateAtivo_ReturnsOk_WhenTipoAtivoAcaoIsValid()
+        {
+            // Arrange
+            var ativoDtoMock = new MockAtivoDTO();
+            ativoDtoMock.TipoAtivo = TipoAtivo.Acao;
+            var ativoDto = new CreateAtivoDTO { Nome = ativoDtoMock.Nome, TipoAtivo = ativoDtoMock.TipoAtivo, Codigo = ativoDtoMock.Codigo };
+            _mockAtivoService.Setup(service => service.TipoAtivoIsValid(It.IsAny<int>())).Returns(true);
+
+            // Act
+            var result = ativoController?.Create(ativoDto) as OkObjectResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(200, result.StatusCode);
+        }
         #endregion Create
 
         #region Update
