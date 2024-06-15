@@ -2,6 +2,7 @@ version: '3.4'
 
 services:
   gestaoinvestimentosui:
+    container_name: GestaoInvestimentosUI
     image: gestao-de-investimentos-app
     build:
      context: .
@@ -13,6 +14,7 @@ services:
       - mssql-server
 
   mssql-server:
+    container_name: GestaoInvestimentosBD
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     environment:
       ACCEPT_EULA: "Y"
