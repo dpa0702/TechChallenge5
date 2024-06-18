@@ -1,5 +1,6 @@
 ﻿using GestaoInvestimentosCore.DTO.Usuario;
 using GestaoInvestimentosCore.Entities;
+using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,6 +11,12 @@ namespace GestaoInvestimentosCore.Services
 {
     public class TokenService : ITokenService
     {
+        private readonly ITokenService _tokenService;
+        public TokenService(ITokenService tokenService)
+        {
+            _tokenService = tokenService;
+        }
+
         public LoginUsuarioDTO GenerateToken(LoginUsuarioDTO loginUsuarioDTO)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -31,22 +38,6 @@ namespace GestaoInvestimentosCore.Services
 
             return loginUsuarioDTO;
 
-            //var key = Encoding.ASCII.GetBytes(_configuration.GetValue<string>("Secret"));
-
-            //var tokenDescriptior = new SecurityTokenDescriptor()
-            //{
-            //    Subject = new ClaimsIdentity(new Claim[]
-            //    {
-            //        new Claim("RA", student.RA.ToString()),
-            //        new Claim("Id", student.Id.ToString()),
-            //        new Claim(ClaimTypes.Role, "Student")
-            //    }),
-
-            //    Expires = DateTime.UtcNow.AddHours(4),
-            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            //};
-
-            //return GenerateToken(tokenDescriptior);
         }
     }
 }
