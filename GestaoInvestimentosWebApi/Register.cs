@@ -15,7 +15,6 @@ namespace GestaoInvestimentosWebApi
             services.AddTransient<IPortfolioService, PortfolioService>();
             services.AddTransient<ITransacaoService, TransacaoService>();
             services.AddTransient<IUsuarioService, UsuarioService>();
-            services.AddTransient<ITokenService, TokenService>();
             return services;
         }
 

@@ -32,8 +32,8 @@ namespace GestaoInvestimentosInfrastructure.Data
             //Server=host.docker.internal PARA RODAR NO DOCKER COMPOSE
             //optionsBuilder.UseSqlServer("Server=host.docker.internal,1433;Database=Investimentos;User ID=sa;Password=1q2w3e4r@#;Trusted_Connection=False; TrustServerCertificate=True;");
             //optionsBuilder.UseSqlServer("Server=DESKTOP-LP07H3G;Database=Investimentos;Trusted_Connection=true;TrustServerCertificate=true;");
+            //optionsBuilder.UseInMemoryDatabase("TestDatabaseInMemory");
 
-            optionsBuilder.UseInMemoryDatabase("TestDatabaseInMemory");
             if (_configuration != null)
                 optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
             else

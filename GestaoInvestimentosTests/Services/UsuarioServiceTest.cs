@@ -15,7 +15,6 @@ namespace GestaoInvestimentosTests.Services
     public class UsuarioServiceTest
     {
         private Mock<IUsuarioRepository> _mockUsuarioRepository;
-        private Mock<ITokenService> _mockTokenService;
         private UsuarioService _usuarioService;
         private Faker _faker;
 
@@ -23,8 +22,7 @@ namespace GestaoInvestimentosTests.Services
         public void Setup()
         {
             _mockUsuarioRepository = new Mock<IUsuarioRepository>();
-            _mockTokenService = new Mock<ITokenService>();
-            _usuarioService = new UsuarioService(_mockUsuarioRepository.Object, _mockTokenService.Object);
+            _usuarioService = new UsuarioService(_mockUsuarioRepository.Object);
             _faker = new Faker();
         }
 

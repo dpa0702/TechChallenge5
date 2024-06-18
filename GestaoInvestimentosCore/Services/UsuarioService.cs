@@ -3,20 +3,24 @@ using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosCore.Interfaces.Repository;
 using GestaoInvestimentosCore.Interfaces.Services;
 using Microsoft.AspNet.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace GestaoInvestimentosCore.Services
 {
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
-        private readonly ITokenService _tokenService;
+        //private readonly ITokenService _tokenService;
         private readonly RandomNumberGenerator _rng;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository, ITokenService tokenService)
+        public UsuarioService(IUsuarioRepository usuarioRepository)//, ITokenService tokenService)
         {
             _usuarioRepository = usuarioRepository;
-            _tokenService = tokenService;
+            //_tokenService = tokenService;
         }
 
         public void AddUsuarioAsync(CreateUsuarioDTO createUsuarioDTO)
@@ -94,7 +98,8 @@ namespace GestaoInvestimentosCore.Services
                 PasswordVerificationResult passwordVerificationResult = new PasswordHasher().VerifyHashedPassword(usuario.Senha, loginUsuarioDTO.Senha);
 
                 if (passwordVerificationResult.Equals(PasswordVerificationResult.Success))
-                    return _tokenService.GenerateToken(loginUsuarioDTO);
+                    //return loginUsuarioDTO;
+                    return GenerateToken(loginUsuarioDTO);
                 else
                     throw new Exception($"Senha Incorreta");
             }
@@ -102,6 +107,29 @@ namespace GestaoInvestimentosCore.Services
             {
                 throw new Exception($"Erro na camada de serviço ao consultar Usuario por id. Mensagem de Erro: {ex.Message}", ex);
             }
+        }
+
+        public LoginUsuarioDTO GenerateToken(LoginUsuarioDTO loginUsuarioDTO)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e");//(Settings.Secret);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("Email", loginUsuarioDTO.Email.ToString()),
+                    new Claim("Senha", loginUsuarioDTO.Senha.ToString()),
+                    new Claim(ClaimTypes.Role, "Usuario")
+                }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            loginUsuarioDTO.Token = tokenHandler.WriteToken(token);
+
+            return loginUsuarioDTO;
+
         }
 
     }
