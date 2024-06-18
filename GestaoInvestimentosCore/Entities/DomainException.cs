@@ -1,5 +1,8 @@
-﻿namespace GestaoInvestimentosCore.Entities
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace GestaoInvestimentosCore.Entities
 {
+    [ExcludeFromCodeCoverage]
     public class DomainException : Exception
     {
         public DomainException() { }

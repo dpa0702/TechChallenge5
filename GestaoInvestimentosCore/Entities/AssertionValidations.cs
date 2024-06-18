@@ -23,23 +23,5 @@
                 throw new DomainException(message);
             }
         }
-
-        public static void AssertArgumentLenght(string stringValue, int min, int max, string message)
-        {
-            int lenght = stringValue.Trim().Length;
-            if (lenght > max || lenght < min)
-            {
-                throw new DomainException(message);
-            }
-        }
-
-        public static void AssertArgumentExactLenght(string stringValue, int lenghtString, string message)
-        {
-            int lenght = stringValue.Trim().Length;
-            if (lenght != lenghtString)
-            {
-                throw new DomainException(message);
-            }
-        }
     }
 }
