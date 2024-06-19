@@ -99,6 +99,7 @@ export class PortfolioEditComponent implements OnInit {
       this.createForm.value.usuarioId as number,
       this.createForm.value.nome as string,
       this.createForm.value.descricao as string,
+      null as unknown as UsuarioModel,
     );
 
     //realizando a atualização

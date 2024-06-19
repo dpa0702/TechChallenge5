@@ -77,6 +77,7 @@ export class PortfolioCreateComponent implements OnInit {
       this.createForm.value.usuarioID as number,
       this.createForm.value.nome as string,
       this.createForm.value.descricao as string,
+      null as unknown as UsuarioModel,
     );
 
     //realizando o cadastro

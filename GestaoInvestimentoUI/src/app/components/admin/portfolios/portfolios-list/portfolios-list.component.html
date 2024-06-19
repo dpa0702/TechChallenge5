@@ -56,14 +56,10 @@
           </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="usuarioId">
+        <ng-container matColumnDef="usuario.nome">
           <mat-header-cell *matHeaderCellDef><strong>Usuário</strong></mat-header-cell>
           <mat-cell *matCellDef="let item">
-            {{ item.usuarioId }}
-            <!-- <p *ngIf="item.usuarioId === 1">Demetrios Pandelis Arghirachis</p>
-            <p *ngIf="item.usuarioId === 2">Erick Felipe Vieira da Silva</p>
-            <p *ngIf="item.usuarioId === 3">MARINA SANT'ANA MIRANDA DE OLIVEIRA</p>
-            <p *ngIf="item.usuarioId === 4">Pamela Suellen Souza Caffa</p> -->
+            {{ item.usuario.nome }}
           </mat-cell>
         </ng-container>
 

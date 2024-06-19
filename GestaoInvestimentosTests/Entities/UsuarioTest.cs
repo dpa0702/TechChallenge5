@@ -91,6 +91,36 @@ namespace GestaoInvestimentosTests.Entities
             Assert.AreEqual(UsuarioDtoMock.Email, UsuarioDto.Email);
             Assert.AreEqual(UsuarioDtoMock.Senha, UsuarioDto.Senha);
         }
+
+        [TestMethod]
+        public void ValidateLoginUsuario_ShouldReturnSuccess()
+        {
+            // Arrange
+            var LoginUsuarioDTOMock = new MockLoginUsuarioDTO();
+
+            // Act
+            var MockLoginUsuarioDto = new LoginUsuarioDTO { Email = LoginUsuarioDTOMock.Email, Senha = LoginUsuarioDTOMock.Senha, Token = LoginUsuarioDTOMock.Token };
+
+            // Assert
+            Assert.AreEqual(MockLoginUsuarioDto.Email, LoginUsuarioDTOMock.Email);
+            Assert.AreEqual(MockLoginUsuarioDto.Senha, LoginUsuarioDTOMock.Senha);
+            Assert.AreEqual(MockLoginUsuarioDto.Token, LoginUsuarioDTOMock.Token);
+        }
+
+        [TestMethod]
+        public void ValidateLoginUsuario_ShouldReturnSuccess_WhenTokenIsEmptyOrNull()
+        {
+            // Arrange
+            var LoginUsuarioDTOMock = new MockLoginUsuarioDTO();
+
+            // Act
+            var MockLoginUsuarioDto = new LoginUsuarioDTO { Email = LoginUsuarioDTOMock.Email, Senha = LoginUsuarioDTOMock.Senha, Token = string.Empty };
+
+            // Assert
+            Assert.AreEqual(MockLoginUsuarioDto.Email, LoginUsuarioDTOMock.Email);
+            Assert.AreEqual(MockLoginUsuarioDto.Senha, LoginUsuarioDTOMock.Senha);
+            Assert.AreEqual(MockLoginUsuarioDto.Token, string.Empty);
+        }
         #endregion
 
         #region Method Update Tests

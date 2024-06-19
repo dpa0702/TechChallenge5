@@ -16,7 +16,7 @@ import { getUsuario } from 'src/app/services/usuarios-service';
 export class PortfoliosListComponent implements OnInit {
 
   //mome das colunas do grid (DataTable) no material
-  colunas: string[] = ['id', 'usuarioId', 'nome', 'descricao', 'actions'];
+  colunas: string[] = ['id', 'usuario.nome', 'nome', 'descricao', 'actions'];
 
   //dados preenchidos na tabela
   dataTable = new MatTableDataSource<PortfoliosModel>();
@@ -51,6 +51,7 @@ export class PortfoliosListComponent implements OnInit {
       this.listForm.value.usuarioId as number,
       this.listForm.value.nome as string,
       this.listForm.value.descricao as string,
+      null as unknown as UsuarioModel,
     );
 
     getPortfolio(requestP)
@@ -64,7 +65,8 @@ export class PortfoliosListComponent implements OnInit {
               id: item.id,
               usuarioId: item.usuarioId,
               nome: item.nome,
-              descricao: item.descricao
+              descricao: item.descricao,
+              usuario: item.usuario,
             });
           });
 
@@ -123,6 +125,7 @@ export class PortfoliosListComponent implements OnInit {
       this.listForm.value.usuarioId as number,
       this.listForm.value.nome as string,
       this.listForm.value.descricao as string,
+      null as unknown as UsuarioModel,
     );
 
     getPortfolio(requestP)
@@ -136,7 +139,8 @@ export class PortfoliosListComponent implements OnInit {
               id: item.id,
               usuarioId: item.usuarioId,
               nome: item.nome,
-              descricao: item.descricao
+              descricao: item.descricao,
+              usuario: item.usuario,
             });
           });
 
@@ -166,6 +170,7 @@ export class PortfoliosListComponent implements OnInit {
       0,
       '',
       '',
+      null as unknown as UsuarioModel,
     );
 
     deletPortfolio(id)

@@ -9,6 +9,7 @@ import { AtivoModel } from 'src/app/models/ativos.model';
 import { getAtivo } from 'src/app/services/ativos-service';
 import { PortfoliosModel } from 'src/app/models/portfolios.model';
 import { getPortfolio } from 'src/app/services/portfolios-service';
+import { UsuarioModel } from 'src/app/models/usuarios.model';
 
 @Component({
   selector: 'app-transacoes-list',
@@ -18,7 +19,7 @@ import { getPortfolio } from 'src/app/services/portfolios-service';
 export class TransacoesListComponent implements OnInit {
 
   //mome das colunas do grid (DataTable) no material
-  colunas: string[] = ['id', 'portfolioId', 'ativoId', 'tipoTransacao', 'quantidade', 'preco', 'dataTransacao', 'actions'];
+  colunas: string[] = ['id', 'portfolio.nome', 'ativo.nome', 'tipoTransacao', 'quantidade', 'preco', 'dataTransacao', 'actions'];
 
   //dados preenchidos na tabela
   dataTable = new MatTableDataSource<TransacaoModel>();
@@ -61,6 +62,7 @@ export class TransacoesListComponent implements OnInit {
       0,
       '',
       '',
+      null as unknown as UsuarioModel,
     );
 
     getPortfolio(requestP)
@@ -92,6 +94,8 @@ export class TransacoesListComponent implements OnInit {
       this.listForm.value.quantidade as number,
       this.listForm.value.preco as number,
       this.listForm.value.dataTransacao as string,
+      null as unknown as PortfoliosModel,
+      null as unknown as AtivoModel,
     );
 
     getTransacao(requestT)
@@ -109,6 +113,8 @@ export class TransacoesListComponent implements OnInit {
               quantidade: item.quantidade,
               preco: item.preco,
               dataTransacao: item.dataTransacao,
+              portfolio: item.portfolio,
+              ativo: item.ativo,
             });
           });
 
@@ -168,6 +174,8 @@ export class TransacoesListComponent implements OnInit {
       this.listForm.value.quantidade as number,
       this.listForm.value.preco as number,
       this.listForm.value.dataTransacao as string,
+      null as unknown as PortfoliosModel,
+      null as unknown as AtivoModel,
     );
 
     getTransacao(requestTN)
@@ -185,6 +193,8 @@ export class TransacoesListComponent implements OnInit {
               quantidade: item.quantidade,
               preco: item.preco,
               dataTransacao: item.dataTransacao,
+              portfolio: item.portfolio,
+              ativo: item.ativo,
             });
           });
 
@@ -216,7 +226,9 @@ export class TransacoesListComponent implements OnInit {
       0,
       0,
       0,
-      ''
+      '',
+      null as unknown as PortfoliosModel,
+      null as unknown as AtivoModel,
     );
 
     deleteTransacao(id)

@@ -17,7 +17,7 @@ namespace GestaoInvestimentosCore.Entities
 
         public Transacao()
         {
-            Portfolio = new Portfolio();
+
         }
 
         public Transacao(int portfolioId, int ativoId, TipoTransacao tipoTransacao, int quantidade, decimal preco, DateTime dataTransacao)

@@ -69,17 +69,6 @@ namespace GestaoInvestimentosTests.Repository
             Assert.IsNull(result);
         }
 
-        //[TestMethod]
-        //public void TransacaoListByFilter_ReturnsTransacaos_WhenFilterId()
-        //{
-        //    // Act
-        //    var result = _repository.GetAllAsync(1, null, null, null, null, null, "");
-
-        //    // Assert
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(1, result.Count());
-        //}
-
 
         [TestMethod]
         public void TransacaoListByFilter_ReturnsTransacaos_WhenFilterByIdThatDoesntExistInTheList()

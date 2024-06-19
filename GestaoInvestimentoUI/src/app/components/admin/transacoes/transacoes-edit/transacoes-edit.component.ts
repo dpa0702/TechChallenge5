@@ -10,6 +10,7 @@ import { PortfoliosModel } from 'src/app/models/portfolios.model';
 import { getPortfolio } from 'src/app/services/portfolios-service';
 import { AtivoModel } from 'src/app/models/ativos.model';
 import { getAtivo } from 'src/app/services/ativos-service';
+import { UsuarioModel } from 'src/app/models/usuarios.model';
 
 @Component({
   selector: 'app-transacoes-edit',
@@ -59,6 +60,7 @@ export class TransacaoEditComponent implements OnInit {
       0,
       '',
       '',
+      null as unknown as UsuarioModel,
     );
 
     getPortfolio(requestP)
@@ -73,6 +75,7 @@ export class TransacaoEditComponent implements OnInit {
               usuarioId: item.usuarioId,
               nome: item.nome,
               descricao: item.descricao,
+              usuario: item.usuario,
             });
           });
           this.portfolios = modelP;
@@ -140,6 +143,8 @@ export class TransacaoEditComponent implements OnInit {
       this.createForm.value.quantidade as number,
       this.createForm.value.preco as number,
       this.createForm.value.dataTransacao as string,
+      null as unknown as PortfoliosModel,
+      null as unknown as AtivoModel,
     );
 
   }
@@ -156,6 +161,8 @@ export class TransacaoEditComponent implements OnInit {
       this.createForm.value.quantidade as number,
       this.createForm.value.preco as number,
       this.createForm.value.dataTransacao as string,
+      null as unknown as PortfoliosModel,
+      null as unknown as AtivoModel,
     );
     // alert(request.dataTransacao);
     //realizando a atualização

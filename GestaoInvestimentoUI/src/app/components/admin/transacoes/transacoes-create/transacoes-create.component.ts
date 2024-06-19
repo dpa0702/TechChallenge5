@@ -8,6 +8,7 @@ import { PortfoliosModel } from 'src/app/models/portfolios.model';
 import { getPortfolio } from 'src/app/services/portfolios-service';
 import { AtivoModel } from 'src/app/models/ativos.model';
 import { getAtivo } from 'src/app/services/ativos-service';
+import { UsuarioModel } from 'src/app/models/usuarios.model';
 
 @Component({
   selector: 'app-transacoes-create',
@@ -48,6 +49,7 @@ export class TransacaoCreateComponent implements OnInit {
       0,
       '',
       '',
+      null as unknown as UsuarioModel,
     );
 
     getPortfolio(requestP)
@@ -62,6 +64,7 @@ export class TransacaoCreateComponent implements OnInit {
               usuarioId: item.usuarioId,
               nome: item.nome,
               descricao: item.descricao,
+              usuario: item.usuario,
             });
           });
           this.portfolios = modelP;
@@ -118,6 +121,8 @@ export class TransacaoCreateComponent implements OnInit {
       this.createForm.value.Quantidade as number,
       this.createForm.value.Preco as number,
       this.createForm.value.DataTransacao as string,
+      null as unknown as PortfoliosModel,
+      null as unknown as AtivoModel,
     );
 
     //realizando o cadastro
