@@ -30,7 +30,10 @@ namespace GestaoInvestimentosTests.Services
         {
             // Arrange
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var Portfolio = autoFixture.Build<Portfolio>().With(x => x.Id, 1).Create();
+            var Portfolio = autoFixture.Build<Portfolio>()
+                .With(x => x.Transacoes, default(ICollection<Transacao>?))
+                .With(x => x.Usuario, default(Usuario?))
+                .With(x => x.Id, 1).Create();
             _mockPortfolioRepository.Setup(service => service.GetById(It.IsAny<int>())).Returns(Portfolio);
 
             // Act
@@ -70,7 +73,10 @@ namespace GestaoInvestimentosTests.Services
 
             var portfolioList = new List<Portfolio>()
             {
-                autoFixture.Build<Portfolio>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, 1).Create()
+                autoFixture.Build<Portfolio>()
+                .With(x => x.Transacoes, default(ICollection<Transacao>?))
+                .With(x => x.Usuario, default(Usuario?))
+                .With(x => x.Id, 1).Create()
             };
 
             _mockPortfolioRepository.Setup(repo => repo.GetAllAsync(idFilter, idUsuarioFilter, nomeFilter, descricaofilter)).Returns(portfolioList);

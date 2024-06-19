@@ -28,7 +28,10 @@ namespace GestaoInvestimentosTests.Services
         {
             // Arrange
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var transacao = autoFixture.Build<Transacao>().With(x => x.Id, 1).Create();
+            var transacao = autoFixture.Build<Transacao>()
+                .With(x => x.Ativo, default(Ativo?))
+                .With(x => x.Portfolio, default(Portfolio?))
+                .With(x => x.Id, 1).Create();
             _mockTransacaoRepository.Setup(service => service.GetById(It.IsAny<int>())).Returns(transacao);
 
             // Act

@@ -17,7 +17,6 @@ namespace GestaoInvestimentosInfrastructure.Repositories
 
         public IEnumerable<Portfolio> GetAllAsync(int? id, int? usuarioId, string? nome, string? descricao)
         {
-            //return _context.Portfolios.AsNoTracking();
             var portfolios = _context.Portfolios.AsNoTracking();
 
             if (id != null && id > 0)
@@ -32,7 +31,29 @@ namespace GestaoInvestimentosInfrastructure.Repositories
             if (!string.IsNullOrEmpty(descricao))
                 portfolios = portfolios.Where(x => x.Descricao == descricao);
 
-            return portfolios?.ToList() ?? new List<Portfolio>();
+            if (portfolios == null) return new List<Portfolio>();
+
+            var portfolioList = (from portfolio in portfolios
+                                 join usuario in _context.Usuarios.AsNoTracking() on
+                                    new { p = portfolio.UsuarioId } equals
+                                    new { p = usuario.Id }
+                                select new Portfolio
+                                {
+                                    Id = portfolio.Id,
+                                    UsuarioId = portfolio.UsuarioId,
+                                    Nome = portfolio.Nome,
+                                    Descricao = portfolio.Descricao,
+                                    Usuario = new Usuario
+                                    {
+                                        Id = usuario.Id,
+                                        Nome = usuario.Nome,
+                                        Email = usuario.Email,
+                                        Senha = usuario.Senha,
+                                    },
+                                }
+                          ).ToList();
+
+            return portfolioList ?? new List<Portfolio>();
         }
 
         public void Insert(Portfolio portfolio)

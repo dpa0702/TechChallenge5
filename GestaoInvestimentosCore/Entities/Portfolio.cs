@@ -5,10 +5,11 @@ namespace GestaoInvestimentosCore.Entities
     public class Portfolio : EntityBase
     {
         public int UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
 
-        public virtual ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();
+        public virtual ICollection<Transacao> Transacoes { get; set; }
 
         public Portfolio()
         {

@@ -6,7 +6,9 @@ namespace GestaoInvestimentosCore.Entities
     public class Transacao : EntityBase
     {
         public int PortfolioId { get; set; }
+        public virtual Portfolio Portfolio { get; set; }
         public int AtivoId { get; set; }
+        public virtual Ativo Ativo { get; set; }
         public TipoTransacao TipoTransacao { get; set; }
         public int Quantidade { get; set; }
         public decimal Preco { get; set; }
@@ -15,7 +17,7 @@ namespace GestaoInvestimentosCore.Entities
 
         public Transacao()
         {
-
+            Portfolio = new Portfolio();
         }
 
         public Transacao(int portfolioId, int ativoId, TipoTransacao tipoTransacao, int quantidade, decimal preco, DateTime dataTransacao)

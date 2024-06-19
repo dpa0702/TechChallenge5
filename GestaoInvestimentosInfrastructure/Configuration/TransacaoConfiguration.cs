@@ -17,12 +17,8 @@ namespace GestaoInvestimentosInfrastructure.Configuration
             builder.Property(t => t.Quantidade).HasColumnType("VARCHAR(50)").IsRequired();
             builder.Property(t => t.Preco).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(t => t.DataTransacao).HasColumnType("VARCHAR(100)").IsRequired();
-
             builder.Property(t => t.PortfolioId).HasColumnType("INT").IsRequired();
-            //builder.HasOne(p => p.Portfolio).WithMany(t => t.Transacoes).HasForeignKey(p => p.PortfolioId);
-
             builder.Property(t => t.AtivoId).HasColumnType("INT").IsRequired();
-            //builder.HasOne(a => a.Ativo).WithMany(t => t.Transacoes).HasForeignKey(a => a.AtivoId);
         }
     }
 }

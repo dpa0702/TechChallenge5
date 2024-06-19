@@ -32,7 +32,20 @@ namespace GestaoInvestimentosInfrastructure.Repositories
             if (!string.IsNullOrEmpty(senha))
                 usuario = usuario.Where(x => x.Senha == senha);
 
-            return usuario?.ToList() ?? new List<Usuario>();
+            if (usuario == null) return new List<Usuario>();
+
+            var usuarioList = (from _usuario in usuario
+                                 select new Usuario
+                                 {
+                                     Id = _usuario.Id,
+                                     Nome = _usuario.Nome,
+                                     Email = _usuario.Email,
+                                     Senha = _usuario.Senha,
+                                     Portfolios = _context.Portfolios.Where(p => p.UsuarioId == _usuario.Id).ToList(),
+                                 }
+                          ).ToList();
+
+            return usuarioList ?? new List<Usuario>();
         }
 
         public Usuario GetById(int id)

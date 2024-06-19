@@ -40,6 +40,7 @@ namespace GestaoInvestimentosTests.Repository
             int idToFakeInsertAndSearch = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var usuario = autoFixture.Build<Usuario>()
+                .With(x => x.Portfolios, default(ICollection<Portfolio>?))
                 .With(x => x.Id, idToFakeInsertAndSearch).Create();
             _context.Usuarios.Add(usuario);
 
@@ -58,6 +59,7 @@ namespace GestaoInvestimentosTests.Repository
 
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var usuario = autoFixture.Build<Usuario>()
+                .With(x => x.Portfolios, default(ICollection<Portfolio>?))
                 .With(x => x.Id, idToFakeInsert).Create();
 
             _context.Usuarios.Add(usuario);

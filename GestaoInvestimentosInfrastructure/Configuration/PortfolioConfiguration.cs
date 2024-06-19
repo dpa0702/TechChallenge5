@@ -15,9 +15,7 @@ namespace GestaoInvestimentosInfrastructure.Configuration
             builder.Property(p => p.Id).HasColumnType("INT").UseIdentityColumn();
             builder.Property(p => p.Nome).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(p => p.Descricao).HasColumnType("VARCHAR(50)").IsRequired();
-
             builder.Property(p => p.UsuarioId).HasColumnType("INT").IsRequired();
-            //builder.HasOne(p => p.Usuario).WithMany(p => p.Portfolios).HasForeignKey(u => u.UsuarioId);
         }
     }
 }

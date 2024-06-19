@@ -8,7 +8,7 @@ namespace GestaoInvestimentosCore.Entities
         public string Email { get; set; }
         public string Senha { get; set; }
 
-        public virtual ICollection<Portfolio> Portfolios { get; } = new List<Portfolio>();
+        public virtual ICollection<Portfolio> Portfolios { get; set; }
 
         public Usuario()
         {

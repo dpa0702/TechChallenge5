@@ -36,6 +36,7 @@ namespace GestaoInvestimentosTests.Repository
             int idToFakeInsertAndSearch = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var ativo = autoFixture.Build<Ativo>()
+                .With(x => x.Transacoes, default(ICollection<Transacao>?))
                 .With(x => x.Id, idToFakeInsertAndSearch).Create();
             _context.Ativos.Add(ativo);
 
@@ -52,6 +53,7 @@ namespace GestaoInvestimentosTests.Repository
             int idToFakeInsertAndSearch = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var ativo = autoFixture.Build<Ativo>()
+                .With(x => x.Transacoes, default(ICollection<Transacao>?))
                 .With(x => x.Id, idToFakeInsertAndSearch)
                 .With(x => x.TipoAtivo, TipoAtivo.Acao).Create();
 

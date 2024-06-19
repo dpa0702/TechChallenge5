@@ -31,7 +31,9 @@ namespace GestaoInvestimentosTests.Services
         {
             // Arrange
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var usuario = autoFixture.Build<Usuario>().With(x => x.Id, 1).Create();
+            var usuario = autoFixture.Build<Usuario>()
+                .With(x => x.Portfolios, default(ICollection<Portfolio>?))
+                .With(x => x.Id, 1).Create();
             _mockUsuarioRepository.Setup(service => service.GetById(1)).Returns(usuario);
 
             // Act
@@ -71,7 +73,9 @@ namespace GestaoInvestimentosTests.Services
 
             var usuarioList = new List<Usuario>()
             {
-                autoFixture.Build<Usuario>().With(x => x.Id, idFilter).Create()
+                autoFixture.Build<Usuario>()
+                .With(x => x.Portfolios, default(ICollection<Portfolio>?))
+                .With(x => x.Id, idFilter).Create()
             };
 
             _mockUsuarioRepository.Setup(repo => repo.GetAllAsync(idFilter, nomeFilter, emailfilter, senhafilter)).Returns(usuarioList);

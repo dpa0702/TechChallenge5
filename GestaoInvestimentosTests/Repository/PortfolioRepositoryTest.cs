@@ -4,11 +4,6 @@ using GestaoInvestimentosCore.Entities;
 using GestaoInvestimentosInfrastructure.Data;
 using GestaoInvestimentosInfrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoInvestimentosTests.Repository
 {
@@ -41,6 +36,8 @@ namespace GestaoInvestimentosTests.Repository
             int idToFakeInsertAndSearch = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var Portfolio = autoFixture.Build<Portfolio>()
+                .With(x => x.Transacoes, default(ICollection<Transacao>?))
+                .With(x => x.Usuario, default(Usuario?))
                 .With(x => x.Id, idToFakeInsertAndSearch).Create();
             _context.Portfolios.Add(Portfolio);
 
@@ -60,6 +57,7 @@ namespace GestaoInvestimentosTests.Repository
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
             var Portfolio = autoFixture.Build<Portfolio>()
                 .With(x => x.Transacoes, default(ICollection<Transacao>?))
+                .With(x => x.Usuario, default(Usuario?))
                 .With(x => x.Id, idToFakeInsert).Create();
 
             _context.Portfolios.Add(Portfolio);

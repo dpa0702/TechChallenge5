@@ -18,7 +18,6 @@ namespace GestaoInvestimentosInfrastructure.Repositories
 
         public IEnumerable<Transacao> GetAllAsync(int? id, int? portfolioId, int? ativoId, int? tipoTransacao, int? quantidade, int? preco, string dataTransacao)
         {
-            //return _context.Transacoes.AsNoTracking();
             var transacao = _context.Transacoes.AsNoTracking();
 
             if (id != null && id > 0)
@@ -42,7 +41,38 @@ namespace GestaoInvestimentosInfrastructure.Repositories
             if (!string.IsNullOrEmpty(dataTransacao))
                 transacao = transacao.Where(x => x.DataTransacao.ToString() == dataTransacao.ToString());
 
-            return transacao?.ToList() ?? new List<Transacao>();
+            var transacaoList = (from _transacao in transacao
+                                 join portfolio in _context.Portfolios.AsNoTracking() on
+                                    new { p = _transacao.PortfolioId } equals
+                                    new { p = portfolio.Id }
+                                 join ativo in _context.Ativos.AsNoTracking() on
+                                     new { p = _transacao.AtivoId } equals
+                                     new { p = ativo.Id }
+                                 select new Transacao
+                                 {
+                                     Id = _transacao.Id,
+                                     PortfolioId = _transacao.PortfolioId,
+                                     AtivoId = _transacao.AtivoId,
+                                     TipoTransacao = _transacao.TipoTransacao,
+                                     Quantidade = _transacao.Quantidade,
+                                     Preco = _transacao.Preco,
+                                     DataTransacao = _transacao.DataTransacao,
+                                     Portfolio = new Portfolio
+                                     {
+                                         Id = portfolio.Id,
+                                         Nome = portfolio.Nome,
+                                         Descricao = portfolio.Descricao,
+                                     },
+                                     Ativo = new Ativo
+                                     {
+                                         Id = ativo.Id,
+                                         Nome = ativo.Nome,
+                                         Codigo = ativo.Codigo,
+                                     },
+                                 }
+                          ).ToList();
+
+            return transacaoList ?? new List<Transacao>();
         }
 
         public Transacao GetById(int id)

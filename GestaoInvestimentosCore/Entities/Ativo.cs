@@ -9,7 +9,7 @@ namespace GestaoInvestimentosCore.Entities
         public string Nome { get; set; }
         public string Codigo { get; set; }
 
-        public virtual ICollection<Transacao> Transacoes { get; set; } = new List<Transacao>();
+        public virtual ICollection<Transacao> Transacoes { get; set; }
 
         public Ativo()
         {

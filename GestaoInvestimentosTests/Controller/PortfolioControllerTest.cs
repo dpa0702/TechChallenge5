@@ -10,6 +10,7 @@ using GestaoInvestimentosCore.Enums;
 using GestaoInvestimentosCore.DTO.Ativo;
 using GestaoInvestimentosTests.Entities.Mock;
 using GestaoInvestimentosCore.DTO.Portfolio;
+using Castle.Core.Resource;
 
 namespace GestaoInvestimentosTests.Controller
 {
@@ -35,7 +36,10 @@ namespace GestaoInvestimentosTests.Controller
             // Arrange
             var id = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var portfolio = autoFixture.Build<Portfolio>().With(x => x.Transacoes, default(ICollection<Transacao>?)).With(x => x.Id, id).Create();
+            var portfolio = autoFixture.Build<Portfolio>()
+                .With(x => x.Transacoes, default(ICollection<Transacao>?))
+                .With(x => x.Usuario, default(Usuario?))
+                .With(x => x.Id, id).Create();
             _mockPortfolioService.Setup(service => service.GetPortfolioByIdAsync(id)).Returns(portfolio);
 
             // Act

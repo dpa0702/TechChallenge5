@@ -40,7 +40,9 @@ namespace GestaoInvestimentosTests.Controller
             // Arrange
             var id = 1;
             var autoFixture = new Fixture().Customize(new AutoMoqCustomization());
-            var usuario = autoFixture.Build<Usuario>().With(x => x.Id, id).Create();
+            var usuario = autoFixture.Build<Usuario>()
+                .With(x => x.Portfolios, default(ICollection<Portfolio>?))
+                .With(x => x.Id, id).Create();
             _mockUsuarioService.Setup(service => service.GetUsuarioByIdAsync(id)).Returns(usuario);
 
             // Act

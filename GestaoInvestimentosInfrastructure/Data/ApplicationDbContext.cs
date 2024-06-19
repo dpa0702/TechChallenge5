@@ -71,24 +71,24 @@ namespace GestaoInvestimentosInfrastructure.Data
                 new Portfolio() { Id = 4, UsuarioId = 4, Nome = "Portfolio Pamela", Descricao = "Descricao Portfolio Pamela" }
                 );
 
-            modelBuilder.Entity<Transacao>().HasData(
-                new Transacao() { Id = 1, AtivoId = 1, PortfolioId = 1, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 2, AtivoId = 2, PortfolioId = 1, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 3, AtivoId = 3, PortfolioId = 1, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 4, AtivoId = 4, PortfolioId = 1, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 5, AtivoId = 1, PortfolioId = 2, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 6, AtivoId = 2, PortfolioId = 2, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 7, AtivoId = 3, PortfolioId = 2, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 8, AtivoId = 4, PortfolioId = 2, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 9, AtivoId = 1, PortfolioId = 3, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 10, AtivoId = 2, PortfolioId = 3, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 11, AtivoId = 3, PortfolioId = 3, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 12, AtivoId = 4, PortfolioId = 3, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 13, AtivoId = 1, PortfolioId = 4, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 14, AtivoId = 2, PortfolioId = 4, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 15, AtivoId = 3, PortfolioId = 4, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
-                new Transacao() { Id = 16, AtivoId = 4, PortfolioId = 4, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now }
-                );
+            //modelBuilder.Entity<Transacao>().HasData(
+            //    new Transacao() { Id = 1, AtivoId = 1, PortfolioId = 1, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 2, AtivoId = 2, PortfolioId = 1, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 3, AtivoId = 3, PortfolioId = 1, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 4, AtivoId = 4, PortfolioId = 1, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 5, AtivoId = 1, PortfolioId = 2, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 6, AtivoId = 2, PortfolioId = 2, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 7, AtivoId = 3, PortfolioId = 2, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 8, AtivoId = 4, PortfolioId = 2, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 9, AtivoId = 1, PortfolioId = 3, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 10, AtivoId = 2, PortfolioId = 3, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 11, AtivoId = 3, PortfolioId = 3, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 12, AtivoId = 4, PortfolioId = 3, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 13, AtivoId = 1, PortfolioId = 4, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 14, AtivoId = 2, PortfolioId = 4, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 15, AtivoId = 3, PortfolioId = 4, TipoTransacao = TipoTransacao.Compra, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now },
+            //    new Transacao() { Id = 16, AtivoId = 4, PortfolioId = 4, TipoTransacao = TipoTransacao.Venda, Quantidade = 10, Preco = 150, DataTransacao = DateTime.Now }
+            //    );
         }
     }
 }
